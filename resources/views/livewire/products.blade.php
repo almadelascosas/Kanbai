@@ -9,21 +9,21 @@
             @endif
             </h2>
             <hr>
-        @if($info['subcategory_id']==null)
-        <div class="row mb-4 mt-5">
-            <h4 class="title-filter">Subcategorias</h4>
-            <input type="hidden" value="{{$subcategories = App\Models\SubCategories::where('category_id',$info['category_id'])->with('category')->get()}}">
-            @foreach ($subcategories as $subcategory)                
-                <div class="col-sm-6">
-                    <a class="dropdown-item bt-subcategory-filter {{ (request()->is('catalogo/$subcategory->category->slug/subcategory->slug')) ? 'active' : '' }}" href="/catalogo/{{ $subcategory->category->slug }}/{{ $subcategory->slug }}">
-                    <img class="image-subcategory-list-product" src="{{ asset('images/subcategories/'.$subcategory->file.'') }}" alt="{{ $subcategory->name }}">
-                    {{ $subcategory->name }}</a>
-                </div>                 
-            @endforeach
-        </div>
-        @endif
+            @if($info['subcategory_id']==null)
+            <div class="row mb-4 mt-5">
+                <h4 class="title-filter">Subcategorias</h4>
+                <input type="hidden" value="{{$subcategories = App\Models\SubCategories::where('category_id',$info['category_id'])->with('category')->get()}}">
+                @foreach ($subcategories as $subcategory)                
+                    <div class="col-sm-6">
+                        <a class="dropdown-item bt-subcategory-filter {{ (request()->is('catalogo/$subcategory->category->slug/subcategory->slug')) ? 'active' : '' }}" href="/catalogo/{{ $subcategory->category->slug }}/{{ $subcategory->slug }}">
+                        <img class="image-subcategory-list-product" src="{{ asset('images/subcategories/'.$subcategory->file.'') }}" alt="{{ $subcategory->name }}">
+                        {{ $subcategory->name }}</a>
+                    </div>                 
+                @endforeach
+            </div>
+            @endif
 
-        <div class="row background-item-filter mb-4">
+        <!-- <div class="row background-item-filter mb-4">
             
             <div class="col-9">
                 <label class="form-check-label" for="shipping_price">Envío gratis</label>
@@ -33,7 +33,7 @@
                     <input class="form-check-input" type="checkbox" wire:model="shipping_price" id="shipping_price">                        
                 </div>
             </div>
-        </div>
+        </div> -->
         
            
 
@@ -54,7 +54,7 @@
                     <div class="mall-property__label" >
                         Precio                        
                      </div>
-                     <div class="mall-slider-handles" data-start="1000" data-end="1000" data-min="1" data-max="10000000" data-target="price" style="width: 100%" wire:ignore></div>
+                     <div class="mall-slider-handles" data-start="1000" data-end="1000" data-min="1" data-max="10000000" data-target="price" style="width: 90%" wire:ignore></div>
                      <div class="row filter-container-1">
                         <div class="col-md-6">
                            <input type="text" class="form-control" data-min="price" id="skip-value-lower"  wire:model.lazy="min_price" readonly>  
@@ -77,27 +77,21 @@
             <!--Estructura desk-->
             <div class="col-md-4 list-products-desk">
                 <a href="/catalogo/producto/{{$item->id}}/{{$item->name}}">
-                    <div class="card mb-3" >
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-12 col-12 mb-4 divimg">
-                                @if(count($item->gallery)>0)
-                                    <img src="{{ asset('images/products/thumbnail/list/'.$item->gallery[0]->file.'') }}" alt="{{$item->name}}" class="img-d img-fluid image-list">
-                                @endif
-                                </div>
-                                <h4 class="title-product-desk">{{$item->name}}</h4>
-                                <!-- <p class="vendido-po-desk">por {{$item->user->name}}</p> -->
-                                <p class="price">
-                                    <img src="{{ asset('images/Precio_Icono.png') }}" alt="Rango de precio" class="img-d img-fluid">
-                                    Rango: <span>${{number_format($item->price_min, 0, 0, '.')}} - ${{number_format($item->price_max, 0, 0, '.')}}</span> 
-                                </p>
-                                <p class="quantity">
-                                    <img src="{{ asset('images/Cantidad_Icono.png') }}" alt="Pedido minímo" class="img-d img-fluid">
-                                    Pedido minímo: <span>{{$item->quantity_min }} </span>
-                                </p>
-                            </div>
-                        </div>
+                    <div class="col-md-12 col-12 mb-4 divimg">
+                    @if(count($item->gallery)>0)
+                        <img src="{{ asset('images/products/thumbnail/list/'.$item->gallery[0]->file.'') }}" alt="{{$item->name}}" class="img-d img-fluid image-list">
+                    @endif
                     </div>
+                    <h4 class="title-product-desk">{{$item->name}}</h4>
+                    <!-- <p class="vendido-po-desk">por {{$item->user->name}}</p> -->
+                    <p class="price">
+                        <img src="{{ asset('images/Precio_Icono.png') }}" alt="Rango de precio" class="img-d img-fluid">
+                        Rango: <span>${{number_format($item->price_min, 0, 0, '.')}} - ${{number_format($item->price_max, 0, 0, '.')}}</span> 
+                    </p>
+                    <p class="quantity">
+                        <img src="{{ asset('images/Cantidad_Icono.png') }}" alt="Pedido minímo" class="img-d img-fluid">
+                        Pedido minímo: <span>{{$item->quantity_min }} </span>
+                    </p>
                 </a>
             </div>
             <!--Fin Estructura desk-->
