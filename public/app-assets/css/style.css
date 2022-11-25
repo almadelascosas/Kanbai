@@ -2491,3 +2491,15 @@ footer .credits {
   display: block;
 }
 
+.divimg{
+  overflow: hidden;
+  background-color: #E3E3E3;
+  /* box-shadow: 3px 5px 8px #999; */
+  border-radius: 20px;
+  padding: 0 0 0 0;
+}
+.divimg img{
+  object-fit: cover; 
+  width: 100%;
+  height: auto; 
+}

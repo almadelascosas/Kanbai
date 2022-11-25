@@ -80,7 +80,7 @@
                     <div class="card mb-3" >
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-12 col-12 mb-4">
+                                <div class="col-md-12 col-12 mb-4 divimg">
                                 @if(count($item->gallery)>0)
                                     <img src="{{ asset('images/products/thumbnail/list/'.$item->gallery[0]->file.'') }}" alt="{{$item->name}}" class="img-d img-fluid image-list">
                                 @endif
