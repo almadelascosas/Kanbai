@@ -86,7 +86,7 @@
                                 @endif
                                 </div>
                                 <h4 class="title-product-desk">{{$item->name}}</h4>
-                                <p class="vendido-po-desk">por {{$item->user->name}}</p>
+                                <!-- <p class="vendido-po-desk">por {{$item->user->name}}</p> -->
                                 <p class="price">
                                     <img src="{{ asset('images/Precio_Icono.png') }}" alt="Rango de precio" class="img-d img-fluid">
                                     Rango de precio: <span>${{number_format($item->price_min, 0, 0, '.')}} - ${{number_format($item->price_max, 0, 0, '.')}}</span> 
