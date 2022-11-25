@@ -16,13 +16,13 @@
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="{{ asset('app-assets/vendor/animate.css/animate.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('app-assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('app-assets/vendor/animate.css/animate.min.css').'?'.rand() }}" rel="stylesheet">
+  <link href="{{ asset('app-assets/vendor/bootstrap/css/bootstrap.min.css').'?'.rand() }}" rel="stylesheet">
   <link href="{{ asset('app-assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
   <link href="{{ asset('app-assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.6.1/nouislider.css" integrity="sha512-MKxcSu/LDtbIYHBNAWUQwfB3iVoG9xeMCm32QV5hZ/9lFaQZJVaXfz9aFa0IZExWzCpm7OWvp9zq9gVip/nLMg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Template Main CSS File -->
-  <link href="{{ asset('app-assets/css/style.css') }}" rel="stylesheet">
+  <link href="{{ asset('app-assets/css/style.css').'?'.rand() }}" rel="stylesheet">
 
   @livewireStyles
  
