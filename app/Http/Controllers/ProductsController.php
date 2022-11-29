@@ -90,6 +90,7 @@ class ProductsController extends Controller
                 'user_id'=>$request->user_id                          
         ]);
         if($request->file('image')){    
+            
             foreach($request->file('image') as $image){
                 $imagen = Image::make($image);
                 $imageName = time().'_'.$image->getClientOriginalName().'.'.$image->extension();
@@ -333,7 +334,7 @@ class ProductsController extends Controller
         if(filter_var($productoid, FILTER_VALIDATE_INT)===false){
             abort(404);
         }
-        $product=Products::with('productcategories','productcategories.category','gallery','user')
+        $product=Products::with('productcategories','productcategories.category','gallery','user','questions')
         ->where('id',filter_var($productoid, FILTER_VALIDATE_INT))->first();
         $categories = array();
         foreach ($product->productcategories as $item){                                      
@@ -346,7 +347,7 @@ class ProductsController extends Controller
             $query->whereIn('category_id', $categories);
          })->where('id','!=',$product->id)->orderBy('updated_at', 'desc')->get(); 
          
-
+         
         return view ('site.products.product', compact('product','related'));
     }
 

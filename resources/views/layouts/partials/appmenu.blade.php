@@ -3,7 +3,7 @@
     <div class="col-md-3 col-logo">
      
         <a class="navbar-brand text-brand c-two logo-desck" href="/" >
-          <img class="logo" src="{{ asset('images/logo/logoazul.PNG') }}" />
+          <img class="logo" src="{{ asset('images/logo/logo-site.png') }}" />
           <!--Marce<span class="color-b">Pets</span>-->
         </a>
         <a class="nav-link account push" href="/home"><i class="bi bi-person"></i></a>
@@ -32,7 +32,7 @@
       <div class="row">
         <div class="col-md-12">
 
-        <div class="navbar-collapse collapse mt-333" id="navbarDefault">
+        <div class="navbar-collapse collapse mt-3" id="navbarDefault">
         
         <ul class="navbar-nav">
         <li class="nav-item" >
@@ -44,8 +44,13 @@
           @foreach ($categories as $category)            
           <li class="nav-item ">
             <a class="nav-link {{ (request()->is('catalogo/category->slug')) ? 'active' : '' }}" href="/catalogo/{{ $category->slug }}">{{ $category->name }}</a>
-          </li>          
-          @endforeach      
+          </li>
+          
+          @endforeach   
+          
+          
+          
+
         
         </ul>
       </div>

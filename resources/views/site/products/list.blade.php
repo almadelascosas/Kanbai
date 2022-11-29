@@ -6,7 +6,7 @@
     <!-- ======= list products Section ======= -->
     <section class="section-agents section-t8">
     @if($info['namesubcategory']!=null)
-      <div class="miga-pan">
+      <div class="miga-pan mt-2">
         <div class="container">
           <a href="/catalogo/{{ $info['slugcategory'] }}">< Volver a {{$info['namecategory']}}</a>
         </div>

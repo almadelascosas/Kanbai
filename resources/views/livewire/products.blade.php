@@ -9,21 +9,21 @@
             @endif
             </h2>
             <hr>
-            @if($info['subcategory_id']==null)
-            <div class="row mb-4 mt-5">
-                <h4 class="title-filter">Subcategorias</h4>
-                <input type="hidden" value="{{$subcategories = App\Models\SubCategories::where('category_id',$info['category_id'])->with('category')->get()}}">
-                @foreach ($subcategories as $subcategory)                
-                    <div class="col-sm-6">
-                        <a class="dropdown-item bt-subcategory-filter {{ (request()->is('catalogo/$subcategory->category->slug/subcategory->slug')) ? 'active' : '' }}" href="/catalogo/{{ $subcategory->category->slug }}/{{ $subcategory->slug }}">
-                        <img class="image-subcategory-list-product" src="{{ asset('images/subcategories/'.$subcategory->file.'') }}" alt="{{ $subcategory->name }}">
-                        {{ $subcategory->name }}</a>
-                    </div>                 
-                @endforeach
-            </div>
-            @endif
+        @if($info['subcategory_id']==null)
+        <div class="row mb-4 mt-5">
+            <h4 class="title-filter">Subcategorias</h4>
+            <input type="hidden" value="{{$subcategories = App\Models\SubCategories::where('category_id',$info['category_id'])->with('category')->get()}}">
+            @foreach ($subcategories as $subcategory)                
+                <div class="col-sm-6">
+                    <a class="dropdown-item bt-subcategory-filter {{ (request()->is('catalogo/$subcategory->category->slug/subcategory->slug')) ? 'active' : '' }}" href="/catalogo/{{ $subcategory->category->slug }}/{{ $subcategory->slug }}">
+                    <img class="image-subcategory-list-product" src="{{ asset('images/subcategories/'.$subcategory->file.'') }}" alt="{{ $subcategory->name }}">
+                    {{ $subcategory->name }}</a>
+                </div>                 
+            @endforeach
+        </div>
+        @endif
 
-        <!-- <div class="row background-item-filter mb-4">
+        <div class="row background-item-filter mb-4">
             
             <div class="col-9">
                 <label class="form-check-label" for="shipping_price">Envío gratis</label>
@@ -33,7 +33,7 @@
                     <input class="form-check-input" type="checkbox" wire:model="shipping_price" id="shipping_price">                        
                 </div>
             </div>
-        </div> -->
+        </div>
         
            
 
@@ -54,7 +54,7 @@
                     <div class="mall-property__label" >
                         Precio                        
                      </div>
-                     <div class="mall-slider-handles" data-start="1000" data-end="1000" data-min="1" data-max="10000000" data-target="price" style="width: 90%" wire:ignore></div>
+                     <div class="mall-slider-handles" data-start="1000" data-end="1000" data-min="1" data-max="10000000" data-target="price" style="width: 100%" wire:ignore></div>
                      <div class="row filter-container-1">
                         <div class="col-md-6">
                            <input type="text" class="form-control" data-min="price" id="skip-value-lower"  wire:model.lazy="min_price" readonly>  
@@ -71,27 +71,34 @@
 
         </div>
           
-        <div class="col-md-9">
+        <div class="col-md-9 products-list-mobile">
             <div class="row">
             @foreach($products as $item)
             <!--Estructura desk-->
             <div class="col-md-4 list-products-desk">
                 <a href="/catalogo/producto/{{$item->id}}/{{$item->name}}">
-                    <div class="col-md-12 col-12 mb-4 divimg">
-                    @if(count($item->gallery)>0)
-                        <img src="{{ asset('images/products/thumbnail/list/'.$item->gallery[0]->file.'') }}" alt="{{$item->name}}" class="img-d img-fluid image-list">
-                    @endif
+                    <div class="card mb-3 card-related" >
+                        <div class="card-body cardproducts padding-0">
+                            <div class="row">
+                                <div class="col-md-12 col-12 mb-3 padding-0">
+                                @if(count($item->gallery)>0)
+                                    <img src="{{ asset('images/products/thumbnail/list/'.$item->gallery[0]->file.'') }}" alt="{{$item->name}}" class="img-d img-fluid image-list image-products-related">
+                                @endif
+                                </div>
+                                <div class="col-md-12 mt-1 info-related">
+                                    <h4 class="title-product-desk">{{$item->name}}</h4>                                    
+                                    <p class="price">
+                                        <img src="{{ asset('images/Precio_Icono.png') }}" alt="Rango de precio" class="img-d img-fluid">
+                                        Rango de precio: <span>${{number_format($item->price_min, 0, 0, '.')}} - ${{number_format($item->price_max, 0, 0, '.')}}</span> 
+                                    </p>
+                                    <p class="quantity">
+                                        <img src="{{ asset('images/Cantidad_Icono.png') }}" alt="Pedido minímo" class="img-d img-fluid">
+                                        Pedido minímo: <span>{{$item->quantity_min }} </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <h4 class="title-product-desk">{{$item->name}}</h4>
-                    <!-- <p class="vendido-po-desk">por {{$item->user->name}}</p> -->
-                    <p class="price">
-                        <img src="{{ asset('images/Precio_Icono.png') }}" alt="Rango de precio" class="img-d img-fluid">
-                        Rango: <span>${{number_format($item->price_min, 0, 0, '.')}} - ${{number_format($item->price_max, 0, 0, '.')}}</span> 
-                    </p>
-                    <p class="quantity">
-                        <img src="{{ asset('images/Cantidad_Icono.png') }}" alt="Pedido minímo" class="img-d img-fluid">
-                        Pedido minímo: <span>{{$item->quantity_min }} </span>
-                    </p>
                 </a>
             </div>
             <!--Fin Estructura desk-->
@@ -99,18 +106,18 @@
             <div class="col-md-4 list-products-mobile">
                 <a href="/catalogo/producto/{{$item->id}}/{{$item->name}}">
                     <div class="card card-products mb-3" >
-                        <div class="card-body">
+                        <div class="card-body cardproducts">
                             <div class="row">
-                                <div class="col-md-4 col-4">
+                                <div class="col-md-4 col-5">
                                 @if(count($item->gallery)>0)
-                                <img src="{{ asset('images/products/'.$item->gallery[0]->file.'') }}" alt="Razas" class="img-d img-fluid">
+                                <img style="width: 100%;" src="{{ asset('images/products/thumbnail/list/'.$item->gallery[0]->file.'') }}" alt="Razas" class="img-d img-fluid">
                                 @endif    
                             </div>
-                                <div class="col-md-8 col-8">
-                                    <h5 class="card-title title-card-products">{{$item->name}}</h5>
-                                    <p class="card-text delivery_time"><i class="bi bi-truck"></i> Recibelo en {{$item->delivery_time}}</p>
-                                    <p class="card-text quantity_min">Min. {{$item->quantity_min}} uds</p>
-                                    <p class="card-text "><strong>${{number_format($item->price_min, 0, 0, '.')}} - ${{number_format($item->price_max, 0, 0, '.')}}</strong> </p>
+                                <div class="col-md-8 col-7 info-list-mobile">
+                                    <h5 class="card-title title-card-products title-list-product-mobile">{{$item->name}}</h5>
+                                    <p class="card-text delivery_time delivery-lis-product"><i class="bi bi-truck"></i> Recibelo en {{$item->delivery_time}}</p>
+                                    <p class="card-text quantity_min quantity-list-mobile">Min. {{$item->quantity_min}} uds</p>
+                                    <p class="card-text price-list-mobile"><strong>${{number_format($item->price_min, 0, 0, '.')}} - ${{number_format($item->price_max, 0, 0, '.')}}</strong> </p>
                                 
                                 </div>
                             </div>
