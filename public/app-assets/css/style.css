@@ -2506,3 +2506,11 @@ footer .credits {
   height: auto;
   margin: 0 0 0 0; 
 }
+
+.btn-whatsapp{
+  position: fixed;
+  bottom: 80px;
+  right: 18px;
+  z-index: 999;
+}
+
