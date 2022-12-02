@@ -2237,8 +2237,7 @@ footer .credits {
 }
 
 .title-product-view{
-  text-align: left;
-  font: normal normal 800 52px/61px Raleway;
+  text-align: left;  
   letter-spacing: 0px;
   color: #707070;
   opacity: 1;
@@ -2353,7 +2352,7 @@ footer .credits {
   min-height: 220px;
   color: #8b8b8b;
 }
-.mySwiperclientes{
+.mySwiperclientes, .mySwiperclientesmobile{
   background: #fff;
   padding: 30px 45px;
 }
@@ -2532,6 +2531,15 @@ footer .credits {
   .contact-mobile{
     display: none;
   }
+  .mySwiperclientes{
+    display: none;
+  }
+  .info-desk{
+    display: none;
+  }
+  .filtro-desk{
+    display: none;
+  }
   
 }
 
@@ -2548,6 +2556,15 @@ footer .credits {
   .product-mobile{
     display: none !important;
   }
+  .mySwiperclientesmobile{
+    display: none;
+  }
+  .back-info-quotation{
+    display: none;
+  }
+  .filtro-mobile{
+    display: none;
+  }
  
 }
 
@@ -2557,6 +2574,11 @@ footer .credits {
 }
 .empresas-slide img.img-fluid{
   max-width: 80px !important;
+}
+.empresas-slide{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .image-list{
   max-height: 272px;
@@ -2574,14 +2596,13 @@ footer .credits {
 }
 .title-question{
   text-align: left;
-  font: normal normal bold 30px/15px Raleway;
+  
   letter-spacing: 0px;
   color: #5F5F5F;
   opacity: 1;
 }
 .title-question{
   text-align: left;
-    font: normal normal 600 25px/30px Raleway;
     letter-spacing: 0px;
     color: #707070;
     opacity: 1;
@@ -2611,7 +2632,6 @@ footer .credits {
 }
 .title-product-related{
   text-align: left;
-  font: normal normal bold 25px/30px Raleway;
   letter-spacing: 0px;
   color: #707070;
   opacity: 1;
@@ -2640,7 +2660,6 @@ footer .credits {
 }
 .title-form-cotizacion{
   text-align: left;
-  font: normal normal bold 25px/30px Raleway;
   letter-spacing: 0px;
   color: #636363;
   opacity: 1;
@@ -2650,9 +2669,54 @@ footer .credits {
   border-radius: 50px;
   background: #F8F8F8;
 }
-.btn-whatsapp{
-  position: fixed;
-  bottom: 80px;
-  right: 18px;
-  z-index: 999;
+.padding-7{
+  padding: 7px !important;
+}
+.title-quotation-mobile{
+  font-size: 18px;
+}
+.image-quotation-mobile{
+  width: 19px !important;
+  margin-right: 4px !important;
+}
+.price-quotation-mobile{
+  font-size: 12px;
+  color: #707070;
+}
+.price-quotation-mobile span {
+  color: #1ed161 !important;
+  font-weight: bold;
+}
+.back-info-quotation{
+  background: #fff;
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
+.btn-filter{
+  background: #F5B226 0% 0% no-repeat padding-box !important;
+  box-shadow: 0px 10px 25px #f5b22666 !important;
+  border-radius: 39px !important;
+  opacity: 1 !important;
+  color: #fff !important;
+  padding: 7px 35px 7px 35px;
+}
+
+.is-hidden {
+  display: none;
+}
+
+.accordion-button:not(.collapsed) {
+  color: #707070;
+  background-color: transparent;
+  box-shadow: inset 0 -1px 0 rgb(0 0 0 / 13%);
+}
+.mySwiperclientesmobile .swiper-button-next, .mySwiperclientesmobile .swiper-button-prev{
+  display: none !important;
+}
+
+.mySwiperclientes .swiper-button-next, .mySwiperclientes .swiper-button-prev{
+  display: none !important;
+}
+.mt-1rem{
+  margin-top: 1rem;
 }

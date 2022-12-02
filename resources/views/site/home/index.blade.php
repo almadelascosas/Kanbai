@@ -46,7 +46,7 @@
 
         
 
-        <div class="row mt-5">          
+        <div class="row mt-5" style="margin-right: initial;">          
           <h2 class="mt-5 mb-5 titles-home">Empresas que <strong>confían en nosotros</strong></h4> 
           <div class="swiper mySwiperclientes ">  
             <div class="swiper-wrapper">
@@ -159,6 +159,119 @@
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
           </div>
+
+          <div class="swiper mySwiperclientesmobile ">  
+            <div class="swiper-wrapper">
+              
+              <div class="swiper-slide empresas-slide">                  
+                <div class="row">
+                  <div class="col-md-12 col-12">
+                    <img src="{{ asset('images/empresas/audifirma.png') }}" alt="audifirma" class="img-d img-fluid">
+                  </div>                   
+                </div>                  
+              </div>
+
+              <div class="swiper-slide empresas-slide">                  
+                <div class="row">
+                  <div class="col-md-12 col-12">
+                    <img src="{{ asset('images/empresas/boehringer.png') }}" alt="boehringer" class="img-d img-fluid">
+                  </div>                   
+                </div>                  
+              </div>
+
+              <div class="swiper-slide empresas-slide">                  
+                <div class="row">
+                  <div class="col-md-12 col-12">
+                    <img src="{{ asset('images/empresas/colmedica.png') }}" alt="colmedica" class="img-d img-fluid">
+                  </div>                   
+                </div>                  
+              </div>
+
+              <div class="swiper-slide empresas-slide">                  
+                <div class="row">
+                  <div class="col-md-12 col-12">
+                    <img src="{{ asset('images/empresas/devimar.png') }}" alt="devimar" class="img-d img-fluid">
+                  </div>                   
+                </div>                  
+              </div>
+
+              <div class="swiper-slide empresas-slide">                  
+                <div class="row">
+                  <div class="col-md-12 col-12">
+                    <img src="{{ asset('images/empresas/epayco.png') }}" alt="epayco" class="img-d img-fluid">
+                  </div>                   
+                </div>                  
+              </div>
+
+              <div class="swiper-slide empresas-slide">                  
+                <div class="row">
+                  <div class="col-md-12 col-12">
+                    <img src="{{ asset('images/empresas/givelo.png') }}" alt="givelo" class="img-d img-fluid">
+                  </div>                   
+                </div>                  
+              </div>
+
+              <div class="swiper-slide empresas-slide">                  
+                <div class="row">
+                  <div class="col-md-12 col-12">
+                    <img src="{{ asset('images/empresas/globant.png') }}" alt="globant" class="img-d img-fluid">
+                  </div>                   
+                </div>                  
+              </div>
+
+              <div class="swiper-slide empresas-slide">                  
+                <div class="row">
+                  <div class="col-md-12 col-12">
+                    <img src="{{ asset('images/empresas/laika.png') }}" alt="laika" class="img-d img-fluid">
+                  </div>                   
+                </div>                  
+              </div>
+
+              <div class="swiper-slide empresas-slide">                  
+                <div class="row">
+                  <div class="col-md-12 col-12">
+                    <img src="{{ asset('images/empresas/latamtrade.png') }}" alt="latamtrade" class="img-d img-fluid">
+                  </div>                   
+                </div>                  
+              </div>
+
+              <div class="swiper-slide empresas-slide">                  
+                <div class="row">
+                  <div class="col-md-12 col-12">
+                    <img src="{{ asset('images/empresas/libertyseguros.png') }}" alt="libertyseguros" class="img-d img-fluid">
+                  </div>                   
+                </div>                  
+              </div>
+
+              <div class="swiper-slide empresas-slide">                  
+                <div class="row">
+                  <div class="col-md-12 col-12">
+                    <img src="{{ asset('images/empresas/percos.png') }}" alt="percos" class="img-d img-fluid">
+                  </div>                   
+                </div>                  
+              </div>
+
+              <div class="swiper-slide empresas-slide">                  
+                <div class="row">
+                  <div class="col-md-12 col-12">
+                    <img src="{{ asset('images/empresas/skandia.png') }}" alt="skandia" class="img-d img-fluid">
+                  </div>                   
+                </div>                  
+              </div>
+
+              <div class="swiper-slide empresas-slide">                  
+                <div class="row">
+                  <div class="col-md-12 col-12">
+                    <img src="{{ asset('images/empresas/sophos.png') }}" alt="sophos" class="img-d img-fluid">
+                  </div>                   
+                </div>                  
+              </div>
+                         
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+          </div>
+
         </div>
 
         <div class="container">
@@ -344,11 +457,24 @@ $(document).ready(function() {
         spaceBetween: 30,        
         loop: true,
         loopFillGroupWithBlank: true,   
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
+       
+   
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
         },
    
+      });
+
+      var swiper = new Swiper(".mySwiperclientesmobile", {        
+        slidesPerView: 3,        
+        spaceBetween: 15,        
+        loop: true,
+        loopFillGroupWithBlank: true,  
+       
+        autoplay: {
+          delay: 500,
+        },
         navigation: {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",
@@ -358,12 +484,12 @@ $(document).ready(function() {
 
       var swiper = new Swiper(".mySwiperclientes", {        
         slidesPerView: 7,        
-        spaceBetween: 30,        
+        spaceBetween: 15,        
         loop: true,
-        loopFillGroupWithBlank: true,   
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
+        loopFillGroupWithBlank: true, 
+
+        autoplay: {
+          delay: 500,
         },
    
         navigation: {
@@ -372,6 +498,8 @@ $(document).ready(function() {
         },
    
       });
+
+      
 
 
   var splide = new Splide( '#main-slider', {
