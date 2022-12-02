@@ -1,6 +1,78 @@
 <div class="row">
+
+    <div class="col-md-12 filtro-mobile mb-5">
+        <div class="row">
+            <div class="col-8">
+                <h2 class="title-categoryorsub">
+                @if($info['subcategory_id']==null)
+                {{$info['namecategory']}}
+                @else
+                    {{$info['namesubcategory']}}
+                @endif
+                </h2>
+            </div>
+            <div class="col-4">
+                <button type="button" class="btn btn-warning btn-filter" id='toggle'>Filtro</button>                    
+            </div>
+        </div>
+        <div id='content' class="is-hidden">
+
+            @if($info['subcategory_id']==null)
+            <div class="row mb-4 mt-5">
+                <h4 class="title-filter">Subcategorias</h4>
+                <input type="hidden" value="{{$subcategories = App\Models\SubCategories::where('category_id',$info['category_id'])->with('category')->get()}}">
+                @foreach ($subcategories as $subcategory)                
+                    <div class="col-6">
+                        <a class="dropdown-item bt-subcategory-filter {{ (request()->is('catalogo/$subcategory->category->slug/subcategory->slug')) ? 'active' : '' }}" href="/catalogo/{{ $subcategory->category->slug }}/{{ $subcategory->slug }}">
+                        <img class="image-subcategory-list-product" src="{{ asset('images/subcategories/'.$subcategory->file.'') }}" alt="{{ $subcategory->name }}">
+                        {{ $subcategory->name }}</a>
+                    </div>                 
+                @endforeach
+            </div>
+            @endif                
+            <div class="row background-item-filter mb-4">                    
+                <div class="col-9">
+                    <label class="form-check-label" for="shipping_price">Envío gratis</label>
+                </div>
+                <div class="col-3">
+                    <div class="form-check form-switch">            
+                        <input class="form-check-input" type="checkbox" wire:model="shipping_price" id="shipping_price">                        
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Ordenar por</label>
+                <select class="form-control" wire:model="keyword" id="exampleFormControlSelect1">
+                    <option >Seleccione</option>
+                    <option value="1">Por defecto</option>
+                    <option value="2" >Últimos</option>
+                    <option value="3">Por Precio: bajo a alto</option>
+                    <option value="4">Por Precio: alto a bajo</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <div class="mall-property mt-3">
+                    <div class="mall-property__label" >
+                        Precio                        
+                    </div>
+                    <div class="mall-slider-handles" data-start="1000" data-end="1000" data-min="1" data-max="10000000" data-target="price" style="width: 100%" wire:ignore></div>
+                    <div class="row filter-container-1">
+                    <div class="col-md-6 col-6">
+                        <input type="text" class="form-control" data-min="price" id="skip-value-lower"  wire:model.lazy="min_price" readonly>  
+                    </div>
+                    <div class="col-md-6 col-6">
+                        <input type="text"  class="form-control" data-max="price" id="skip-value-upper"  wire:model.lazy="max_price" readonly>
+                    </div>                        
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
     
-        <div class="col-md-3">
+        <div class="col-md-3 filtro-desk">
             <h2 class="title-categoryorsub">
             @if($info['subcategory_id']==null)
                 {{$info['namecategory']}}
@@ -70,6 +142,8 @@
            
 
         </div>
+
+
           
         <div class="col-md-9 products-list-mobile">
             <div class="row">
@@ -80,7 +154,7 @@
                     <div class="card mb-3 card-related" >
                         <div class="card-body cardproducts padding-0">
                             <div class="row">
-                                <div class="col-md-12 col-12 mb-3 padding-0">
+                                <div class="col-md-12 col-12 mb-3 padding-7">
                                 @if(count($item->gallery)>0)
                                     <img src="{{ asset('images/products/thumbnail/list/'.$item->gallery[0]->file.'') }}" alt="{{$item->name}}" class="img-d img-fluid image-list image-products-related">
                                 @endif
@@ -164,6 +238,13 @@
                });
            })
         })
+
+        const elToggle  = document.querySelector("#toggle");
+        const elContent = document.querySelector("#content");
+
+        elToggle.addEventListener("click", function() {
+        elContent.classList.toggle("is-hidden");
+        });
     </script>
 @endpush
 

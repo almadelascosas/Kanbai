@@ -33,6 +33,7 @@
                 </div>
               </div>
             </div>
+            @if(count($product->questions)>0)
             <div class="col-md-12 mt-5">
             <h2 class="title-product-view mb-3 title-question">Preguntas Frecuentes</h2>
             <div class="accordion" id="accordionExample">
@@ -53,6 +54,7 @@
               
             </div>
           </div>
+          @endif
           </div>
           <div class="col-md-6 content-info-product">
             <h2 class="title-product-view mb-3">{{$product->name}}</h2>
@@ -171,6 +173,7 @@
           <div class="col-md-12 mt-3">
             <hr>
           </div>
+          @if(count($product->questions)>0)
           <div class="col-md-12">
             <h2 class="title-product-view mb-3 title-question">Preguntas Frecuentes</h2>
             <div class="accordion" id="accordionExample">
@@ -191,6 +194,7 @@
               
             </div>
           </div>
+          @endif
 
         </div>  
         

@@ -16,13 +16,13 @@
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="{{ asset('app-assets/vendor/animate.css/animate.min.css').'?'.rand() }}" rel="stylesheet">
-  <link href="{{ asset('app-assets/vendor/bootstrap/css/bootstrap.min.css').'?'.rand() }}" rel="stylesheet">
+  <link href="{{ asset('app-assets/vendor/animate.css/animate.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('app-assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
   <link href="{{ asset('app-assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
   <link href="{{ asset('app-assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.6.1/nouislider.css" integrity="sha512-MKxcSu/LDtbIYHBNAWUQwfB3iVoG9xeMCm32QV5hZ/9lFaQZJVaXfz9aFa0IZExWzCpm7OWvp9zq9gVip/nLMg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Template Main CSS File -->
-  <link href="{{ asset('app-assets/css/style.css').'?'.rand() }}" rel="stylesheet">
+  <link href="{{ asset('app-assets/css/style.css') }}" rel="stylesheet">
 
   @livewireStyles
  
@@ -50,7 +50,7 @@
   <section class="section-footer">
     <div class="container">
       <div class="row">
-        <div class="col-sm-12 col-md-4 border-right">
+        <div class="col-sm-12 col-md-3 border-right">
           <div class="widget-a">           
             <div class="w-body-a footer-logo">
               <img class="logo-footer" src="{{ asset('images/logo/logo-alma-de-las-cosas-blanco.png') }}" />
@@ -75,20 +75,35 @@
             </div>           
           </div>
         </div>
-        <div class="col-sm-12 col-md-4 section-md-t3">
+        <div class="col-sm-12 col-md-3 section-md-t3">
           <div class="widget-a">            
             <div class="w-body-a">
                 <div class="w-footer-a">
                   <ul class="list-unstyled menu-footer">
                     <li class="color-a">
-                      <a href="#">Mi cuenta</a>
+                      <a href="/login">Mi cuenta</a>
                     </li>
                     <li class="color-a">
                       <a href="#">Términos y Condiciones</a>
+                    </li>                   
+                    
+                  </ul>
+                </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-md-3 section-md-t3 menu-footer-mobile">
+          <div class="widget-a">            
+            <div class="w-body-a">
+                <div class="w-footer-a">
+                  <ul class="list-unstyled menu-footer">
+                    <li class="color-a">
+                      <a href="#">Preguntas frecuentes</a>
                     </li>
                     <li class="color-a">
-                      <a href="#">Contáctenos</a>
-                    </li>
+                      <a href="#">Contáctanos</a>
+                    </li>                    
                     <li class="color-a">
                       <a href="#">Rastrea tu pedido</a>
                     </li>
@@ -98,7 +113,7 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-12 col-md-4 section-md-t3">
+        <div class="col-sm-12 col-md-3 section-md-t3 contact-mobile">
           <div class="widget-a">            
             <div class="w-body-a">
             
@@ -130,10 +145,7 @@
         </div>
       </div>
     </div>
-    @include('layouts.wtp') 
   </footer><!-- End  Footer -->
-
-  
 
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

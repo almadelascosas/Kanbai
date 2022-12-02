@@ -49,7 +49,7 @@ $(document).ready(function(){
         //var data = $('#main-form').serialize();
         var formData = new FormData($("#main-form")[0]);
         //$('input').iCheck('disable');
-        $('#main-form input, #main-form button').attr('disabled','true');
+        //$('#main-form input, #main-form button').attr('disabled','true');
         $('#ajax-icon').removeClass('fa fa-save').addClass('fa fa-spin fa-refresh');
             $.ajax({
               url: $('#main-form #_url').val(),
