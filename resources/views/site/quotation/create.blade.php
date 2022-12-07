@@ -164,7 +164,7 @@
 @endsection
 
 @push('scripts')
-  <script src="{{ asset('js/app/quotation/create.js') }}"></script>  
+  <script src="{{ asset('js/app/quotation/create.js').'?'.rand() }}"></script>  
   <script>
     $( "#next" ).click(function() {
       
