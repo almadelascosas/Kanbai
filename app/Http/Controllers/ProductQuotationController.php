@@ -107,9 +107,8 @@ class ProductQuotationController extends Controller
     {
 
         $producto=Products::where('id',$request->product_id)->first();
-        /*
-        $product=Products::with('user')
-        ->where('id',$request->product_id)->first();
+
+        $product=Products::with('user')->where('id',$request->product_id)->first();
         $cotizacion = ProductQuotation::create([
             'product_id'=>$request->product_id,
             'email'=>$request->email,
@@ -120,8 +119,7 @@ class ProductQuotationController extends Controller
             'date_delivery'=>$request->date_delivery,
             'observations'=>$request->observations,
             'user_id'=>$product->user->id,       
-        ]);
-        */       
+        ]);   
 
         $user = User::where('id',$producto->user_id)->first();
 
@@ -130,7 +128,7 @@ class ProductQuotationController extends Controller
         $newDate = date("d-m-Y", strtotime($request->date_delivery));  
         $fecha = strftime("%d %b, %Y", strtotime($newDate));
         $request['fecha']=$fecha;
-        $request['idsolicitud']=rand();
+        $request['idsolicitud']=$cotizacion->id;
         $data = array('data'=>$request, 'producto'=>$producto, 'vendedor'=> $user);
 
         Mail::send('site.quotation.templatequotationuser', $data, function($message) use ($request){

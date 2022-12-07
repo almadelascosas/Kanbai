@@ -35,4 +35,10 @@ class Categories extends Model
     {
         return $this->hasMany(SubCategories::class, 'category_id');
     }
+
+    public function banners()
+    {
+        return $this->hasMany(CaregoriesBanners::class, 'category_id');
+    }
+    
 }
