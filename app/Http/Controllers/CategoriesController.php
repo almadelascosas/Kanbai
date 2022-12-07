@@ -9,6 +9,8 @@ use App\Models\Categories;
 use App\Models\SubCategories;
 use App\Models\CaregoriesBanners;
 
+use Image;
+
 class CategoriesController extends Controller
 {
 
@@ -73,10 +75,11 @@ class CategoriesController extends Controller
             if($request->file('image')){    
                 foreach($request->file('image') as $image){
                     $imageName = time().'_'.$image->getClientOriginalName().'.'.$image->extension();
-                    $image->move(public_path('images/products/banners'), $imageName);
+                    $imagen = Image::make($image);
+                    $imagen->save(public_path('images/categories/banners/' . $imageName));
                     $productgallery = CaregoriesBanners::create([
                         'file'=>$imageName,
-                        'category_id'=>$Category->id                                 
+                        'category_id'=>$request->id                                 
                     ]);       
     
                 }
@@ -112,7 +115,7 @@ class CategoriesController extends Controller
      */
     public function edit($id)
     {
-        $category = Categories::find(\Hashids::decode($id)[0]);
+        $category = Categories::with('banners')->find(\Hashids::decode($id)[0]);
 
         $log = new LogSistema();
         $log->user_id = auth()->user()->id;
@@ -141,6 +144,22 @@ class CategoriesController extends Controller
                 unlink($image_path);
             }
             $category->file = $imageName;
+
+        }
+        if($request->file('banners')){
+            foreach($request->file('banners') as $image){
+                $imageName = time().'_'.$image->getClientOriginalName().'.'.$image->extension();
+                $imagen = Image::make($image);
+                $imagen->save(public_path('images/categories/banners/' . $imageName));
+               
+                $banners = CaregoriesBanners::create([
+                    'file'=>$imageName,
+                    'category_id'=>\Hashids::decode($request->id)[0]                                
+                ]);   
+                
+                
+
+            }
 
         }
         $url=strtolower($request->name);

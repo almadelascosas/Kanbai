@@ -34,6 +34,7 @@ Route::middleware(['auth',])->group(function () {
   Route::resource('products',   'ProductsController');
   Route::post('/updateproduct', [ProductsController::class, 'update'])->name('updateproduct');
   Route::resource('productsgallery',   'ProductsGalleryController'); 
+  Route::resource('categoriesbanner',   'CaregoriesBannersController'); 
   Route::resource('quotes',   'ProductQuotationController');
 
 

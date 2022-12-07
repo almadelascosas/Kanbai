@@ -297,7 +297,7 @@ class ProductsController extends Controller
     }
 
     public function productsByCategory($category){
-        $categorydata = Categories::where('slug',$category)->first();
+        $categorydata = Categories::with('banners')->where('slug',$category)->first();
         $products=Products::with('productcategories','productcategories.category','gallery')->whereRelation('productcategories','category_id',$categorydata->id)->get();
         $info=array(
             'category_id'=>$categorydata->id, 
@@ -305,9 +305,11 @@ class ProductsController extends Controller
             'slugcategory'=>$categorydata->slug, 
             'namesubcategory'=>null, 
             'slugsubcategory'=>null,
-            'subcategory_id'=>null,  
+            'subcategory_id'=>null, 
+            'banners'=>$categorydata->banners
 
         );
+        
         return view ('site.products.list', compact('products','info'));
     }
 

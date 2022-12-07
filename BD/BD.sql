@@ -2,36 +2,59 @@
 -- Host:                         127.0.0.1
 -- Server version:               5.7.36 - MySQL Community Server (GPL)
 -- Server OS:                    Win64
--- HeidiSQL Version:             11.3.0.6295
+-- HeidiSQL Version:             12.1.0.6537
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET NAMES utf8 */;
 /*!50503 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
--- Dumping structure for table almadelascosas_empresas.categories
+-- Dumping structure for table b2bempresas.categories
 CREATE TABLE IF NOT EXISTS `categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
   `file` varchar(50) DEFAULT NULL,
   `slug` longtext,
   `state` int(11) DEFAULT NULL,
+  `is_menu` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
--- Dumping data for table almadelascosas_empresas.categories: 2 rows
+-- Dumping data for table b2bempresas.categories: 4 rows
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
-INSERT INTO `categories` (`id`, `name`, `file`, `slug`, `state`, `created_at`, `updated_at`) VALUES
-	(1, 'Prueba de categoria', NULL, 'prueba-de-categoria', 1, '2022-09-23 18:24:18', '2022-09-23 18:55:11'),
-	(2, 'Regalos', '1664128832.png', 'regalos', 1, '2022-09-25 13:00:32', '2022-09-25 13:00:32');
+INSERT INTO `categories` (`id`, `name`, `file`, `slug`, `state`, `is_menu`, `created_at`, `updated_at`) VALUES
+	(1, 'Merchandising', '1665624501.png', 'merchandising', 1, 1, '2022-09-23 18:24:18', '2022-10-13 22:49:39'),
+	(2, 'Regalos', '1665624410.png', 'regalos', 1, 1, '2022-09-25 13:00:32', '2022-10-13 22:49:29'),
+	(3, 'Consumibles Oficina', '1665624762.png', 'consumibles-oficina', 1, NULL, '2022-10-12 20:32:42', '2022-10-12 20:32:42'),
+	(4, 'Viajes', '1665705716.png', 'viajes', 1, 1, '2022-10-13 19:01:56', '2022-10-13 22:49:16');
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 
--- Dumping structure for table almadelascosas_empresas.cities
+-- Dumping structure for table b2bempresas.category_banner
+CREATE TABLE IF NOT EXISTS `category_banner` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `file` longtext,
+  `category_id` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  KEY `FK_category_banner_categories` (`category_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table b2bempresas.category_banner: 2 rows
+/*!40000 ALTER TABLE `category_banner` DISABLE KEYS */;
+INSERT INTO `category_banner` (`id`, `file`, `category_id`, `created_at`, `updated_at`) VALUES
+	(1, '1665705716_Banner WORKSHOP FACILITATION-01.png.png', 4, '2022-10-13 19:01:56', '2022-10-13 19:01:56'),
+	(2, '1665705716_Susan Osborne-01.png.png', 4, '2022-10-13 19:01:56', '2022-10-13 19:01:56');
+/*!40000 ALTER TABLE `category_banner` ENABLE KEYS */;
+
+-- Dumping structure for table b2bempresas.cities
 CREATE TABLE IF NOT EXISTS `cities` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `code_departament` varchar(125) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -42,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `cities` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1135 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table almadelascosas_empresas.cities: 1,134 rows
+-- Dumping data for table b2bempresas.cities: 1,134 rows
 /*!40000 ALTER TABLE `cities` DISABLE KEYS */;
 INSERT INTO `cities` (`id`, `code_departament`, `code`, `name`, `created_at`, `updated_at`) VALUES
 	(1, '05', '001', 'MEDELLIN', NULL, NULL),
@@ -1181,7 +1204,7 @@ INSERT INTO `cities` (`id`, `code_departament`, `code`, `name`, `created_at`, `u
 	(1134, '23', '686', 'San Pelayo', NULL, NULL);
 /*!40000 ALTER TABLE `cities` ENABLE KEYS */;
 
--- Dumping structure for table almadelascosas_empresas.customers
+-- Dumping structure for table b2bempresas.customers
 CREATE TABLE IF NOT EXISTS `customers` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `email` varchar(125) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -1203,14 +1226,14 @@ CREATE TABLE IF NOT EXISTS `customers` (
   KEY `FK_customers_users` (`user_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table almadelascosas_empresas.customers: 2 rows
+-- Dumping data for table b2bempresas.customers: 2 rows
 /*!40000 ALTER TABLE `customers` DISABLE KEYS */;
 INSERT INTO `customers` (`id`, `email`, `phone`, `type`, `identification`, `identification_type`, `regimen`, `address_line`, `first_name`, `last_name`, `company_name`, `departament_id`, `city_id`, `user_id`, `created_at`, `updated_at`) VALUES
-	(1, 'yeferson1115@gmail.com', '3197667268', 'PERSONA_JURIDICA', 1035424875, 'CC', 'ORDINARIO', 'Cr 47 # 51 57', 'Yeferson Stiven', 'Sossa Monsalve', NULL, 2, 2, NULL, '2022-01-04 19:46:37', '2022-06-15 10:56:08'),
-	(2, 'yefrey@hotmail.com', '3197667268', 'PERSONA_NATURAL', 1128483151, 'CC', NULL, 'Cr 47', 'Carol', 'Pineda', NULL, 2, 1, 7, '2022-07-12 09:26:29', '2022-07-12 09:26:29');
+	(1, 'yeferson1115@gmail.com', '3197667268', 'PERSONA_JURIDICA', 1035424875, 'CC', 'ORDINARIO', 'Cr 47 # 51 57', 'Yeferson Stiven', 'Sossa Monsalve', NULL, 2, 2, NULL, '2022-01-05 00:46:37', '2022-06-15 15:56:08'),
+	(2, 'yefrey@hotmail.com', '3197667268', 'PERSONA_NATURAL', 1128483151, 'CC', NULL, 'Cr 47', 'Carol', 'Pineda', NULL, 2, 1, 7, '2022-07-12 14:26:29', '2022-07-12 14:26:29');
 /*!40000 ALTER TABLE `customers` ENABLE KEYS */;
 
--- Dumping structure for table almadelascosas_empresas.departaments
+-- Dumping structure for table b2bempresas.departaments
 CREATE TABLE IF NOT EXISTS `departaments` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `code` varchar(125) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1220,7 +1243,7 @@ CREATE TABLE IF NOT EXISTS `departaments` (
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table almadelascosas_empresas.departaments: 32 rows
+-- Dumping data for table b2bempresas.departaments: 32 rows
 /*!40000 ALTER TABLE `departaments` DISABLE KEYS */;
 INSERT INTO `departaments` (`id`, `code`, `name`, `created_at`, `updated_at`) VALUES
 	(1, '91', 'Amazonas', NULL, NULL),
@@ -1257,7 +1280,7 @@ INSERT INTO `departaments` (`id`, `code`, `name`, `created_at`, `updated_at`) VA
 	(11, '19', 'Cauca', NULL, NULL);
 /*!40000 ALTER TABLE `departaments` ENABLE KEYS */;
 
--- Dumping structure for table almadelascosas_empresas.failed_jobs
+-- Dumping structure for table b2bempresas.failed_jobs
 CREATE TABLE IF NOT EXISTS `failed_jobs` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1268,11 +1291,11 @@ CREATE TABLE IF NOT EXISTS `failed_jobs` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table almadelascosas_empresas.failed_jobs: 0 rows
+-- Dumping data for table b2bempresas.failed_jobs: 0 rows
 /*!40000 ALTER TABLE `failed_jobs` DISABLE KEYS */;
 /*!40000 ALTER TABLE `failed_jobs` ENABLE KEYS */;
 
--- Dumping structure for table almadelascosas_empresas.logins
+-- Dumping structure for table b2bempresas.logins
 CREATE TABLE IF NOT EXISTS `logins` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) unsigned NOT NULL,
@@ -1286,13 +1309,17 @@ CREATE TABLE IF NOT EXISTS `logins` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `logins_user_id_foreign` (`user_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table almadelascosas_empresas.logins: 0 rows
+-- Dumping data for table b2bempresas.logins: 3 rows
 /*!40000 ALTER TABLE `logins` DISABLE KEYS */;
+INSERT INTO `logins` (`id`, `user_id`, `user_agent`, `session_token`, `ip_address`, `login_at`, `logout_at`, `deleted_at`, `created_at`, `updated_at`) VALUES
+	(1, 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'YBK2cIbYl1OTzLknJe7dQfqWeup21iUvBrW8wL7S', '127.0.0.1', '2022-10-14 17:08:54', '2022-10-14 12:11:14', NULL, '2022-10-14 17:08:54', '2022-10-14 17:11:14'),
+	(2, 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 'drmpsERVwozQ09V30SRZxiDPxGUjeFcAJPnh7y7X', '127.0.0.1', '2022-10-19 21:25:38', NULL, NULL, '2022-10-19 21:25:38', '2022-10-19 21:25:38'),
+	(3, 1, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36', 'TYeWlXUPou3uLv9zwEJNJzCxVxk8v011SvJbdLVS', '127.0.0.1', '2022-11-10 13:03:08', NULL, NULL, '2022-11-10 13:03:08', '2022-11-10 13:03:08');
 /*!40000 ALTER TABLE `logins` ENABLE KEYS */;
 
--- Dumping structure for table almadelascosas_empresas.log_sistemas
+-- Dumping structure for table b2bempresas.log_sistemas
 CREATE TABLE IF NOT EXISTS `log_sistemas` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) unsigned NOT NULL,
@@ -1302,13 +1329,57 @@ CREATE TABLE IF NOT EXISTS `log_sistemas` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `log_sistemas_user_id_foreign` (`user_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table almadelascosas_empresas.log_sistemas: 0 rows
+-- Dumping data for table b2bempresas.log_sistemas: 30 rows
 /*!40000 ALTER TABLE `log_sistemas` DISABLE KEYS */;
+INSERT INTO `log_sistemas` (`id`, `user_id`, `tx_descripcion`, `deleted_at`, `created_at`, `updated_at`) VALUES
+	(1, 1, 'El usuario: Admin Administrador Ha ingresado al home del sistema a las: 12:10:08 del día: 14/10/2022', NULL, '2022-10-14 17:08:54', '2022-10-14 17:08:54'),
+	(2, 1, 'El usuario: Admin Administrador Ha ingresado a ver los servicios: 12:10:08 del día: 14/10/2022', NULL, '2022-10-14 17:08:59', '2022-10-14 17:08:59'),
+	(3, 1, 'El usuario: Admin Administrador Ha ingresado a ver los productos: 12:10:09 del día: 14/10/2022', NULL, '2022-10-14 17:09:33', '2022-10-14 17:09:33'),
+	(4, 1, 'El usuario: Admin Administrador Ha ingresado a editar los datos del producto: Caja de flores a las: 12:10:09 del día: 14/10/2022', NULL, '2022-10-14 17:09:36', '2022-10-14 17:09:36'),
+	(5, 1, 'El usuario: Admin Administrador Ha ingresado a ver los servicios: 12:10:10 del día: 14/10/2022', NULL, '2022-10-14 17:10:16', '2022-10-14 17:10:16'),
+	(6, 1, 'El usuario: Admin Administrador Ha ingresado a editar los datos de la categoría:  a las: 12:10:10 del día: 14/10/2022', NULL, '2022-10-14 17:10:19', '2022-10-14 17:10:19'),
+	(7, 1, 'El usuario: Admin Administrador Ha ingresado a ver los productos: 12:10:10 del día: 14/10/2022', NULL, '2022-10-14 17:10:48', '2022-10-14 17:10:48'),
+	(8, 1, 'El usuario: Admin Administrador Ha ingresado a ver los servicios: 12:10:11 del día: 14/10/2022', NULL, '2022-10-14 17:11:00', '2022-10-14 17:11:00'),
+	(9, 1, 'El usuario: Admin Administrador Ha ingresado a ver los productos: 12:10:11 del día: 14/10/2022', NULL, '2022-10-14 17:11:09', '2022-10-14 17:11:09'),
+	(10, 1, 'El usuario: Admin Administrador Ha ingresado al home del sistema a las: 16:10:25 del día: 19/10/2022', NULL, '2022-10-19 21:25:39', '2022-10-19 21:25:39'),
+	(11, 1, 'El usuario: Admin Administrador Ha ingresado al home del sistema a las: 08:11:03 del día: 10/11/2022', NULL, '2022-11-10 13:03:08', '2022-11-10 13:03:08'),
+	(12, 1, 'El usuario: Admin Administrador Ha ingresado al home del sistema a las: 08:11:06 del día: 10/11/2022', NULL, '2022-11-10 13:06:02', '2022-11-10 13:06:02'),
+	(13, 1, 'El usuario: Admin Administrador Ha ingresado a ver los permisos del Role: Administrador a las: 08:11:06 del día: 10/11/2022', NULL, '2022-11-10 13:06:09', '2022-11-10 13:06:09'),
+	(14, 1, 'El usuario: Admin Administrador Ha modificado los permisos del Role: Administrador a las: 08:11:06 del día: 10/11/2022', NULL, '2022-11-10 13:06:18', '2022-11-10 13:06:18'),
+	(15, 1, 'El usuario: Admin Administrador Ha ingresado a ver los permisos del Role: Administrador a las: 08:11:06 del día: 10/11/2022', NULL, '2022-11-10 13:06:19', '2022-11-10 13:06:19'),
+	(16, 1, 'El usuario: Admin Administrador Ha ingresado a ver los permisos del Role: Comercio a las: 08:11:06 del día: 10/11/2022', NULL, '2022-11-10 13:06:25', '2022-11-10 13:06:25'),
+	(17, 1, 'El usuario: Admin Administrador Ha modificado los permisos del Role: Comercio a las: 08:11:06 del día: 10/11/2022', NULL, '2022-11-10 13:06:52', '2022-11-10 13:06:52'),
+	(18, 1, 'El usuario: Admin Administrador Ha ingresado a ver los permisos del Role: Comercio a las: 08:11:07 del día: 10/11/2022', NULL, '2022-11-10 13:07:00', '2022-11-10 13:07:00'),
+	(19, 1, 'El usuario: Admin Administrador Ha ingresado a ver los permisos del Role: Comercio a las: 08:11:08 del día: 10/11/2022', NULL, '2022-11-10 13:08:02', '2022-11-10 13:08:02'),
+	(20, 1, 'El usuario: Admin Administrador Ha ingresado a ver los permisos del Role: Comercio a las: 08:11:09 del día: 10/11/2022', NULL, '2022-11-10 13:09:09', '2022-11-10 13:09:09'),
+	(21, 1, 'El usuario: Admin Administrador Ha ingresado a ver los servicios: 08:11:09 del día: 10/11/2022', NULL, '2022-11-10 13:09:56', '2022-11-10 13:09:56'),
+	(22, 1, 'El usuario: Admin Administrador Ha ingresado a ver los servicios: 08:11:11 del día: 10/11/2022', NULL, '2022-11-10 13:11:07', '2022-11-10 13:11:07'),
+	(23, 1, 'El usuario: Admin Administrador Ha ingresado a ver los productos: 08:11:16 del día: 10/11/2022', NULL, '2022-11-10 13:16:19', '2022-11-10 13:16:19'),
+	(24, 1, 'El usuario: Admin Administrador Ha ingresado a ver los productos: 08:11:17 del día: 10/11/2022', NULL, '2022-11-10 13:17:10', '2022-11-10 13:17:10'),
+	(25, 1, 'El usuario: Admin Administrador Ha ingresado a ver los productos: 08:11:18 del día: 10/11/2022', NULL, '2022-11-10 13:18:19', '2022-11-10 13:18:19'),
+	(26, 1, 'El usuario: Admin Administrador Ha ingresado a ver los productos: 08:11:22 del día: 10/11/2022', NULL, '2022-11-10 13:22:34', '2022-11-10 13:22:34'),
+	(27, 1, 'El usuario: Admin Administrador Ha ingresado a editar los datos de la cotizacion: 3 a las: 08:11:26 del día: 10/11/2022', NULL, '2022-11-10 13:26:35', '2022-11-10 13:26:35'),
+	(28, 1, 'El usuario: Admin Administrador Ha ingresado a editar los datos de la cotizacion: 3 a las: 08:11:37 del día: 10/11/2022', NULL, '2022-11-10 13:37:35', '2022-11-10 13:37:35'),
+	(29, 1, 'El usuario: Admin Administrador Ha ingresado a editar los datos de la cotizacion: 3 a las: 08:11:38 del día: 10/11/2022', NULL, '2022-11-10 13:38:41', '2022-11-10 13:38:41'),
+	(30, 1, 'El usuario: Admin Administrador Ha ingresado a editar los datos de la cotizacion: 3 a las: 08:11:39 del día: 10/11/2022', NULL, '2022-11-10 13:39:43', '2022-11-10 13:39:43'),
+	(31, 1, 'El usuario: Admin Administrador Ha ingresado a editar los datos de la cotizacion: 3 a las: 08:11:44 del día: 10/11/2022', NULL, '2022-11-10 13:44:12', '2022-11-10 13:44:12'),
+	(32, 1, 'El usuario: Admin Administrador Ha ingresado a editar los datos de la cotizacion: 3 a las: 08:11:48 del día: 10/11/2022', NULL, '2022-11-10 13:48:34', '2022-11-10 13:48:34'),
+	(33, 1, 'El usuario: Admin Administrador Ha ingresado a ver las cotizaciones: 08:11:48 del día: 10/11/2022', NULL, '2022-11-10 13:48:52', '2022-11-10 13:48:52'),
+	(34, 1, 'El usuario: Admin Administrador Ha ingresado a editar los datos de la cotizacion: 3 a las: 08:11:49 del día: 10/11/2022', NULL, '2022-11-10 13:49:21', '2022-11-10 13:49:21'),
+	(35, 1, 'El usuario: Admin Administrador Ha ingresado a ver las cotizaciones: 08:11:49 del día: 10/11/2022', NULL, '2022-11-10 13:49:38', '2022-11-10 13:49:38'),
+	(36, 1, 'El usuario: Admin Administrador Ha ingresado a ver las cotizaciones: 08:11:51 del día: 10/11/2022', NULL, '2022-11-10 13:51:47', '2022-11-10 13:51:47'),
+	(37, 1, 'El usuario: Admin Administrador Ha ingresado a ver las cotizaciones: 08:11:52 del día: 10/11/2022', NULL, '2022-11-10 13:52:05', '2022-11-10 13:52:05'),
+	(38, 1, 'El usuario: Admin Administrador Ha ingresado a ver las cotizaciones: 08:11:53 del día: 10/11/2022', NULL, '2022-11-10 13:53:04', '2022-11-10 13:53:04'),
+	(39, 1, 'El usuario: Admin Administrador Ha ingresado a ver las cotizaciones: 08:11:53 del día: 10/11/2022', NULL, '2022-11-10 13:53:18', '2022-11-10 13:53:18'),
+	(40, 1, 'El usuario: Admin Administrador Ha ingresado a ver las cotizaciones: 08:11:55 del día: 10/11/2022', NULL, '2022-11-10 13:55:22', '2022-11-10 13:55:22'),
+	(41, 1, 'El usuario: Admin Administrador Ha ingresado a ver las cotizaciones: 08:11:55 del día: 10/11/2022', NULL, '2022-11-10 13:55:58', '2022-11-10 13:55:58'),
+	(42, 1, 'El usuario: Admin Administrador Ha ingresado a ver las cotizaciones: 08:11:56 del día: 10/11/2022', NULL, '2022-11-10 13:56:15', '2022-11-10 13:56:15'),
+	(43, 1, 'El usuario: Admin Administrador Ha ingresado a ver las cotizaciones: 08:11:57 del día: 10/11/2022', NULL, '2022-11-10 13:57:04', '2022-11-10 13:57:04');
 /*!40000 ALTER TABLE `log_sistemas` ENABLE KEYS */;
 
--- Dumping structure for table almadelascosas_empresas.migrations
+-- Dumping structure for table b2bempresas.migrations
 CREATE TABLE IF NOT EXISTS `migrations` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `migration` varchar(125) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1316,7 +1387,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table almadelascosas_empresas.migrations: 6 rows
+-- Dumping data for table b2bempresas.migrations: 6 rows
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(1, '2014_10_12_000000_create_users_table', 1),
@@ -1327,7 +1398,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(6, '2021_04_25_191437_create_log_sistemas_table', 1);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 
--- Dumping structure for table almadelascosas_empresas.model_has_permissions
+-- Dumping structure for table b2bempresas.model_has_permissions
 CREATE TABLE IF NOT EXISTS `model_has_permissions` (
   `permission_id` bigint(20) unsigned NOT NULL,
   `model_type` varchar(125) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1336,11 +1407,11 @@ CREATE TABLE IF NOT EXISTS `model_has_permissions` (
   KEY `model_has_permissions_model_id_model_type_index` (`model_id`,`model_type`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table almadelascosas_empresas.model_has_permissions: 0 rows
+-- Dumping data for table b2bempresas.model_has_permissions: 0 rows
 /*!40000 ALTER TABLE `model_has_permissions` DISABLE KEYS */;
 /*!40000 ALTER TABLE `model_has_permissions` ENABLE KEYS */;
 
--- Dumping structure for table almadelascosas_empresas.model_has_roles
+-- Dumping structure for table b2bempresas.model_has_roles
 CREATE TABLE IF NOT EXISTS `model_has_roles` (
   `role_id` bigint(20) unsigned NOT NULL,
   `model_type` varchar(125) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1349,20 +1420,20 @@ CREATE TABLE IF NOT EXISTS `model_has_roles` (
   KEY `model_has_roles_model_id_model_type_index` (`model_id`,`model_type`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table almadelascosas_empresas.model_has_roles: 8 rows
+-- Dumping data for table b2bempresas.model_has_roles: 8 rows
 /*!40000 ALTER TABLE `model_has_roles` DISABLE KEYS */;
 INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
 	(1, 'App\\Models\\User', 1),
 	(2, 'App\\Models\\User', 2),
-	(2, 'App\\Models\\User', 3),
 	(2, 'App\\Models\\User', 5),
 	(2, 'App\\Models\\User', 6),
 	(2, 'App\\Models\\User', 7),
+	(3, 'App\\Models\\User', 3),
 	(3, 'App\\Models\\User', 4),
 	(4, 'App\\Models\\User', 8);
 /*!40000 ALTER TABLE `model_has_roles` ENABLE KEYS */;
 
--- Dumping structure for table almadelascosas_empresas.password_resets
+-- Dumping structure for table b2bempresas.password_resets
 CREATE TABLE IF NOT EXISTS `password_resets` (
   `email` varchar(125) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(125) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1370,11 +1441,11 @@ CREATE TABLE IF NOT EXISTS `password_resets` (
   KEY `password_resets_email_index` (`email`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table almadelascosas_empresas.password_resets: 0 rows
+-- Dumping data for table b2bempresas.password_resets: 0 rows
 /*!40000 ALTER TABLE `password_resets` DISABLE KEYS */;
 /*!40000 ALTER TABLE `password_resets` ENABLE KEYS */;
 
--- Dumping structure for table almadelascosas_empresas.permissions
+-- Dumping structure for table b2bempresas.permissions
 CREATE TABLE IF NOT EXISTS `permissions` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(125) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1383,27 +1454,27 @@ CREATE TABLE IF NOT EXISTS `permissions` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `permissions_name_guard_name_unique` (`name`,`guard_name`)
-) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table almadelascosas_empresas.permissions: 29 rows
+-- Dumping data for table b2bempresas.permissions: 32 rows
 /*!40000 ALTER TABLE `permissions` DISABLE KEYS */;
 INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
-	(1, 'Ver Usuario', 'web', '2022-02-09 10:59:45', '2022-02-09 10:59:45'),
-	(2, 'Registrar Usuario', 'web', '2022-02-09 10:59:45', '2022-02-09 10:59:45'),
-	(3, 'Editar Usuario', 'web', '2022-02-09 10:59:45', '2022-02-09 10:59:45'),
-	(4, 'Eliminar Usuario', 'web', '2022-02-09 10:59:45', '2022-02-09 10:59:45'),
-	(5, 'AsignarPermisos', 'web', '2022-02-09 10:59:45', '2022-02-09 10:59:45'),
-	(6, 'Ver Permisos', 'web', '2022-02-09 10:59:45', '2022-02-09 10:59:45'),
-	(7, 'Crear Permisos', 'web', '2022-02-09 10:59:45', '2022-02-09 10:59:45'),
-	(8, 'Editar Permisos', 'web', '2022-02-09 10:59:45', '2022-02-09 10:59:45'),
-	(9, 'EliminarPermisos', 'web', '2022-02-09 10:59:45', '2022-02-09 10:59:45'),
-	(10, 'Ver Logins', 'web', '2022-02-09 10:59:45', '2022-02-09 10:59:45'),
-	(11, 'Ver Log Sistema', 'web', '2022-02-09 10:59:45', '2022-02-09 10:59:45'),
-	(12, 'Ver Role', 'web', '2022-02-09 10:59:45', '2022-02-09 10:59:45'),
-	(13, 'Registrar Role', 'web', '2022-02-09 10:59:45', '2022-02-09 10:59:45'),
-	(14, 'Editar Role', 'web', '2022-02-09 10:59:45', '2022-02-09 10:59:45'),
-	(15, 'Eliminar Role', 'web', '2022-02-09 10:59:45', '2022-02-09 10:59:45'),
-	(16, 'Administración', 'web', '2022-02-09 10:59:45', '2022-02-09 10:59:45'),
+	(1, 'Ver Usuario', 'web', '2022-02-09 15:59:45', '2022-02-09 15:59:45'),
+	(2, 'Registrar Usuario', 'web', '2022-02-09 15:59:45', '2022-02-09 15:59:45'),
+	(3, 'Editar Usuario', 'web', '2022-02-09 15:59:45', '2022-02-09 15:59:45'),
+	(4, 'Eliminar Usuario', 'web', '2022-02-09 15:59:45', '2022-02-09 15:59:45'),
+	(5, 'AsignarPermisos', 'web', '2022-02-09 15:59:45', '2022-02-09 15:59:45'),
+	(6, 'Ver Permisos', 'web', '2022-02-09 15:59:45', '2022-02-09 15:59:45'),
+	(7, 'Crear Permisos', 'web', '2022-02-09 15:59:45', '2022-02-09 15:59:45'),
+	(8, 'Editar Permisos', 'web', '2022-02-09 15:59:45', '2022-02-09 15:59:45'),
+	(9, 'EliminarPermisos', 'web', '2022-02-09 15:59:45', '2022-02-09 15:59:45'),
+	(10, 'Ver Logins', 'web', '2022-02-09 15:59:45', '2022-02-09 15:59:45'),
+	(11, 'Ver Log Sistema', 'web', '2022-02-09 15:59:45', '2022-02-09 15:59:45'),
+	(12, 'Ver Role', 'web', '2022-02-09 15:59:45', '2022-02-09 15:59:45'),
+	(13, 'Registrar Role', 'web', '2022-02-09 15:59:45', '2022-02-09 15:59:45'),
+	(14, 'Editar Role', 'web', '2022-02-09 15:59:45', '2022-02-09 15:59:45'),
+	(15, 'Eliminar Role', 'web', '2022-02-09 15:59:45', '2022-02-09 15:59:45'),
+	(16, 'Administración', 'web', '2022-02-09 15:59:45', '2022-02-09 15:59:45'),
 	(17, 'Tienda', 'web', NULL, NULL),
 	(18, 'Ver Categorías', 'web', NULL, NULL),
 	(19, 'Crear Categoría', 'web', NULL, NULL),
@@ -1416,29 +1487,39 @@ INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at
 	(26, 'Ver Productos', 'web', NULL, NULL),
 	(27, 'Crear Productos', 'web', NULL, NULL),
 	(28, 'Editar Productos', 'web', NULL, NULL),
-	(29, 'Eliminar Productos', 'web', NULL, NULL);
+	(29, 'Eliminar Productos', 'web', NULL, NULL),
+	(30, 'Ver Cotizaciones', 'web', NULL, NULL),
+	(31, 'Eliminar Cotizaciones', 'web', NULL, NULL),
+	(32, 'Editar Cotizaciones', 'web', NULL, NULL);
 /*!40000 ALTER TABLE `permissions` ENABLE KEYS */;
 
--- Dumping structure for table almadelascosas_empresas.products
+-- Dumping structure for table b2bempresas.products
 CREATE TABLE IF NOT EXISTS `products` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
   `name` varchar(100) DEFAULT NULL,
   `price_min` float DEFAULT NULL,
   `price_max` float DEFAULT NULL,
   `quantity_min` int(11) DEFAULT NULL,
   `delivery_time` varchar(50) DEFAULT NULL,
   `shipping_price` float DEFAULT NULL,
+  `shipping_free` bigint(20) DEFAULT NULL,
   `description` longtext,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id`),
+  KEY `FK_products_users` (`user_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
--- Dumping data for table almadelascosas_empresas.products: 0 rows
+-- Dumping data for table b2bempresas.products: 3 rows
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
+INSERT INTO `products` (`id`, `user_id`, `name`, `price_min`, `price_max`, `quantity_min`, `delivery_time`, `shipping_price`, `shipping_free`, `description`, `created_at`, `updated_at`) VALUES
+	(4, 3, 'Ancheta regalo', 50000, 150000, 10, '3 días', 0, 1, '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lacinia convallis egestas. Cras feugiat nisi ut ipsum sodales tincidunt. Mauris rutrum sem ut ante tincidunt sollicitudin. Donec eu pharetra leo. Curabitur sed sapien odio. Praesent tristique a orci id vestibulum. Praesent lobortis ipsum non ex dignissim, egestas cursus eros vestibulum. Morbi nec elit laoreet, feugiat turpis ultricies, sodales nunc. Nulla in nulla dictum, bibendum massa vitae, dapibus elit. Sed purus nisi, rhoncus vel tempor non, pulvinar nec tortor. Ut laoreet nec quam quis consectetur. Ut a condimentum ex. Vestibulum ut pulvinar arcu. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque vestibulum molestie velit, quis rhoncus ante cursus vitae.</p>', '2022-09-27 14:55:31', '2022-10-04 16:25:44'),
+	(5, 3, 'Caja de Dulces', 25000, 100000, 10, '5 días', 8700, 0, '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lacinia convallis egestas. Cras feugiat nisi ut ipsum sodales tincidunt. Mauris rutrum sem ut ante tincidunt sollicitudin. Donec eu pharetra leo. Curabitur sed sapien odio. Praesent tristique a orci id vestibulum. Praesent lobortis ipsum non ex dignissim, egestas cursus eros vestibulum. Morbi nec elit laoreet, feugiat turpis ultricies, sodales nunc. Nulla in nulla dictum, bibendum massa vitae, dapibus elit. Sed purus nisi, rhoncus vel tempor non, pulvinar nec tortor. Ut laoreet nec quam quis consectetur. Ut a condimentum ex. Vestibulum ut pulvinar arcu. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque vestibulum molestie velit, quis rhoncus ante cursus vitae.</p>', '2022-09-27 14:56:25', '2022-10-04 16:26:02'),
+	(7, 3, 'Caja de flores', 50000, 150000, 2, '1 día', 13000, 0, '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lacinia convallis egestas. Cras feugiat nisi ut ipsum sodales tincidunt. Mauris rutrum sem ut ante tincidunt sollicitudin. Donec eu pharetra leo. Curabitur sed sapien odio. Praesent tristique a orci id vestibulum. Praesent lobortis ipsum non ex dignissim, egestas cursus eros vestibulum. Morbi nec elit laoreet, feugiat turpis ultricies, sodales nunc. Nulla in nulla dictum, bibendum massa vitae, dapibus elit. Sed purus nisi, rhoncus vel tempor non, pulvinar nec tortor. Ut laoreet nec quam quis consectetur. Ut a condimentum ex. Vestibulum ut pulvinar arcu. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque vestibulum molestie velit, quis rhoncus ante cursus vitae.</p>', '2022-10-04 16:24:01', '2022-10-13 18:17:00');
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 
--- Dumping structure for table almadelascosas_empresas.products_categories
+-- Dumping structure for table b2bempresas.products_categories
 CREATE TABLE IF NOT EXISTS `products_categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `category_id` int(11) DEFAULT NULL,
@@ -1448,13 +1529,20 @@ CREATE TABLE IF NOT EXISTS `products_categories` (
   PRIMARY KEY (`id`),
   KEY `FK_products_categories_categories` (`category_id`),
   KEY `FK_products_categories_products` (`product_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
 
--- Dumping data for table almadelascosas_empresas.products_categories: 0 rows
+-- Dumping data for table b2bempresas.products_categories: 6 rows
 /*!40000 ALTER TABLE `products_categories` DISABLE KEYS */;
+INSERT INTO `products_categories` (`id`, `category_id`, `product_id`, `created_at`, `updated_at`) VALUES
+	(30, 2, 4, '2022-10-04 16:25:44', '2022-10-04 16:25:44'),
+	(29, 1, 4, '2022-10-04 16:25:44', '2022-10-04 16:25:44'),
+	(32, 2, 5, '2022-10-04 16:26:02', '2022-10-04 16:26:02'),
+	(31, 1, 5, '2022-10-04 16:26:02', '2022-10-04 16:26:02'),
+	(36, 2, 7, '2022-10-13 18:17:00', '2022-10-13 18:17:00'),
+	(35, 1, 7, '2022-10-13 18:17:00', '2022-10-13 18:17:00');
 /*!40000 ALTER TABLE `products_categories` ENABLE KEYS */;
 
--- Dumping structure for table almadelascosas_empresas.products_subcategories
+-- Dumping structure for table b2bempresas.products_subcategories
 CREATE TABLE IF NOT EXISTS `products_subcategories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `subcategory_id` int(11) DEFAULT NULL,
@@ -1464,13 +1552,18 @@ CREATE TABLE IF NOT EXISTS `products_subcategories` (
   PRIMARY KEY (`id`),
   KEY `FK_products_subcategories_subcategories` (`subcategory_id`),
   KEY `FK_products_subcategories_products` (`product_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 
--- Dumping data for table almadelascosas_empresas.products_subcategories: 0 rows
+-- Dumping data for table b2bempresas.products_subcategories: 4 rows
 /*!40000 ALTER TABLE `products_subcategories` DISABLE KEYS */;
+INSERT INTO `products_subcategories` (`id`, `subcategory_id`, `product_id`, `created_at`, `updated_at`) VALUES
+	(17, 2, 4, '2022-10-04 16:25:44', '2022-10-04 16:25:44'),
+	(16, 1, 4, '2022-10-04 16:25:44', '2022-10-04 16:25:44'),
+	(21, 2, 7, '2022-10-13 18:17:00', '2022-10-13 18:17:00'),
+	(20, 1, 7, '2022-10-13 18:17:00', '2022-10-13 18:17:00');
 /*!40000 ALTER TABLE `products_subcategories` ENABLE KEYS */;
 
--- Dumping structure for table almadelascosas_empresas.product_gallery
+-- Dumping structure for table b2bempresas.product_gallery
 CREATE TABLE IF NOT EXISTS `product_gallery` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `file` longtext,
@@ -1479,13 +1572,62 @@ CREATE TABLE IF NOT EXISTS `product_gallery` (
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_dog_gallery_dogs` (`product_id`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
--- Dumping data for table almadelascosas_empresas.product_gallery: 0 rows
+-- Dumping data for table b2bempresas.product_gallery: 5 rows
 /*!40000 ALTER TABLE `product_gallery` DISABLE KEYS */;
+INSERT INTO `product_gallery` (`id`, `file`, `product_id`, `created_at`, `updated_at`) VALUES
+	(12, '1664308531_regalos.PNG.png', 4, '2022-09-27 14:55:31', '2022-09-27 14:55:31'),
+	(13, '1664308585_regalos.PNG.png', 5, '2022-09-27 14:56:25', '2022-09-27 14:56:25'),
+	(14, '1664914987_bannercase.png.png', 4, '2022-10-04 15:23:07', '2022-10-04 15:23:07'),
+	(15, '1664918641_Botones Servicios-01.png.png', 7, '2022-10-04 16:24:01', '2022-10-04 16:24:01'),
+	(16, '1664918641_Botones Servicios-03.png.png', 7, '2022-10-04 16:24:01', '2022-10-04 16:24:01');
 /*!40000 ALTER TABLE `product_gallery` ENABLE KEYS */;
 
--- Dumping structure for table almadelascosas_empresas.roles
+-- Dumping structure for table b2bempresas.product_questions
+CREATE TABLE IF NOT EXISTS `product_questions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `product_id` int(11) NOT NULL DEFAULT '0',
+  `question` varchar(500) DEFAULT NULL,
+  `answer` longtext,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_product_questions_products` (`product_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table b2bempresas.product_questions: 1 rows
+/*!40000 ALTER TABLE `product_questions` DISABLE KEYS */;
+INSERT INTO `product_questions` (`id`, `product_id`, `question`, `answer`, `created_at`, `updated_at`) VALUES
+	(1, 7, 'Por que s epuede dañas', 'por que es muy debil y fragil y al mover', '2022-10-13 18:17:00', '2022-10-13 18:17:00');
+/*!40000 ALTER TABLE `product_questions` ENABLE KEYS */;
+
+-- Dumping structure for table b2bempresas.product_quotation
+CREATE TABLE IF NOT EXISTS `product_quotation` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `product_id` int(11) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `name` varchar(100) DEFAULT NULL,
+  `cellphone` varchar(10) DEFAULT NULL,
+  `quantity` int(11) DEFAULT NULL,
+  `address` varchar(100) DEFAULT NULL,
+  `date_delivery` datetime DEFAULT NULL,
+  `observations` longtext,
+  `state` int(11) DEFAULT '0',
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK__products` (`product_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table b2bempresas.product_quotation: 3 rows
+/*!40000 ALTER TABLE `product_quotation` DISABLE KEYS */;
+INSERT INTO `product_quotation` (`id`, `product_id`, `email`, `name`, `cellphone`, `quantity`, `address`, `date_delivery`, `observations`, `state`, `created_at`, `updated_at`) VALUES
+	(1, 7, 'prueba@prueba.com', NULL, '2343535', 4, 'cr 566', '2022-10-19 00:00:00', 'dfssd fsd ff df', 0, '2022-10-13 22:31:57', '2022-10-13 22:31:57'),
+	(3, 7, 'yeferson1115@gmail.com', NULL, '3197667268', 45, 'Cr 46 # 67- 76', '2022-10-21 00:00:00', 'Prueba', 1, '2022-10-14 12:12:04', '2022-11-10 08:49:35');
+/*!40000 ALTER TABLE `product_quotation` ENABLE KEYS */;
+
+-- Dumping structure for table b2bempresas.roles
 CREATE TABLE IF NOT EXISTS `roles` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(125) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1497,15 +1639,15 @@ CREATE TABLE IF NOT EXISTS `roles` (
   UNIQUE KEY `roles_name_guard_name_unique` (`name`,`guard_name`)
 ) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table almadelascosas_empresas.roles: 3 rows
+-- Dumping data for table b2bempresas.roles: 3 rows
 /*!40000 ALTER TABLE `roles` DISABLE KEYS */;
 INSERT INTO `roles` (`id`, `name`, `guard_name`, `icon`, `created_at`, `updated_at`) VALUES
-	(1, 'Administrador', 'web', NULL, '2022-02-09 10:59:45', '2022-02-09 10:59:45'),
-	(2, 'Usuario', 'web', NULL, '2022-02-09 10:59:45', '2022-02-09 10:59:45'),
-	(3, 'Comercio', 'web', NULL, '2022-02-23 11:22:41', '2022-02-23 11:22:41');
+	(1, 'Administrador', 'web', NULL, '2022-02-09 15:59:45', '2022-02-09 15:59:45'),
+	(2, 'Usuario', 'web', NULL, '2022-02-09 15:59:45', '2022-02-09 15:59:45'),
+	(3, 'Comercio', 'web', NULL, '2022-02-23 16:22:41', '2022-02-23 16:22:41');
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 
--- Dumping structure for table almadelascosas_empresas.role_has_permissions
+-- Dumping structure for table b2bempresas.role_has_permissions
 CREATE TABLE IF NOT EXISTS `role_has_permissions` (
   `permission_id` bigint(20) unsigned NOT NULL,
   `role_id` bigint(20) unsigned NOT NULL,
@@ -1513,7 +1655,7 @@ CREATE TABLE IF NOT EXISTS `role_has_permissions` (
   KEY `role_has_permissions_role_id_foreign` (`role_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table almadelascosas_empresas.role_has_permissions: 29 rows
+-- Dumping data for table b2bempresas.role_has_permissions: 39 rows
 /*!40000 ALTER TABLE `role_has_permissions` DISABLE KEYS */;
 INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 	(1, 1),
@@ -1542,12 +1684,22 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 	(24, 1),
 	(25, 1),
 	(26, 1),
+	(26, 3),
 	(27, 1),
+	(27, 3),
 	(28, 1),
-	(29, 1);
+	(28, 3),
+	(29, 1),
+	(29, 3),
+	(30, 1),
+	(30, 3),
+	(31, 1),
+	(31, 3),
+	(32, 1),
+	(32, 3);
 /*!40000 ALTER TABLE `role_has_permissions` ENABLE KEYS */;
 
--- Dumping structure for table almadelascosas_empresas.services
+-- Dumping structure for table b2bempresas.services
 CREATE TABLE IF NOT EXISTS `services` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1561,17 +1713,17 @@ CREATE TABLE IF NOT EXISTS `services` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table almadelascosas_empresas.services: 5 rows
+-- Dumping data for table b2bempresas.services: 5 rows
 /*!40000 ALTER TABLE `services` DISABLE KEYS */;
 INSERT INTO `services` (`id`, `name`, `description`, `price`, `state`, `sku`, `campuse_id`, `created_at`, `updated_at`) VALUES
-	(1, 'Prueba 6', 'fgdfgdfgdfg', 80000.00, 1, 'Eli-812', 1, '2021-10-10 14:46:34', '2022-01-03 09:54:44'),
-	(3, 'Prueba 1', '', 25000.00, 1, 'Eli-125', NULL, '2021-11-05 12:08:32', '2021-11-05 12:08:32'),
-	(4, 'Prueba 2', '', 75000.00, 1, 'Eli-6393', NULL, '2021-11-05 12:09:02', '2021-11-05 12:09:02'),
-	(5, 'Prueba 3', '', 150000.00, 1, 'Eli-256', NULL, '2021-11-05 12:09:33', '2021-11-05 12:09:33'),
-	(6, 'Blanqueamientos', 'fgdfgdf', 180000.00, 1, 'ert-4534', 1, '2022-01-03 10:03:10', '2022-01-03 10:03:10');
+	(1, 'Prueba 6', 'fgdfgdfgdfg', 80000.00, 1, 'Eli-812', 1, '2021-10-10 19:46:34', '2022-01-03 14:54:44'),
+	(3, 'Prueba 1', '', 25000.00, 1, 'Eli-125', NULL, '2021-11-05 17:08:32', '2021-11-05 17:08:32'),
+	(4, 'Prueba 2', '', 75000.00, 1, 'Eli-6393', NULL, '2021-11-05 17:09:02', '2021-11-05 17:09:02'),
+	(5, 'Prueba 3', '', 150000.00, 1, 'Eli-256', NULL, '2021-11-05 17:09:33', '2021-11-05 17:09:33'),
+	(6, 'Blanqueamientos', 'fgdfgdf', 180000.00, 1, 'ert-4534', 1, '2022-01-03 15:03:10', '2022-01-03 15:03:10');
 /*!40000 ALTER TABLE `services` ENABLE KEYS */;
 
--- Dumping structure for table almadelascosas_empresas.subcategories
+-- Dumping structure for table b2bempresas.subcategories
 CREATE TABLE IF NOT EXISTS `subcategories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `category_id` int(11) DEFAULT NULL,
@@ -1583,19 +1735,20 @@ CREATE TABLE IF NOT EXISTS `subcategories` (
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   KEY `FK_subcategories_categories` (`category_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
--- Dumping data for table almadelascosas_empresas.subcategories: 1 rows
+-- Dumping data for table b2bempresas.subcategories: 2 rows
 /*!40000 ALTER TABLE `subcategories` DISABLE KEYS */;
 INSERT INTO `subcategories` (`id`, `category_id`, `name`, `file`, `slug`, `state`, `created_at`, `updated_at`) VALUES
-	(1, 1, 'El michi mas', NULL, 'el-michi-mas', 1, '2022-09-23 18:59:46', '2022-09-23 19:24:39');
+	(1, 1, 'El michi mas', '1664889485.png', 'el-michi-mas', 1, '2022-09-23 18:59:46', '2022-10-04 08:18:05'),
+	(2, 1, 'anchetas', '1664889697.png', 'anchetas', 1, '2022-10-04 08:21:37', '2022-10-04 08:21:37');
 /*!40000 ALTER TABLE `subcategories` ENABLE KEYS */;
 
--- Dumping structure for table almadelascosas_empresas.users
+-- Dumping structure for table b2bempresas.users
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(125) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `lastname` varchar(125) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lastname` varchar(125) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `username` varchar(125) COLLATE utf8mb4_unicode_ci NOT NULL,
   `genero` varchar(125) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(125) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1608,15 +1761,17 @@ CREATE TABLE IF NOT EXISTS `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table almadelascosas_empresas.users: 2 rows
+-- Dumping data for table b2bempresas.users: 3 rows
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `name`, `lastname`, `username`, `genero`, `email`, `email_verified_at`, `password`, `status`, `remember_token`, `deleted_at`, `created_at`, `updated_at`) VALUES
-	(1, 'Admin', 'Administrador', 'laradmin', 'M', 'admin@mail.com', NULL, '$2y$10$fMmLlQkjlkLn3zOlfXQ7Mek3ahlo43pvV0h6cvV6EEkX17tTkdBam', 1, NULL, NULL, '2022-02-09 10:59:45', '2022-02-09 10:59:45'),
-	(2, 'Usuario', 'Usuarios', 'larausuario', 'F', 'usuario1@mail.com', NULL, '$2y$10$2MabFWd4YnL62rE8cOzRSOD5F73d4tVluUoIEm0HILxxnnXIWmtoq', 1, NULL, NULL, '2022-02-09 10:59:45', '2022-09-21 11:05:08');
+	(1, 'Admin', 'Administrador', 'laradmin', 'M', 'admin@mail.com', NULL, '$2y$10$fMmLlQkjlkLn3zOlfXQ7Mek3ahlo43pvV0h6cvV6EEkX17tTkdBam', 1, NULL, NULL, '2022-02-09 15:59:45', '2022-02-09 15:59:45'),
+	(2, 'Usuario', 'Usuarios', 'larausuario', 'F', 'usuario1@mail.com', NULL, '$2y$10$h1TnOhLWdp7.abo4UXHLduOEZIONULaHSTp3g1PS/g/XRKeqxZTYu', 1, NULL, NULL, '2022-02-09 15:59:45', '2022-10-13 19:21:43'),
+	(3, 'Decoraciones H&M', NULL, 'decoracionesh&m', 'M', 'prueba@prueba.com', NULL, '$2y$10$NInlRxMG0YbvQ9WsZWRS5eXxvUEN417UaEoE/unf79ewdqzgp8HfS', 1, NULL, NULL, '2022-10-04 16:24:07', '2022-10-04 16:34:39');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
+/*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

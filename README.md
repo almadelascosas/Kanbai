@@ -1,4 +1,4 @@
-# Elina-Lagos
+# b2b Alma de las cosas
 
 ---
 
@@ -14,8 +14,8 @@
 ## Instalación
 
 ```
-git clone git clone https://gitlab.com/zeroxproyectosdevs/eliana-lagos.git
-cd eliana-lagos
+git clone git clone https://github.com/almadelascosas/Kanbai.git
+cd Kanbai
 composer install
 ```
 
@@ -24,8 +24,7 @@ Modificar el archivo **.env** con los datos correspondientes al proyecto, creden
 Migrar a la base de datos los roles y permisos iniciales, así como el **usuario administrador por defecto**.
 
 ```
-cd eliana-lagos
-php artisan migrate --seed
+En el directorio BD se encontrara el Script de Base de datos
 ```
 Los datos del **usuario por defecto** podrán ser vistos (y modificados antes de migrar), en los archivos **seeds** del proyecto en **database/seeds**.
 
@@ -44,7 +43,7 @@ A continuación el listado de tecnologías y plugins utilizados en este desarrol
 
 ### Front-end
 
-- [Bootstrap 4.4](https://getbootstrap.com/docs/4.4/)
+- [Bootstrap 5.0](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
 - [Jquery 3.2](https://jquery.com/)
 - [Font Awesome 4.7.0](http://fontawesome.io/)
 - [jQuery-Autocomplete 1.4.4](https://github.com/devbridge/jQuery-Autocomplete)

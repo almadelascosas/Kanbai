@@ -89,6 +89,39 @@
                                         </div>
                                     </div>
                                 </div>
+
+                            <div class="col-md-6 col-12">
+                                <h5>Banners actuales</h5>
+                                <div class='row'>  
+                                @if(count($category->banners)>0)
+                                    @foreach($category->banners as $item)
+                                    <div class="col-md-2 col-12">
+                                        <img style="max-width: 100%;" class="mb-1" src="{{ asset('images/categories/banners/'.$item->file.'') }}">
+                                        <form method="POST" action="">
+                                                <div class="form-group">
+                                                    <button type="submit" data-token="{{ csrf_token() }}" data-attr="{{ url('categoriesbanner',[$item->encode_id]) }}" class="btn btn-danger waves-effect waves-float waves-light delete-user" value="Delete user"><i data-feather='trash-2'></i></button>
+                                                </div>
+                                        </form>
+                                    </div> 
+                                    @endforeach 
+                                @endif
+                                </div>
+                            </div>
+
+                                <div class="col-md-6 col-12">
+                                    <div class="container mb-3 mt-3" style="padding: 0px;" >
+                                            <div class='element row' id='div_1'>                                        
+                                                <div class="col-md-8 col-12">
+                                                    <label class="form-label" for="banners">Imagen</label>
+                                                    <input type="file" class="form-control" id="banners" name="banners[]" >
+                                                    <span class="missing_alert text-danger" id="banners_alert"></span>
+                                                </div>
+                                                <div class="col-md-4 col-12 pt-2 ">                                           
+                                                    <a href="#" title="Agregar" class="btn btn-success add"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 
 
                                 <div class="col-12">
@@ -107,4 +140,45 @@
 @push('scripts')
 
     <script src="{{ asset('js/admin/categories/edit.js') }}"></script>
+    <script>
+        
+$(document).ready(function(){
+
+// Add new element
+$(".add").click(function(){
+
+ // Finding total number of elements added
+ var total_element = $(".element").length;
+
+ // last <div> with element class id
+ var lastid = $(".element:last").attr("id");
+ var split_id = lastid.split("_");
+ var nextindex = Number(split_id[1]) + 1;
+
+ var max = 10-{{count($category->banners)}};
+ // Check total number elements
+ if(total_element < max ){
+  // Adding new div container after last occurance of element class
+  $(".element:last").after("<div class='element row' id='div_"+ nextindex +"'></div>");
+
+  // Adding element to <div>
+  $("#div_" + nextindex).append('<div class="col-md-8 col-12"><label class="form-label" for="banners">Banner</label><input type="file" name="banners[]"  class="form-control" placeholder="xxxx" id="txt_1" ></div><div class="col-md-4 col-12 pt-2 "><a href="#" id="remove_'+nextindex+'" class="btn btn-danger remove" title="Eliminar"><i class="fa fa-trash-o" aria-hidden="true"></i></a></div> ');
+
+ }
+
+});
+
+// Remove element
+$('.container').on('click','.remove',function(){
+
+ var id = this.id;
+ var split_id = id.split("_");
+ var deleteindex = split_id[1];
+
+ // Remove <div> with id
+ $("#div_" + deleteindex).remove();
+
+}); 
+});
+    </script>
 @endpush

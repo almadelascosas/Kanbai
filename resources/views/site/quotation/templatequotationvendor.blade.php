@@ -152,7 +152,7 @@
 										<tr>
 											<td width="10%" style="background-color:#CDCBCB;"></td>
 											<td width="70%" style="background-color:#CDCBCB; vertical-align: middle;"><h3>Número de Solicitud:</h3></td>
-											<td width="20%"style="background-color:#CDCBCB; vertical-align: middle;"><h3>#{{ $data['product_id'] }}</h3></td>
+											<td width="20%"style="background-color:#CDCBCB; vertical-align: middle;"><h3>#{{ $data['idsolicitud'] }}</h3></td>
 										</tr>
 									</table>
 								</center>

@@ -2579,21 +2579,7 @@ $(function(){
     });
   });
   
-  $('#FormGuardarCapturaOdontograma').validate({
-    ignore: [],
-    rules: {
-      paciente:{required:true},
-      tipo:{required:true},
-      imgData:{required:true}
-    },
-    submitHandler:function() {
-      enviarFormulario('#FormGuardarCapturaOdontograma',function(resp){
-        if (resp.success) {
-          $('#ModalCapturarOdontograma').modal('hide');
-        }
-      })
-    }
-  });
+ 
   /*=====  End of CAPTURAR ODONTOGRAMA  ======*/
   
 
