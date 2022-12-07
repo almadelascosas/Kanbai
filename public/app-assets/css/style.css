@@ -9,7 +9,7 @@
 # General
 --------------------------------------------------------------*/
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: "Raleway", sans-serif;
   color: #555555;
   background: #fafafa;
 }
@@ -587,12 +587,13 @@ a:hover {
 }
 .navbar-default.navbar-trans .nav-link, .navbar-default.navbar-reduce .nav-link {
   font-size: 16px;
-  color: #fff;
+  color: #6F6F70;
   letter-spacing: 0.03em;
   transition: all 0.1s ease-in-out;
   position: relative;
   padding-left: 0;
   padding-right: 0;
+  font-weight: 500;
 }
 .navbar-default.navbar-trans .nav-link:before, .navbar-default.navbar-reduce .nav-link:before {
   content: "";
@@ -608,7 +609,7 @@ a:hover {
   transition: transform 0.2s ease-out, opacity 0.2s ease-out 0.3s;
 }
 .navbar-default.navbar-trans .nav-link:hover, .navbar-default.navbar-reduce .nav-link:hover {
-  color: #f5b228;
+  color: #231B71;
 }
 .navbar-default.navbar-trans .nav-link:hover:before, .navbar-default.navbar-reduce .nav-link:hover:before {
   transform: scaleX(1);
@@ -624,30 +625,32 @@ a:hover {
   transform: scaleX(1);
 }
 .navbar-default.navbar-trans .nav-link:before {
-  background-color: #f5b228;
+  background-color: #231B71;
 }
 .navbar-default.navbar-trans .nav-link:hover {
-  color: #f5b228;
+  color: #231B71;
 }
 .navbar-default.navbar-trans .show > .nav-link,
 .navbar-default.navbar-trans .active > .nav-link,
 .navbar-default.navbar-trans .nav-link.show,
 .navbar-default.navbar-trans .nav-link.active {
-  color: #fff;
+  color: #7D71FF;
+  font-weight: 700;
 }
 .navbar-default.navbar-reduce {
   transition: all 0.5s ease-in-out;
   padding-top: 19px;
   padding-bottom: 19px;
 }
+/
 .navbar-default.navbar-reduce .nav-link {
   color: #ffff;
 }
 .navbar-default.navbar-reduce .nav-link:before {
-  background-color: #f5b228;
+  background-color: #7D71FF;
 }
 .navbar-default.navbar-reduce .nav-link:hover {
-  color: #f5b228;
+  color: #7D71FF;
 }
 .navbar-default.navbar-reduce .show > .nav-link,
 .navbar-default.navbar-reduce .active > .nav-link,
@@ -715,7 +718,7 @@ a:hover {
 
 .navbar-toggler span {
   display: block;
-  background-color: #fff;
+  background-color: #7E7E7E;
   height: 3px;
   width: 25px;
   margin-top: 4px;
@@ -1923,7 +1926,8 @@ footer .credits {
 }
 .logo{
   /*height: 100px;*/
-  max-width: 100%;
+  max-width: 60%;
+  top: -20px;
 }
 .whatsapp-purpe{
   background: #bc98f3;
@@ -1966,7 +1970,7 @@ footer .credits {
 
 
 .header-dark{
-  background: #231b71;
+  background: #ffffff;
 }
 
 .card-products{
@@ -2375,7 +2379,6 @@ footer .credits {
   margin: auto;
   background: #fff;
   padding: 7px;
-  text-align: center;
   border-radius: 20px;
   font-size: 14px;
   font-weight: 400;
@@ -2391,6 +2394,7 @@ footer .credits {
 }
 .cont-tile-product-home{
   position: unset;
+  text-align: left;
 }
 
 .navbar>.container, .navbar>.container-fluid, .navbar>.container-lg, .navbar>.container-md, .navbar>.container-sm, .navbar>.container-xl, .navbar>.container-xxl{
@@ -2398,6 +2402,7 @@ footer .credits {
 }
 
 .input-wrapper {
+  top: 5px;
   position: relative;
   width: 100%;
 }
@@ -2409,6 +2414,7 @@ footer .credits {
     width: 100%;
     border-radius: 50px;
     border: solid #fff;
+    background-color: #F3F3F2;
 }
 
 .input.password {
@@ -2426,16 +2432,55 @@ footer .credits {
 }
 
 .logo-desck{
-  margin-top: 15px;
+  margin-top: -8px;
   display: block;
 }
 
+a.account-desck {
+  background-color: #7D71FF;
+  border-radius: 20px;
+  color: white;
+  text-align: center;
+  letter-spacing: 0.03em;
+  font-size: 16px;
+  position: relative;
+  padding: 5px 25px;
+  top: 13px;
+}
+
+a.account-desck:hover {
+  background-color: white;
+  color: #7D71FF;
+  text-decoration:none;
+}
+
 @media (max-width: 768px) {
+  .navbar-toggler {
+    position: relative;
+    margin-top: 15px;
+  }
+
+  .logo-desck{
+    margin-top: 0px;
+    display: block;
+  }
   .col-logo {
     display: flex !important;
+    position: relative ;
+    padding-bottom: 0;
+    top: 0;
+  }
+  .contenedor-search input{
+    background-color: #F3F3F2;
+    border: 0;
+  }
+  .boton-search{
+    background-color: #DAD7FA;
+    border: 0;
   }
   .account-desck {
     display: none;
+    background-color: #7D71FF;
   }
   .navbar{
     padding: 0px 0px 15px 0px !important;
@@ -2480,7 +2525,9 @@ footer .credits {
     display: none !important;
   }
   .logo{
-    height: 45px!important;
+    position: relative;
+    top: 10px;
+    max-height: 45px!important;
   }
   .cardproducts img.img-fluid{
     height: 128px;
@@ -2540,6 +2587,7 @@ footer .credits {
   .filtro-desk{
     display: none;
   }
+
   
 }
 
@@ -2720,13 +2768,13 @@ footer .credits {
 .mt-1rem{
   margin-top: 1rem;
 }
-.btn-whatsapp {
+
+.btn-whatsapp{
   position: fixed;
   bottom: 80px;
   right: 20px;
   z-index: 999;
 }
-
 
 
 .container_row {
@@ -2880,6 +2928,4 @@ footer .credits {
   right: 70px;
 }
 
-.is-animating {
-  transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-}
+.is-animating {  transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);}
