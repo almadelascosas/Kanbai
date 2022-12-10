@@ -20,8 +20,8 @@
             <div class="col-8">
               <h2 class="title-product-quotation title-quotation-mobile">{{$product->name}}</h2>
               <p class="price-quotation-mobile">
-                <img src="{{ asset('images/Precio_Icono.png') }}" alt="Rango de precio" class="img-d img-fluid image-quotation-mobile">
-                Rango de precio: <span>${{number_format($product->price_min, 0, 0, '.')}} - ${{number_format($product->price_max, 0, 0, '.')}}</span> 
+                <img src="{{ asset('images/Precio_Icono.png') }}" alt="Rango" class="img-d img-fluid image-quotation-mobile">
+                Rango: <span>${{number_format($product->price_min, 0, 0, '.')}} - ${{number_format($product->price_max, 0, 0, '.')}}</span> 
               </p>
               <p class="price-quotation-mobile">
                 <img src="{{ asset('images/Cantidad_Icono.png') }}" alt="Pedido minímo" class="img-d img-fluid image-quotation-mobile">
@@ -83,8 +83,8 @@
                   <img style="max-height: 244px;" class="image-quotation" src="{{ asset('images/products/'.$product->gallery[0]->file.'') }}" /> 
                   <h2 class="title-product-quotation mb-4 mt-3">{{$product->name}}</h2>
                   <p class="price-quotation">
-                    <img src="{{ asset('images/Precio_Icono.png') }}" alt="Rango de precio" class="img-d img-fluid">
-                    Rango de precio: <span>${{number_format($product->price_min, 0, 0, '.')}} - ${{number_format($product->price_max, 0, 0, '.')}}</span> 
+                    <img src="{{ asset('images/Precio_Icono.png') }}" alt="Rango" class="img-d img-fluid">
+                    Rango: <span>${{number_format($product->price_min, 0, 0, '.')}} - ${{number_format($product->price_max, 0, 0, '.')}}</span> 
                   </p>
                   <p class="quantity-quotation">
                     <img src="{{ asset('images/Cantidad_Icono.png') }}" alt="Pedido minímo" class="img-d img-fluid">
@@ -139,8 +139,8 @@
                   <img style="max-height: 244px;" class="image-quotation" src="{{ asset('images/products/'.$product->gallery[0]->file.'') }}" /> 
                   <h2 class="title-product-quotation mb-4 mt-3">{{$product->name}}</h2>
                   <p class="price-quotation">
-                    <img src="{{ asset('images/Precio_Icono.png') }}" alt="Rango de precio" class="img-d img-fluid">
-                    Rango de precio: <span>${{number_format($product->price_min, 0, 0, '.')}} - ${{number_format($product->price_max, 0, 0, '.')}}</span> 
+                    <img src="{{ asset('images/Precio_Icono.png') }}" alt="Rango" class="img-d img-fluid">
+                    Rango: <span>${{number_format($product->price_min, 0, 0, '.')}} - ${{number_format($product->price_max, 0, 0, '.')}}</span> 
                   </p>
                   <p class="quantity-quotation">
                     <img src="{{ asset('images/Cantidad_Icono.png') }}" alt="Pedido minímo" class="img-d img-fluid">
