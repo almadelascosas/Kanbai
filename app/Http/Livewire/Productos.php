@@ -242,6 +242,18 @@ class Productos extends Component
                     }
                 break;
             default:
+            if($this->info['search']!=null){
+                return view('livewire.products',[
+                    'products' => Products::with('productcategories','productcategories.category','gallery','user')
+                    ->where(function ($query) {
+                        $query->whereBetween('price_max',[$this->min_price,$this->max_price])
+                              ->orwhereBetween('price_min',[$this->min_price,$this->max_price]);
+                    })->where('name', 'LIKE', '%'.$this->info["search"].'%')
+                    ->orWhere('description', 'LIKE', '%'.$this->info["search"].'%')
+                    ->paginate($this->pagination),
+                ]);
+            }
+
             if($this->info['subcategory_id']==null){
                 if($this->shipping_price===null){
                     return view('livewire.products',[

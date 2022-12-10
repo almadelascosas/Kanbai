@@ -84,6 +84,7 @@ Route::get('/catalogo/{category}/{bubcategory}', 'ProductsController@productsByS
 Route::get('/catalogo/producto/{productoid}/{nameproduct}', 'ProductsController@productsByid');
 Route::get('/catalogo/cotizacion/porducto/{productoid}', 'ProductsController@quotation');
 Route::resource('cotizacion',   'ProductQuotationController');
+Route::get('/buscar/{search}', 'ProductsController@serachproduct')->name('serachproduct');
 
 Route::get('customers/cities/{departament}', 'CustomersController@cities');
 Route::get('/registro', 'CustomersController@register')->name('registro');
