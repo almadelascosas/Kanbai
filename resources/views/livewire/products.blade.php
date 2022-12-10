@@ -17,7 +17,7 @@
         </div>
         <div id='content' class="is-hidden">
 
-            @if($info['subcategory_id']==null)
+            @if($info['subcategory_id']=null)
             <div class="row mb-4 mt-5">
                 <h4 class="title-filter">Subcategorias</h4>
                 <input type="hidden" value="{{$subcategories = App\Models\SubCategories::where('category_id',$info['category_id'])->with('category')->get()}}">

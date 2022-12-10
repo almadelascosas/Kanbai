@@ -306,15 +306,34 @@ class ProductsController extends Controller
             'namesubcategory'=>null, 
             'slugsubcategory'=>null,
             'subcategory_id'=>null, 
-            'banners'=>$categorydata->banners
+            'banners'=>$categorydata->banners,
+            'search'=>null
 
         );
         
         return view ('site.products.list', compact('products','info'));
     }
 
+    public function serachproduct($search){
+        $products=Products::with('productcategories','productcategories.category','gallery')->where('name', 'LIKE', '%'.$search.'%')->get();
+        $info=array(
+            'category_id'=>null, 
+            'namecategory'=>str_replace('+', ' ', $search), 
+            'slugcategory'=>null, 
+            'namesubcategory'=>null, 
+            'slugsubcategory'=>null,
+            'subcategory_id'=>null, 
+            'banners'=>null,
+            'search'=>str_replace('+', ' ', $search)
+
+        );
+        
+        return view ('site.products.list', compact('products','info'));
+
+    }
+
     public function productsBySubCategory($category,$subcategory){
-        $categorydata = Categories::where('slug',$category)->first();
+        $categorydata = Categories::with('banners')->where('slug',$category)->first();
         $subcategorydata = SubCategories::where('slug',$subcategory)->first();
         
 
@@ -327,6 +346,8 @@ class ProductsController extends Controller
             'namesubcategory'=>$subcategorydata->name, 
             'slugsubcategory'=>$subcategorydata->slug, 
             'subcategory_id'=>$subcategorydata->id, 
+            'banners'=>$categorydata->banners,
+            'search'=>null
 
         );
         return view ('site.products.list', compact('products','info'));
