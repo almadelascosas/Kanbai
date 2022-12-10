@@ -30,7 +30,7 @@
                 @endforeach
             </div>
             @endif                
-            <div class="row background-item-filter mb-4">                    
+            <!--<div class="row background-item-filter mb-4">                    
                 <div class="col-9">
                     <label class="form-check-label" for="shipping_price">Envío gratis</label>
                 </div>
@@ -39,7 +39,7 @@
                         <input class="form-check-input" type="checkbox" wire:model="shipping_price" id="shipping_price">                        
                     </div>
                 </div>
-            </div>
+            </div>-->
             <div class="form-group">
                 <label for="exampleFormControlSelect1">Ordenar por</label>
                 <select class="form-control" wire:model="keyword" id="exampleFormControlSelect1">
@@ -95,7 +95,7 @@
         </div>
         @endif
 
-        <div class="row background-item-filter mb-4">
+        <!--<div class="row background-item-filter mb-4">
             
             <div class="col-9">
                 <label class="form-check-label" for="shipping_price">Envío gratis</label>
@@ -105,7 +105,7 @@
                     <input class="form-check-input" type="checkbox" wire:model="shipping_price" id="shipping_price">                        
                 </div>
             </div>
-        </div>
+        </div>-->
         
            
 
@@ -162,8 +162,8 @@
                                 <div class="col-md-12 mt-1 info-related">
                                     <h4 class="title-product-desk">{{$item->name}}</h4>                                    
                                     <p class="price">
-                                        <img src="{{ asset('images/Precio_Icono.png') }}" alt="Rango de precio" class="img-d img-fluid">
-                                        Rango de precio: <span>${{number_format($item->price_min, 0, 0, '.')}} - ${{number_format($item->price_max, 0, 0, '.')}}</span> 
+                                        <img src="{{ asset('images/Precio_Icono.png') }}" alt="Rango" class="img-d img-fluid">
+                                        Rango: <span>${{number_format($item->price_min, 0, 0, '.')}} - ${{number_format($item->price_max, 0, 0, '.')}}</span> 
                                     </p>
                                     <p class="quantity">
                                         <img src="{{ asset('images/Cantidad_Icono.png') }}" alt="Pedido minímo" class="img-d img-fluid">

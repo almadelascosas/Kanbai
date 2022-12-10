@@ -60,8 +60,8 @@
             <h2 class="title-product-view mb-3">{{$product->name}}</h2>
             {!! $product->description !!}
             <p class="price">
-              <img src="{{ asset('images/Precio_Icono.png') }}" alt="Rango de precio" class="img-d img-fluid">
-              Rango de precio: <span>${{number_format($product->price_min, 0, 0, '.')}} - ${{number_format($product->price_max, 0, 0, '.')}}</span> 
+              <img src="{{ asset('images/Precio_Icono.png') }}" alt="Rango" class="img-d img-fluid">
+              Rango: <span>${{number_format($product->price_min, 0, 0, '.')}} - ${{number_format($product->price_max, 0, 0, '.')}}</span> 
             </p>
             <p class="quantity">
               <img src="{{ asset('images/Cantidad_Icono.png') }}" alt="Pedido minímo" class="img-d img-fluid">
@@ -93,8 +93,8 @@
                           <h4 class="title-product-related">{{$item->name}}</h4>
                           <p class="vendido-po-desk">por {{$item->user->name}}</p>
                           <p class="price">
-                            <img src="{{ asset('images/Precio_Icono.png') }}" alt="Rango de precio" class="img-d img-fluid">
-                            Rango de precio: <span>${{number_format($item->price_min, 0, 0, '.')}} - ${{number_format($item->price_max, 0, 0, '.')}}</span> 
+                            <img src="{{ asset('images/Precio_Icono.png') }}" alt="Rango" class="img-d img-fluid">
+                            Rango: <span>${{number_format($item->price_min, 0, 0, '.')}} - ${{number_format($item->price_max, 0, 0, '.')}}</span> 
                           </p>
                           <p class="quantity">
                             <img src="{{ asset('images/Cantidad_Icono.png') }}" alt="Pedido minímo" class="img-d img-fluid">
@@ -152,8 +152,8 @@
           </div>
           <div class="col-md-12 mt-3">
             <p class="price">
-              <img src="{{ asset('images/Precio_Icono.png') }}" alt="Rango de precio" class="img-d img-fluid">
-              Rango de precio: <span>${{number_format($product->price_min, 0, 0, '.')}} - ${{number_format($product->price_max, 0, 0, '.')}}</span> 
+              <img src="{{ asset('images/Precio_Icono.png') }}" alt="Rango" class="img-d img-fluid">
+              Rango: <span>${{number_format($product->price_min, 0, 0, '.')}} - ${{number_format($product->price_max, 0, 0, '.')}}</span> 
             </p>
             <p class="quantity">
               <img src="{{ asset('images/Cantidad_Icono.png') }}" alt="Pedido minímo" class="img-d img-fluid">
