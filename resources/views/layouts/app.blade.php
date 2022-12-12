@@ -57,29 +57,7 @@
                                     </a>
                                 </li>
                             </ul>                            
-                            <div class="d-block d-sm-block d-md-none row">
-                                <div class="col-sm-6 offset-sm-4 text-center text-footer-mobil">Para Empresas</div>
-                                <div class="col-sm-6 offset-sm-4 text-center text-footer-mobil">Mi cuenta</div>
-                                <div class="col-sm-6 offset-sm-4 text-center text-footer-mobil">Terminos y Condiciones</div>
-                                <div class="col-sm-6 offset-sm-4 text-center text-footer-mobil">Preguntas frecuentes</div>
-                                <div class="col-sm-6 offset-sm-4 text-center text-footer-mobil">Contactanos</div>
-                                <div class="col-sm-6 offset-sm-4 text-center text-footer-mobil">Rastrea tu pedido</div>
-                                <div class="col-sm-6 offset-md-2 text-center">
-                                    <img style="width: 80%" class="img-fluid" src="{{ asset('images/imagen-footer-pagos-mobil.fw.png') }}">
-                                </div>                                
-                            </div>
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-12" style="height: 80px; line-height: 80px;">
-                                        <div class="copyright-footer">
-                                            <p class="copyright color-text-a">
-                                                &copy; Copyright
-                                                <span class="color-year">2022</span> Todos los derechos reservados
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+   
                         </div>
                     </div>
                 </div>
@@ -114,6 +92,9 @@
                                         <a href="#">Rastrea tu pedido</a>
                                     </li>
                                 </ul>
+                            </div>
+                            <div class="d-block d-sm-block d-md-none col-sm-6 offset-md-2 text-center">
+                                <img style="width: 80%" class="img-fluid" src="{{ asset('images/imagen-footer-pagos-mobil.fw.png') }}">
                             </div>
                         </div>
                     </div>
