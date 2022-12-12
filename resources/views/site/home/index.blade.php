@@ -161,38 +161,44 @@
                 <h2 class="mt-5 mb-5 titles-home title-nosotros"><b>¿Que dicen nuestros clientes?</b></h2>
             </div>
         </div>
-        <div id="testimonial-carousel" class="swiper">
-            <div class="swiper-wrapper">
-                <div class="carousel-item-a swiper-slide">
-                    <div class="testimonials-box">
-                        <div class="row">
-                            <div class="col-sm-12 col-md-12">
-                                <div class="testimonial-author-box">
-                                    <center>
-                                        <img src="{{ asset('assets/images/avatars/1.png') }}" alt="" class="testimonial-avatar">
-                                    </center>
-                                    <p class="testimonial-author">
-                                        <span class="testimonial-name">Albert & Erika</span>
-                                        <span class="testimonial-star">
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                        </span>
-                                        <br>
-                                        <span class="testimonial-date">1 de Septiembre 2022</span>
-                                    </p>
-                                </div>
-                                <div class="testimonials-content">
-                                    <p class="testimonial-text">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, cupiditate ea nam praesentium
-                                        debitis hic ber quibusdam
-                                        voluptatibus officia expedita corpori.
-                                    </p>
+        <div class="row mt-5">
+            <div id="testimonial-carousel" class="swiper">
+                <div class="swiper-wrapper">
+                    <div class="carousel-item-a swiper-slide">
+                        <div class="testimonials-box">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12">
+                                    <div class="testimonial-author-box">
+                                        <center>
+                                            <img src="{{ asset('assets/images/avatars/1.png') }}" alt="" class="testimonial-avatar">
+                                        </center>
+                                        <p class="testimonial-author">
+                                            <span class="testimonial-name">Albert & Erika</span>
+                                            <span class="testimonial-star">
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                            </span>
+                                            <br>
+                                            <span class="testimonial-date">1 de Septiembre 2022</span>
+                                            
+                                        </p>
+                                        
+                                    </div>
+                                    <div class="testimonials-content">
+                                        <p class="testimonial-text">
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, cupiditate ea nam praesentium
+                                            debitis hic ber quibusdam
+                                            voluptatibus officia expedita corpori.
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div><!-- End carousel item -->
+                    </div><!-- End carousel item -->
+                </div>
             </div>
         </div>
         <div class="testimonial-carousel-pagination carousel-pagination"></div>
@@ -218,7 +224,9 @@
                 <div class="col-12 contenedor-agenda">
                     <div class="row">
                         <div class="col-12 text-center">
-                            <img src="{{ asset('images/empresas/'.$img.'?'.rand()) }}" alt="{{ $img }}" class="img-agenda">
+                            <div class="circle-logo">   
+                                <img src="{{ asset('images/purple-calendar.png?'.rand()) }}" alt="{{ $img }}" class="img-agenda">
+                            </div>
                         </div>
                         <div class="col-12 divinput">
                             <div class="input-group mb-3">

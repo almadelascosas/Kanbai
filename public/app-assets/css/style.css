@@ -80,11 +80,7 @@ a:hover {
     margin: 50px auto;
 }
 
-.img-agenda {
-    position: relative;
-    margin-top: -50px;
-    width: 150px;
-}
+
 
 .divinput {
     padding: 10px 0;
@@ -164,6 +160,28 @@ a:hover {
     position: relative;
     margin-top: -20px;
     margin-left: -30px
+}
+
+
+.circle-logo {
+    position: relative;
+    margin-top: -50px;
+    margin-left: 110px;
+    width: 90px;
+    background-color: #D9D6F9;
+    border-radius: 50%;
+    text-align: center;
+}
+.circle-logo img {
+    position: relative;
+    margin-top: -20px;
+    margin-left: -30px
+}
+
+.img-agenda {
+    position: relative;
+    margin-top: -50px;
+    width: 150px;
 }
 
 .card-kanbai {
@@ -2121,9 +2139,9 @@ a:hover {
 
 .testimonial-author {
     margin-left: 1rem;
-    display: inline-flex;
     font-size: 1.2rem;
     color: #000000;
+    width: 100%;
 }
 
 .testimonial-author .testimonial-name {
@@ -2140,7 +2158,7 @@ a:hover {
 }
 
 .testimonial-date {
-    margin-left: 0;
+    position: relative;
     font-size: 12px;
     color: #CECECE;
 }
