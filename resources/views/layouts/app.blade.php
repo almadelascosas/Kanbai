@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Alma de las cosas - @yield('title')</title>
+    <title>Kanbai - @yield('title')</title>
     <meta name="description" content="En marcepets.com criamos con amor los mejores cachorros de diferentes razas. 'La vida es mejor con un gordit@ de 4 patitas'">
     <!-- Favicons -->
     <link href="{{ asset('assets/images/favicon.jpg') }}" rel="icon">
@@ -38,7 +38,7 @@
             <div class="row">
                 <div class="col-sm-12 col-md-3 border-right">
                     <div class="widget-a">
-                        <div class="w-body-a footer-logo">
+                        <div class="w-body-a footer-logo text-center">
                             <img class="logo-footer" src="{{ asset('images/logo/logo-kanbai-blanco.png') }}" />
                             <ul class="social-footer mt-5">
                                 <li>
@@ -56,7 +56,8 @@
                                         <img src="{{ asset('images/Twitter.png') }}" alt="Twitter" class="">
                                     </a>
                                 </li>
-                            </ul>
+                            </ul>                            
+   
                         </div>
                     </div>
                 </div>
@@ -92,6 +93,9 @@
                                     </li>
                                 </ul>
                             </div>
+                            <div class="d-block d-sm-block d-md-none col-sm-6 offset-md-2 text-center">
+                                <img style="width: 80%" class="img-fluid" src="{{ asset('images/imagen-footer-pagos-mobil.fw.png') }}">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -120,7 +124,7 @@
                         </p>
                     </div>
                     <div class="credits">
-                        Powered by <a href="https://almadelascosas.com/" target="_blank">almadelascosas.com</a>
+                        Powered by <a href="https://kanbai.co/" target="_blank">kanbai.co</a>
                     </div>
                 </div>
             </div>

@@ -69,13 +69,9 @@
 
 @push('scripts')
 <script>
-
 $( "#search" ).change(function() {    
-
     url='/buscar/'+$('#main-form-search #search').val();
     window.location.href = url;
-
-
 });
 </script>
 @endpush
