@@ -59,7 +59,34 @@
       </div>
     </section><!-- End list products Section -->
 
- 
+    <div class="d-block d-sm-block d-md-none">
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-10">
+                <div class="card-kanbai">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-4"></div>
+                            <div class="col-6 text-center">
+                                <div class="circle-icon text-center">
+                                    <img src="{{ asset('images/purple-calendar.png') }}" width="120">
+                                </div>                                
+                            </div>
+                            <div class="col-12 text-center"><h5 class="mt-5 titles-home-categories">¿Tienes un proyecto especifico?</h5></div>
+                            <div class="col-12 text-center">&nbsp;</div>
+                            <div class="col-12 text-center">Permitenos crear una propuesta 100% adaptada a tus necesidades</div>
+                            <div class="col-12 text-center">&nbsp;</div>
+                            <div class="col-12 text-center">
+                                <button type="button" class="btn btn-shedule">Crear Proyecto</button>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
 
 @endsection
 @push('scripts')
