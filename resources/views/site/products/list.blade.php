@@ -2,12 +2,8 @@
 @section('title', 'Productos')
 @section('content')
 
-
 <section class="section-agents section-t8">
-
-
-@if($info['banners']!=null)
-
+    @if($info['banners']!=null)
     <!-- Second slider. Carousel -->
     <div id="carousel" class="slider slider_second mt-5">
       <div class="slider_viewport">
@@ -27,10 +23,6 @@
       <div class="slider_control-nav"></div>
     </div>
     @endif
-
-
-
-
 </section>
 
 
