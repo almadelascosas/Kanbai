@@ -308,7 +308,6 @@ class ProductsController extends Controller
             'subcategory_id'=>null, 
             'banners'=>$categorydata->banners,
             'search'=>null
-
         );
         
         return view ('site.products.list', compact('products','info'));

@@ -79,8 +79,9 @@ Route::middleware(['auth',])->group(function () {
 });
 
 Route::get('/', 'HomeaplicationController@index')->name('home');
-Route::get('/catalogo/{category}', 'ProductsController@productsByCategory');
 Route::get('/catalogo/{category}/{bubcategory}', 'ProductsController@productsBySubCategory');
+Route::get('/catalogo/{category}', 'ProductsController@productsByCategory');
+
 Route::get('/catalogo/producto/{productoid}/{nameproduct}', 'ProductsController@productsByid');
 Route::get('/catalogo/cotizacion/porducto/{productoid}', 'ProductsController@quotation');
 Route::resource('cotizacion',   'ProductQuotationController');

@@ -186,6 +186,11 @@
             }
         });
     }
+
+    
+
+        
+
     </script>
     @stack('scripts')
 </body>
