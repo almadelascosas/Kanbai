@@ -51,7 +51,7 @@
                             <li class="nav-item">
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ (request()->is('/')) ? 'active' : '' }}" href="/">Inicio</a>
+                                <!-- <i class="bi bi-circle-fill"></i> --> <a class="nav-link {{ (request()->is('/')) ? 'active' : '' }}" href="/">Inicio</a>
                             </li>
                             <input type="hidden" value="{{$categories = App\Models\Categories::with('subcategories')->where('is_menu',1)->get()}}">
                             @foreach ($categories as $category)

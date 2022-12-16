@@ -23,7 +23,7 @@
     </div>
     <div class="container">
         <div class="row mt-5 mb-3 text-center">
-            <h2 class="mt-5 mb-5 titles-home-categories tittle-home-cat">Categorías únicas</h4>
+            <h2 class="mt-5 mb-5 titles-home-categories tittle-home-cat">Categorías únicas</h2>
         </div>
         <div class="row">
             @foreach($categories as $item)
@@ -38,11 +38,26 @@
     </div>
     <div class="row mt-5" style="margin-right: initial;">
         <h2 class="mt-5 mb-5 titles-home">
-               Empresas que <div class="d-block d-sm-block d-md-none"><br></div> <strong>confían en nosotros</strong>
-</h2>
-            <div class="swiper mySwiperclientes ">
-                <div class="swiper-wrapper">
-                    <?php 
+            Empresas que <div class="d-block d-sm-block d-md-none"><br></div> <strong>confían en nosotros</strong>
+        </h2>
+        <div class="swiper mySwiperclientes ">
+            <div class="swiper-wrapper">
+                @foreach($imagesFactory as $img)
+                <div class="swiper-slide empresas-slide">
+                    <div class="row">
+                        <div class="col-md-12 col-12">
+                            <img src="{{ asset($img.'?'.rand()) }}" alt="{{ $img }}" class="img-d img-fluid">
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+        <div class="swiper mySwiperclientesmobile ">
+            <div class="swiper-wrapper">
+                <?php 
                     $arrFiles = array();
                     $handle = opendir('public/images/empresas');
                     if ($handle) {
@@ -53,73 +68,48 @@
                     closedir($handle);
                     foreach($arrFiles as $img):
                     ?>
-                      <div class="swiper-slide empresas-slide">
-                          <div class="row">
-                              <div class="col-md-12 col-12">
-                                  <img src="{{ asset('images/empresas/'.$img.'?'.rand()) }}" alt="{{ $img }}" class="img-d img-fluid">
-                              </div>
-                          </div>
-                      </div>
-                      <?php endforeach; ?>
+                <div class="swiper-slide empresas-slide">
+                    <div class="row">
+                        <div class="col-md-12 col-12">
+                            <img src="{{ asset('images/empresas/'.$img.'?'.rand()) }}" alt="{{ $img }}" class="img-d img-fluid">
+                        </div>
+                    </div>
                 </div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
+                <?php endforeach; ?>
             </div>
-            <div class="swiper mySwiperclientesmobile ">
-                <div class="swiper-wrapper">
-                    <?php 
-                    $arrFiles = array();
-                    $handle = opendir('public/images/empresas');
-                    if ($handle) {
-                      while (($entry = readdir($handle)) !== FALSE) {
-                        if($entry!=='.' && $entry!=='..') $arrFiles[] = $entry;
-                      }
-                    }          
-                    closedir($handle);
-                    foreach($arrFiles as $img):
-                    ?>
-                      <div class="swiper-slide empresas-slide">
-                          <div class="row">
-                              <div class="col-md-12 col-12">
-                                  <img src="{{ asset('images/empresas/'.$img.'?'.rand()) }}" alt="{{ $img }}" class="img-d img-fluid">
-                              </div>
-                          </div>
-                      </div>
-                      <?php endforeach; ?>
-                </div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
     </div>
     <div class="container">
         <div class="row mt-5">
             <h2 class="mt-5 mb-5 titles-home title-nosotros"><strong>Por que nosotros?</strong></h2>
-                <div class="row mt-5">
-                    <div class="col-md-3 mb-3 itemnosotros">
-                        <div class="card-nosotros">
-                            <img src="{{ asset('images/iconocheck.png') }}" alt="Razas" class="img-d img-nosotros">
-                            Todo lo que necesita tu empresa en un solo lugar. Reunimos las mejores empresas de categorías no core todos verificados y con capacidad de cumplimiento.
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-3 itemnosotros">
-                        <div class="card-nosotros ">
-                            <img src="{{ asset('images/iconocheck.png') }}" alt="Razas" class="img-d img-nosotros">
-                            Ahórale dinero a tu empresa reduciendo los tiempos de investigación, vinculación y contratación.
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-3 itemnosotros">
-                        <div class="card-nosotros">
-                            <img src="{{ asset('images/iconocheck.png') }}" alt="Razas" class="img-d img-nosotros">
-                            Damos acompañamiento permanente a tus proyectos y los respaldamos con contratos de cumplimiento que aseguran el abastecimiento del bien.
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-3 itemnosotros">
-                        <div class="card-nosotros">
-                            <img src="{{ asset('images/iconocheck.png') }}" alt="Razas" class="img-d img-nosotros">
-                            La mejor relación costo beneficio. Monitoreamos el mercado para ofrecer lo mejor a los mejores precios.
-                        </div>
+            <div class="row mt-5">
+                <div class="col-md-3 mb-3 itemnosotros">
+                    <div class="card-nosotros">
+                        <img src="{{ asset('images/iconocheck.png') }}" alt="Razas" class="img-d img-nosotros">
+                        Todo lo que necesita tu empresa en un solo lugar. Reunimos las mejores empresas de categorías no core todos verificados y con capacidad de cumplimiento.
                     </div>
                 </div>
+                <div class="col-md-3 mb-3 itemnosotros">
+                    <div class="card-nosotros ">
+                        <img src="{{ asset('images/iconocheck.png') }}" alt="Razas" class="img-d img-nosotros">
+                        Ahórale dinero a tu empresa reduciendo los tiempos de investigación, vinculación y contratación.
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3 itemnosotros">
+                    <div class="card-nosotros">
+                        <img src="{{ asset('images/iconocheck.png') }}" alt="Razas" class="img-d img-nosotros">
+                        Damos acompañamiento permanente a tus proyectos y los respaldamos con contratos de cumplimiento que aseguran el abastecimiento del bien.
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3 itemnosotros">
+                    <div class="card-nosotros">
+                        <img src="{{ asset('images/iconocheck.png') }}" alt="Razas" class="img-d img-nosotros">
+                        La mejor relación costo beneficio. Monitoreamos el mercado para ofrecer lo mejor a los mejores precios.
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="row mt-5 news-products">
             <h2 class="mt-5 mb-5 titles-home title-new-products"><strong>Nuevos productos</strong></h4>
@@ -173,7 +163,7 @@
                                             <img src="{{ asset('assets/images/avatars/1.png') }}" alt="" class="testimonial-avatar">
                                         </center>
                                         <p class="testimonial-author">
-                                            <span class="testimonial-name">Albert & Erika</span>
+                                            <span class="testimonial-name">Albertk & Erika</span>
                                             <span class="testimonial-star">
                                                 <i class="bi bi-star-fill"></i>
                                                 <i class="bi bi-star-fill"></i>
@@ -183,9 +173,7 @@
                                             </span>
                                             <br>
                                             <span class="testimonial-date">1 de Septiembre 2022</span>
-                                            
                                         </p>
-                                        
                                     </div>
                                     <div class="testimonials-content">
                                         <p class="testimonial-text">
@@ -203,64 +191,58 @@
         </div>
         <div class="testimonial-carousel-pagination carousel-pagination"></div>
     </div>
-</section><!-- End Testimonials Section -->
-<div class="d-block d-sm-block d-md-none">
-    <div class="row">
-        <div class="col-2">&nbsp;</div>
-        <div class="col-8">&nbsp;
-            <hr>&nbsp;</div>
-    </div>
-</div>
-<div class="d-block d-sm-block d-md-none">
-    <section>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12 text-center">
-                    <h2 class="mt-5 mb-5 titles-home title-nosotros"><strong>Agendemos una reunión</strong></h2>
-                    <p>Tomemos un espacio para que conoscas como podemos ayudar a tu empresa</p>
-                </div>
+</section>
+<!-- End Testimonials Section -->
+
+<section class="section-testimonials nav-arrow-a testimonials">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">&nbsp;<hr>&nbsp;</div>
+            <div class="col-sm-12 text-center">
+                <h2 class="mt-5 mb-5 titles-home title-nosotros"><strong>Agendemos una reunión</strong></h2>
+                <p>Tomemos un espacio para que conoscas como podemos ayudar a tu empresa</p>
             </div>
-            <div class="row">
-                <div class="col-12 contenedor-agenda">
-                    <div class="row">
-                        <div class="col-12 text-center">
-                            <div class="circle-logo">   
-                                <img src="{{ asset('images/purple-calendar.png?'.rand()) }}" alt="{{ $img }}" class="img-agenda">
-                            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 contenedor-agenda">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <div class="circle-logo">
+                            <img src="{{ asset('images/purple-calendar.png?'.rand()) }}" alt="{{ $img }}" class="img-agenda">
                         </div>
-                        <div class="col-12 divinput">
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Nombre" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                                <span class="input-group-text icon-append" id=""><i class="bi bi-x-circle"></i></span>
-                            </div>
+                    </div>
+                    <div class="col-12 divinput">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Nombre" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <span class="input-group-text icon-append" id=""><i class="bi bi-x-circle"></i></span>
                         </div>
-                        <div class="col-12 divinput">
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Email" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                                <span class="input-group-text icon-append" id=""><i class="bi bi-x-circle"></i></span>
-                            </div>
+                    </div>
+                    <div class="col-12 divinput">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Email" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <span class="input-group-text icon-append" id=""><i class="bi bi-x-circle"></i></span>
                         </div>
-                        <div class="col-12 divinput">
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Telefono" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                                <span class="input-group-text icon-append" id=""><i class="bi bi-x-circle"></i></span>
-                            </div>
+                    </div>
+                    <div class="col-12 divinput">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Telefono" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <span class="input-group-text icon-append" id=""><i class="bi bi-x-circle"></i></span>
                         </div>
-                        <div class="col-12 divinput">
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Organizacion" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                                <span class="input-group-text icon-append" id=""><i class="bi bi-x-circle"></i></span>
-                            </div>
+                    </div>
+                    <div class="col-12 divinput">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Organizacion" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <span class="input-group-text icon-append" id=""><i class="bi bi-x-circle"></i></span>
                         </div>
-                        <div class="col-12 text-center">
-                            <button type="button" class="btn-suscribe">Suscribirse</button>
-                        </div>
+                    </div>
+                    <div class="col-12 text-center">
+                        <button type="button" class="btn-suscribe">Suscribirse</button>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-</div>
+    </div>
+</section>
 @endsection
 @push('scripts')
 <script>
