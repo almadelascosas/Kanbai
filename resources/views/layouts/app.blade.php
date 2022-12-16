@@ -56,8 +56,7 @@
                                         <img src="{{ asset('images/Twitter.png') }}" alt="Twitter" class="">
                                     </a>
                                 </li>
-                            </ul>                            
-   
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -186,10 +185,6 @@
             }
         });
     }
-
-    
-
-        
 
     </script>
     @stack('scripts')
