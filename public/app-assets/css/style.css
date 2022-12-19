@@ -397,7 +397,7 @@ a:hover {
 
 /*------/ Space Padding /------*/
 .section-t8 {
-    /*padding-top: 7rem;*/
+    padding-top: 7rem;
 }
 
 @media (max-width: 767px) {
