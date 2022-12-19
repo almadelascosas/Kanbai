@@ -8,7 +8,7 @@
                         <!--Marce<span class="color-b">Pets</span>-->
                     </a>
                     <a class="nav-link account push" href="/home"><i class="bi bi-person"></i></a>
-                    <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#menu_mov" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
                         <span></span>
                         <span></span>
                         <span></span>
@@ -61,11 +61,26 @@
                             @endforeach
                         </ul>
                     </div>
+                    <div class="mobile_menu navbar-collapse collapse" id="menu_mov">
+                        <ul class="navbar-nav">
+                            <span class="title_menu">Menú</span>
+                            
+                            <li class="nav-item">
+                               <a class="nav-link {{ (request()->is('/')) ? 'active' : '' }}" href="/"><i class="bi bi-circle-fill"></i>  Inicio</a>
+                            </li>
+                            <input type="hidden" value="{{$categories = App\Models\Categories::with('subcategories')->where('is_menu',1)->get()}}">
+                            @foreach ($categories as $category)
+                            <li class="nav-item">
+                                <a class="nav-link {{ (request()->is('catalogo/category->slug')) ? 'active' : '' }}" href="/catalogo/{{ $category->slug }}"><i class="bi bi-circle-fill"></i> {{ $category->name }}</a>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</div>    
 
 @push('scripts')
 <script>
