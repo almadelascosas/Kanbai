@@ -29,7 +29,7 @@
             @foreach($categories as $item)
             <div class="col-md-2 col-4 categories-home text-center" onclick="location.href='/catalogo/{{$item->slug}}'">
                 <div class="btn-categories">
-                    <img class="image-subcategory-list-product" src="{{ asset('images/categories/'.$item->file.'') }}" alt="{{ $item->name }}">
+                    <img class="image-subcategory-list-product" src="{{ asset('images/categories/'.$item->file) }}" alt="{{ $item->name }}">
                 </div>
                 {{ $item->name }}
             </div>
