@@ -14,7 +14,7 @@
                         <span></span>
                     </button>
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-6">
                     <div class="d-none d-sm-none d-md-block">
                         <form class="form" role="form" action="javascript:void(0)" enctype="multipart/form-data" id="main-form-search" autocomplete="off">
                             <input type="hidden" id="_url_search" value="{{ url('serachproduct') }}">
@@ -40,8 +40,9 @@
                     </div>
                     
                 </div>
-                <div class="col-md-2">
-                    <a class="account-desck" href="/home"> <!-- <i class="bi bi-person-circle"></i> --> Ingresa</a>
+                <div class="col-md-4">
+                    <a class="account-desck" href="/home">Ingresa</a>
+                    <a class="register-desck" href="/register">Registrarse</a>
                 </div>
             </div>
             <div class="row">

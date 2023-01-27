@@ -27,6 +27,9 @@ class HomeController extends Controller
     public function index()
     {
 
+        if(auth()->user()->hasRole('Comercio')){
+            return redirect()->to('/comercio');
+         }
         //dd(LogSistema::get());
         $date_current = Carbon::now()->toDateTimeString();
 

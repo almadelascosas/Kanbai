@@ -154,10 +154,10 @@
                     <div class="card mb-3 card-related" >
                         <div class="card-body cardproducts padding-0">
                             <div class="row">
-                                <div class="col-md-12 col-12 mb-3 padding-7">
-                                @if(count($item->gallery)>0)
-                                    <img src="{{ asset('images/products/thumbnail/list/'.$item->gallery[0]->file.'') }}" alt="{{$item->name}}" class="img-d img-fluid image-list image-products-related">
-                                @endif
+                                <div class="col-md-12 col-12 mb-3 padding-7" >
+                                
+                                    <div class="image-thumnail-desk" @if(count($item->gallery)>0) style="background-image: url({{ asset('images/products/thumbnail/list/'.$item->gallery[0]->file.'') }});" @endif></div>
+                                
                                 </div>
                                 <div class="col-md-12 mt-1 info-related">
                                     <h4 class="title-product-desk">{{$item->name}}</h4>                                    
@@ -182,11 +182,11 @@
                     <div class="card card-products mb-3" >
                         <div class="card-body cardproducts">
                             <div class="row">
-                                <div class="col-md-4 col-5">
-                                @if(count($item->gallery)>0)
-                                <img style="width: 100%;" src="{{ asset('images/products/thumbnail/list/'.$item->gallery[0]->file.'') }}" alt="Razas" class="img-d img-fluid">
-                                @endif    
-                            </div>
+                                <div class="col-md-4 col-5" >
+                                
+                                <div class="image-thumnail" @if(count($item->gallery)>0) style="background-image: url({{ asset('images/products/thumbnail/list/'.$item->gallery[0]->file.'') }});" @endif></div>
+                                 
+                                </div>
                                 <div class="col-md-8 col-7 info-list-mobile">
                                     <h5 class="card-title title-card-products title-list-product-mobile">{{$item->name}}</h5>
                                     <p class="card-text delivery_time delivery-lis-product"><i class="bi bi-truck"></i> Recibelo en {{$item->delivery_time}}</p>

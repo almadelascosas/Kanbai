@@ -16,7 +16,6 @@ class UserController extends Controller
         $this->middleware('permission:Registrar Usuario')->only('create');
         $this->middleware('permission:Registrar Usuario')->only('store');
         $this->middleware('permission:Editar Usuario')->only('edit');
-        $this->middleware('permission:Editar Usuario')->only('update');
         $this->middleware('permission:Ver Usuario')->only('show');
 
     }
@@ -121,7 +120,6 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::find(\Hashids::decode($id)[0]);
-
         $user->update($request->except('role'));
 
         if ($request->has('role'))

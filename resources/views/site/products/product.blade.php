@@ -2,7 +2,7 @@
 @section('title', 'Inicio')
 @section('content')
 <!-- ======= product Section ======= -->
-<section class="section-agents section-t8 mt-5 product-desk">
+<section class="section-agents section-t8 mt-5 product-desk only-product-desk">
     <div class="container">
         <div class="row mt-5">
             <div class="col-md-6">
@@ -109,7 +109,7 @@
     </div>
 </section><!-- End product Section -->
 <!-- ======= product Section ======= -->
-<section class="section-agents section-t8 mt-3 product-mobile">
+<section class="section-agents section-t8 mt-3 product-mobile only-product-mobile">
     <div class="container">
         <div class="row ">
             <div class="col-md-12 ">

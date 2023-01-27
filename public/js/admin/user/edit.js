@@ -1,6 +1,7 @@
 $(document).ready(function(){
 
   $('#main-form').submit(function(){
+    
 
         $('.missing_alert').css('display', 'none');
 

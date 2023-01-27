@@ -8,6 +8,8 @@ use App\Models\Log\LogSistema;
 use App\Models\Categories;
 use App\Models\SubCategories;
 use App\Models\CaregoriesBanners;
+use App\Models\ProductsCategories;
+use App\Models\ProductsSubcategories;
 
 use Image;
 
@@ -182,13 +184,16 @@ class CategoriesController extends Controller
     public function destroy($id)
     {
         $category = Categories::find(\Hashids::decode($id)[0]);
-        /*$image_path = public_path().'/images/categories/'.$category->file;
+        $image_path = public_path().'/images/categories/'.$category->file;
         if (@getimagesize($image_path)) {
             unlink($image_path);
-        }*/
+        }
 
+        
+        ProductsCategories::where('category_id',$category->id)->delete();
+        $subcategory=SubCategories::where('category_id',$category->id)->first();
+        ProductsSubcategories::where('subcategory_id',$subcategory->id)->delete();
         SubCategories::where('category_id',$category->id)->delete();
-
         Categories::find(\Hashids::decode($id)[0])->delete();
 
         return json_encode(['success' => true]);

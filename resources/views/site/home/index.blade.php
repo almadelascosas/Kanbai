@@ -56,26 +56,16 @@
             <div class="swiper-button-prev"></div>
         </div>
         <div class="swiper mySwiperclientesmobile ">
-            <div class="swiper-wrapper">
-                <?php 
-                    $arrFiles = array();
-                    $handle = opendir('public/images/empresas');
-                    if ($handle) {
-                      while (($entry = readdir($handle)) !== FALSE) {
-                        if($entry!=='.' && $entry!=='..') $arrFiles[] = $entry;
-                      }
-                    }          
-                    closedir($handle);
-                    foreach($arrFiles as $img):
-                    ?>
+            <div class="swiper-wrapper">              
+                @foreach($imagesFactory as $img)
                 <div class="swiper-slide empresas-slide">
                     <div class="row">
                         <div class="col-md-12 col-12">
-                            <img src="{{ asset('images/empresas/'.$img.'?'.rand()) }}" alt="{{ $img }}" class="img-d img-fluid">
+                            <img src="{{ asset($img.'?'.rand()) }}" alt="{{ $img }}" class="img-d img-fluid">
                         </div>
                     </div>
                 </div>
-                <?php endforeach; ?>
+                @endforeach
             </div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>

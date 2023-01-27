@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Log\LogSistema;
 use App\Models\SubCategories;
 use App\Models\Categories;
+use App\Models\ProductsSubcategories;
 
 class SubcategoriesController extends Controller
 {
@@ -152,18 +153,18 @@ class SubcategoriesController extends Controller
      */
     public function destroy($id)
     {
-        $category = Categories::find(\Hashids::decode($id)[0]);
-        $image_path = public_path().'/images/categories/'.$category->file;
+        $subcategory = SubCategories::find(\Hashids::decode($id)[0]);
+        $image_path = public_path().'/images/subcategories/'.$subcategory->file;
         if (@getimagesize($image_path)) {
             unlink($image_path);
         }
 
-        Dogs::where('categorie_id',$category->id)->delete();
-
-        Categories::find(\Hashids::decode($id)[0])->delete();
+        ProductsSubcategories::where('subcategory_id',$subcategory->id)->delete();
+        SubCategories::find(\Hashids::decode($id)[0])->delete();
 
         return json_encode(['success' => true]);
     }
+
     public function dogsByCategory($category){
         $dogs = Categories::with('dogs','dogs.gallery')->where('url',$category)->first();
         return view ('app.subcategories.index', compact('dogs'));
