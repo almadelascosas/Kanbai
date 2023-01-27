@@ -33,7 +33,7 @@ class Products extends Model
     }
     public function gallery()
     {
-        return $this->hasMany(ProductsGallery::class, 'product_id');
+        return $this->hasMany(ProductsGallery::class, 'product_id')->orderBy('id','ASC');
     }
 
     public function questions()

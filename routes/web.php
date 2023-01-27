@@ -36,46 +36,15 @@ Route::middleware(['auth',])->group(function () {
   Route::resource('productsgallery',   'ProductsGalleryController'); 
   Route::resource('categoriesbanner',   'CaregoriesBannersController'); 
   Route::resource('quotes',   'ProductQuotationController');
+  Route::resource('comercio',   'ProfileBusinessController');
 
-
-  Route::resource('services',   'ServicesController');
   Route::resource('customers',   'CustomersController');
+  Route::resource('services',   'ServicesController');
 
-  Route::resource('campus',   'CampusesController');
-  Route::resource('invoice',   'InvoiceController');
-  Route::get('invoice/customers/{idcustomer}', 'InvoiceController@getcustomer');
-  Route::get('invoice/service/{idservice}', 'InvoiceController@getservice');
-  Route::get('invoice/cities/{departament}', 'CustomersController@cities');
-  Route::resource('pos',   'PosController');
-  Route::get('pos/customers/{idcustomer}', 'InvoiceController@getcustomer');
-  Route::get('pos/service/{idservice}', 'InvoiceController@getservice');
-  Route::get('pos/cities/{departament}', 'CustomersController@cities');
-  Route::resource('notacredit',   'CreditNoteController');
-  Route::get('notacredit/invoice/{idinvoice}', 'CreditNoteController@getInvoiceById');
-  Route::resource('availability',   'AvailabilityController');
-  Route::resource('quote',   'QuoteController');
-  Route::post('quote/pofesional', 'QuoteController@getquoteprofesional');
-  Route::get('clinic-history/customer/{id}', 'ClinicHistoryController@byidcustomer');
-  Route::resource('clinic-history',   'ClinicHistoryController');
-  Route::resource('quoteanamnesis',   'QuoteAnamnesisController');
-  Route::resource('extraoralexam',   'QuoteExtraOralExamController');
-  Route::resource('dentalexam',   'QuoteDentalExamController');
-  Route::resource('customerodontogram',   'QuoteCustomerOdontogramController');
-  Route::get('getodontograma', 'QuoteCustomerOdontogramController@getOdontograma');
-  Route::get('getHallazgosDientePaciente', 'QuoteCustomerOdontogramController@getHallazgosDientePaciente');
+
   Route::resource('typequote',   'TypeQuoteController');
   Route::resource('quotation',   'QuotationController');
-  Route::get('quotation/customers/{idcustomer}', 'QuotationController@getcustomer');
-  Route::get('quotation/service/{idservice}', 'QuotationController@getservice');
-  Route::get('quotation/cities/{departament}', 'QuotationController@cities');
-  Route::resource('reportinvoicepos',   'ReportInvoicePosController');
-  Route::resource('reportinvoiceelectronic',   'ReportInvoiceElectronicController');
-  Route::resource('reportinvoicequotation',   'ReportInvoiceQuotationController');
-  Route::resource('tele-consultation',   'TeleConsultationController');
-  Route::resource('tele-consultation',   'TeleConsultationController');
-  Route::resource('checkoutpayment',   'PaymentController');
-  Route::get('/tele-consultation/meet/{meet}', [TeleConsultationController::class, 'show'])->name('show');
-
+  
 });
 
 Route::get('/', 'HomeaplicationController@index')->name('home');

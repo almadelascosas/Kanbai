@@ -1,52 +1,63 @@
-@extends('layouts.adminfront')
-
-
+@extends('layouts.appregister')
 @section('title', 'Login')
+
 
 @section('content')
 
-  <div class="container-fluid p-0">
-     <div class="row no-gutters justify-content-center">
-     
-        <div class="col-sm-6 col-lg-5 col-xxl-4  align-self-center order-2 order-sm-1">
-        <img src="{{ asset('images/logo/logo.png') }}" alt="AdminLTE Logo" class="brand-image " style="opacity: .8; max-width: 100%;height: 140px;display: block; margin: 0 auto;margin-top: 25px;">
-            <div class="card-group">
-            
-                <div class="card p-4 mt-5 elevation-1 card-login">
-                    <div class="card-body px-lg-5 py-lg-5">
-                   
+<section class="section-agents section-t8 mt-5">
+    <div class="container mt-5">
+        <div class="row mt-5 ">
+            <div class="col-md-6 conten-form">
+                <div class="">               
 
-                        <p class="text-muted">Ingresa tu cuenta</p>
-                         <form id="main-form" autocomplete="off" action="javascript:void(0)"><br>
-                          <input type="hidden" id="_url" value="{{ url('login') }}">
-                          <input type="hidden" id="_redirect" value="{{ url('/home') }}">
-                          <input type="hidden" id="_token" value="{{ csrf_token() }}">
-                            <div class="input-group mb-3">
-                                <input type="text" id="username" name="username" value="{{ old('username') }}" class="form-control" autofocus placeholder="Ingrese el usuario">
-                                <span class="invalid-feedback" id="username_alert" role="alert" style="font-size: 100%;"></span>
+                    <div class="card-body ">
+                        <form id="main-form" autocomplete="off" action="javascript:void(0)">
+                            <input type="hidden" id="_url" value="{{ url('login') }}">
+                            <input type="hidden" id="_redirect" value="{{ url('/home') }}">
+                            <input type="hidden" id="_token" value="{{ csrf_token() }}">
+
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Correo electrónico o usuario*</label>
+                                <input type="text" id="username" name="username" value="{{ old('username') }}" class="form-control input-cotizacion" autofocus >
+                                <span class="invalid-feedback" id="username_alert" role="alert" style="font-size: 100%;"></span>               
                             </div>
 
-                            <div class="input-group mb-4">
-                                <input type="password" id="password" name="password" class="form-control" placeholder="Password">
-                                <span class="invalid-feedback" id="password_alert" role="alert" style="font-size: 100%;"></span>
+                            <div class="mb-4">
+                                <label for="password" class="form-label">Contraseña *</label>
+                                <input type="password" id="password" name="password" class="form-control input-cotizacion" >
+                                <span class="invalid-feedback" id="password_alert" role="alert" style="font-size: 100%;"></span>                     
                             </div>
-                            <div class="row">
-                                <div class="col-md-12 text-center">
-                                    <button type="submit" class="btn btn-default" id="boton">
-                                        <i class="fas fa-sign-in-alt text-white" id="ajax-icon"></i> <span class="text-white ml-3">{{ __('Acceder') }}</span>
+
+                            <div class="form-group row mb-0 mt-3">
+                                <div class="col-md-6 offset-md-3">
+                                    <button type="submit" class="btn btn-primary btn-go-quotation color-purple" id="boton">
+                                        Ingresar
                                     </button>
                                 </div>
-                                
-
                             </div>
+                            <div class="form-group row mb-0 mt-4">
+                                <div class="col-md-6 offset-md-3">
+                                    <a  class="btn btn-link text-gray btn-link-register" href="#">Olvidé mi contraseña</a>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mb-0 mt-2 create-account">
+                                <div class="col-md-6 offset-md-3">
+                                    <a  class="btn btn-link text-gray btn-link-register" href="/register">¿No tienes una cuenta? <strong>Ingresa</strong></a>
+                                </div>
+                            </div>
+                            
                         </form>
                     </div>
-                </div><br>
+                </div>
+            </div>
+            <div class="col-md-6 image-register-desk">
+                <img src="{{ asset('images/registro.png') }}" alt="registro" class="img-register">
             </div>
         </div>
-
     </div>
-</div>
+</section>
+
 
 @endsection
 

@@ -2,7 +2,7 @@
 @section('title', 'Cotización')
 @section('content')
 <!-- ======= product Section ======= -->
-<section class="section-agents section-t8 mt-5">
+<section class="section-agents section-t3 ">
     <div class="container">
         <div class="row no-gutters justify-content-center">
             <form class="form" role="form" action="javascript:void(0)" enctype="multipart/form-data" id="main-form" autocomplete="off">
@@ -24,6 +24,12 @@
                             Pedido minímo: <span>{{$product->quantity_min }} </span>
                         </p>
                     </div>
+                </div>
+                <div class="col-md-2 col-logo">
+                    <a class="logo-desck" href="/">
+                        <img class="logo" src="{{ asset('images/logo/logo-kanbai-color.png').'?'.rand() }}" />
+                        <!--Marce<span class="color-b">Pets</span>-->
+                    </a>                    
                 </div>
                 <ul class="nav nav-tabs justify-content-center" id="cotizacion" role="tablist">
                     <li class="nav-item" role="presentation">

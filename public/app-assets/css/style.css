@@ -2997,220 +2997,56 @@ footer .credits {
 }
 
 a.account-desck {
-    background-color: #7D71FF;
     border-radius: 20px;
-    color: white;
     text-align: center;
     letter-spacing: 0.03em;
     font-size: 16px;
     position: relative;
-    padding: 5px 25px;
+    padding: 7px 25px;
     top: 13px;
+    font-weight: 700;
+    border: solid 2px #7D71FF;
+    color: #7D71FF;
+}
+
+a.account-desck-register {
+    background: #7D71FF;
+    border-radius: 20px;
+    text-align: center;
+    letter-spacing: 0.03em;
+    font-size: 16px;
+    position: relative;
+    padding: 7px 25px;
+    top: 13px;
+    font-weight: 700;
+    border: solid 2px #7D71FF;
+    color: #fff;
+}
+
+.register-desck{
+    background: #7D71FF;
+    border-radius: 20px;
+    text-align: center;
+    letter-spacing: 0.03em;
+    font-size: 16px;
+    position: relative;
+    padding: 7px 25px;
+    top: 13px;
+    font-weight: 700;
+    border: solid 2px #7D71FF;
+    color: #fff;
 }
 
 a.account-desck:hover {
-    background-color: white;
-    color: #7D71FF;
+    background-color: #7D71FF;
+    color: #fff;
     text-decoration: none;
 }
 
-@media (max-width: 768px) {
-    
-
-    .navbar-toggler {
-        background-color: #F5F5F5;
-    }
-
-    .logo-desck {
-        margin-top: 0px;
-        display: block;
-    }
-
-    .col-logo {
-        display: flex !important;
-        position: relative;
-        padding-bottom: 0;
-        top: 0;
-    }
-
-    .contenedor-search input {
-        background-color: #F3F3F2;
-        border: 0;
-    }
-
-    .boton-search {
-        background-color: #DAD7FA;
-        border: 0;
-    }
-
-    .account-desck {
-        display: none;
-        background-color: #7D71FF;
-    }
-
-    .navbar {
-        padding: 0px 0px 15px 0px !important;
-    }
-
-    .account {
-        display: block;
-        text-align: center;
-        margin-top: 15px;
-        font-size: 25px !important;
-    }
-
-    /*.section-t8 { padding-top: 8.5rem !important; }*/
-
-    .itemnosotros {
-        padding-left: 35px;
-    }
-
-    .card-nosotros {
-        position: relative;
-        padding-left: 45px;
-        text-align: initial;
-        min-height: 145px;
-    }
-
-    .img-nosotros {
-        margin-top: -35px !important;
-        width: 55px !important;
-        position: absolute;
-        top: 75px;
-        left: -28px;
-    }
-
-    .title-nosotros {
-        margin-bottom: 1px !important;
-        margin-top: 0px !important;
-    }
-
-    .tittle-home-cat {
-        margin-bottom: 10px !important;
-        margin-top: 0px !important;
-    }
-
-    .news-products {
-        display: none;
-    }
-
-    .desk {
-        display: none !important;
-    }
-
-    .logo {
-        position: relative;
-        top: 10px;
-        max-height: 45px !important;
-    }
-
-    .cardproducts img.img-fluid {
-        height: 128px;
-    }
-
-    .product-desk {
-        display: none;
-    }
-
-    .cardproducts {
-        padding: 0;
-    }
-
-    .cardproducts img.img-fluid {
-        border-top-left-radius: 13px;
-        border-bottom-left-radius: 13px;
-    }
-
-    .info-list-mobile {
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
-
-    .title-list-product-mobile {
-        margin-bottom: 5px;
-        font-size: 16px;
-    }
-
-    .delivery-lis-product,
-    .quantity-list-mobile {
-        margin-bottom: 5px;
-    }
-
-    .price-list-mobile {
-        font-size: 14px;
-    }
-
-    .products-list-mobile {
-        margin-top: 25px;
-    }
-
-    .logo-footer {
-        display: block;
-        margin: 0 auto;
-    }
-
-    .social-footer {
-        justify-content: center;
-    }
-
-    .menu-footer-mobile {
-        margin-top: 0px;
-        padding-top: 0;
-    }
-
-    .menu-footer li a {
-        display: block;
-        text-align: center;
-    }
-
-    .contact-mobile {
-        display: none;
-    }
-
-    .mySwiperclientes {
-        display: none;
-    }
-
-    .info-desk {
-        display: none;
-    }
-
-    .filtro-desk {
-        display: none;
-    }
-
-
-}
-
-@media (min-width: 768px) {
-    .account {
-        display: none;
-    }
-
-    .testimonials {
-        display: none;
-    }
-
-    .banner-mobile {
-        display: none !important;
-    }
-
-    .product-mobile {
-        display: none !important;
-    }
-
-    .mySwiperclientesmobile {
-        display: none;
-    }
-
-    .back-info-quotation {
-        display: none;
-    }
-
-    .filtro-mobile {
-        display: none;
-    }
-
+a.register-desck:hover, a.account-desck-register:hover {
+    background-color: #fff;
+    color: #7D71FF;
+    text-decoration: none;
 }
 
 
@@ -3636,5 +3472,344 @@ a.account-desck:hover {
         background-color: #fafafa;
         z-index: 999;
     }
+}
+
+.label-display-block{
+    display: block;
+}
+.iti--allow-dropdown{
+    width: 100%;
+}
+.img-register{
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+}
+.wth-30{
+    width: 30%;
+}
+.wth-70{
+    width: 70%;
+}
+.icon-profile{
+    text-align: center;
+    font-size: 40px;
+}
+.content-icon-profile{
+    background: #E4E4E4;
+    border-radius: 50px;
+    padding: 5px 15px;
+    width: 68px;
+    height: 68px;
+}
+.menu-user{
+    color: #636363 !important;
+    background-color: transparent !important;
+    text-align: left;
+}
+
+.float-right{
+    float: right;
+}
+.icon-net-menu-user{
+    margin-top: 10px;
+}
+.squere-menu-user{
+    color: #E4E4E4;
+    font-size: 30px;
+    margin-right: 15px;
+}
+
+.conten-info-user{
+    padding: 15px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border-radius: 30px;
+    opacity: 1;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+.border-right-user{
+    border-right: solid 1px #dbdbdb;
+}
+.title-infouser{
+    color: #636363;
+    font-size: 20px;
+}
+button.navbar-toggler{
+    margin-top: 13px;
+}
+#search{
+    padding: 7px 15px 7px 35px !important;
+}
+
+.menu-register{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 7px;
+}
+.menu-register li a{
+    letter-spacing: 0px;
+    color: #5F5F5F !important;
+    font-weight: bold !important;
+}
+.separador-menu-register{
+    border-left: solid 1px #e1e1e1;
+    padding-left: 20px;
+}
+
+.color-purple{
+    background: #7F00FF !important;
+    border: #7F00FF !important;
+}
+.text-gray{
+    color:#636363 !important;
+}
+.image-thumnail{
+    background-size: cover;
+    background-position: center center;
+    height: 121px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+.image-thumnail-desk{
+    background-size: cover;
+    background-position: center center;
+    height: 250px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+.only-product-mobile{
+    margin-top: 80px !important;
+}
+.only-product-desk{
+    margin-top: 120px !important; 
+}
+.create-account{
+    display: none;
+}
+.btn-link-register{
+    text-align: center;
+    display: block;
+    text-decoration: none;
+}
+
+.btn-link-register strong{
+    color: #7F00FF !important;
+    margin-left: 7px;
+    text-decoration: underline;
+}
+
+
+
+/**Responsive**/
+
+
+
+@media (max-width: 768px) {
+    
+
+    .navbar-toggler {
+        background-color: #F5F5F5;
+    }
+
+    .logo-desck {
+        margin-top: 0px;
+        display: block;
+    }
+
+    .col-logo {
+        display: flex !important;
+        position: relative;
+        padding-bottom: 0;
+        top: 0;
+    }
+
+    .contenedor-search input {
+        background-color: #F3F3F2;
+        border: 0;
+    }
+
+    .boton-search {
+        background-color: #DAD7FA;
+        border: 0;
+    }
+
+    .account-desck, .register-desck, .account-desck-register {
+        display: none;
+        background-color: #7D71FF;
+    }
+    .image-register-desk{
+        display: none;
+    }
+    .create-account{
+        display: block;
+    }
+
+    .navbar {
+        padding: 0px 0px 15px 0px !important;
+    }
+
+    .account {
+        display: block;
+        text-align: center;
+        margin-top: 15px;
+        font-size: 25px !important;
+    }
+
+    /*.section-t8 { padding-top: 8.5rem !important; }*/
+
+    .itemnosotros {
+        padding-left: 35px;
+    }
+
+    .card-nosotros {
+        position: relative;
+        padding-left: 45px;
+        text-align: initial;
+        min-height: 145px;
+    }
+
+    .img-nosotros {
+        margin-top: -35px !important;
+        width: 55px !important;
+        position: absolute;
+        top: 75px;
+        left: -28px;
+    }
+
+    .title-nosotros {
+        margin-bottom: 1px !important;
+        margin-top: 0px !important;
+    }
+
+    .tittle-home-cat {
+        margin-bottom: 10px !important;
+        margin-top: 0px !important;
+    }
+
+    .news-products {
+        display: none;
+    }
+
+    .desk {
+        display: none !important;
+    }
+
+    .logo {
+        position: relative;
+        top: 10px;
+        max-height: 45px !important;
+    }
+
+    .cardproducts img.img-fluid {
+        height: 128px;
+    }
+
+    .product-desk {
+        display: none;
+    }
+
+    .cardproducts {
+        padding: 0;
+    }
+
+    .cardproducts img.img-fluid {
+        border-top-left-radius: 13px;
+        border-bottom-left-radius: 13px;
+    }
+
+    .info-list-mobile {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .title-list-product-mobile {
+        margin-bottom: 5px;
+        font-size: 16px;
+    }
+
+    .delivery-lis-product,
+    .quantity-list-mobile {
+        margin-bottom: 5px;
+    }
+
+    .price-list-mobile {
+        font-size: 14px;
+    }
+
+    .products-list-mobile {
+        margin-top: 25px;
+    }
+
+    .logo-footer {
+        display: block;
+        margin: 0 auto;
+    }
+
+    .social-footer {
+        justify-content: center;
+    }
+
+    .menu-footer-mobile {
+        margin-top: 0px;
+        padding-top: 0;
+    }
+
+    .menu-footer li a {
+        display: block;
+        text-align: center;
+    }
+
+    .contact-mobile {
+        display: none;
+    }
+
+    .mySwiperclientes {
+        display: none;
+    }
+
+    .info-desk {
+        display: none;
+    }
+
+    .filtro-desk {
+        display: none;
+    }
+
+
+}
+
+@media (min-width: 768px) {
+    .account {
+        display: none;
+    }
+
+    .testimonials {
+        display: none;
+    }
+
+    .banner-mobile {
+        display: none !important;
+    }
+
+    .product-mobile {
+        display: none !important;
+    }
+
+    .mySwiperclientesmobile {
+        display: none;
+    }
+
+    .back-info-quotation {
+        display: none;
+    }
+
+    .filtro-mobile {
+        display: none;
+    }
+
 }
 
