@@ -51,6 +51,7 @@ class HomeController extends Controller
         . date('H:m:i').' del día: '.date('d/m/Y');
         $log->save();
 
+        
         return view('admin.home.index', compact('emp_count_1',
                                                 'emp_count_2',
                                                 'emp_count_3',

@@ -308,7 +308,6 @@ class ProductsController extends Controller
             'subcategory_id'=>null, 
             'banners'=>$categorydata->banners,
             'search'=>null
-
         );
         
         return view ('site.products.list', compact('products','info'));
@@ -379,7 +378,6 @@ class ProductsController extends Controller
         ->where('id',filter_var($productoid, FILTER_VALIDATE_INT))->first();
        
         return view ('site.quotation.create', compact('product'));
-        
     }
 
     

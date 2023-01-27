@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Categories;
 use App\Models\Products;
+use Illuminate\Support\Facades\Storage;
 
 
 use Illuminate\Http\Request;
@@ -19,9 +20,13 @@ class HomeaplicationController extends Controller
     {
         $categories =Categories::where('state',1)->get();
         $newproducts=Products::with('productcategories','productcategories.category','gallery','user')->orderBy('updated_at', 'desc')->get(); 
-         
 
-        return view('site.home.index', compact('categories','newproducts'));
+        //Lectura Directorio Logo Empresas
+        $imagesFactory=[];
+        $filess = Storage::disk('public-folder')->allFiles('images/empresas');
+        foreach ($filess as $file) $imagesFactory[]=$file;
+
+        return view('site.home.index', compact('categories','newproducts', 'imagesFactory'));
     }
 
     /**

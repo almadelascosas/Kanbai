@@ -25,10 +25,7 @@
 <body>
     <!-- ======= Property Search Section ======= -->
     <div class="click-closed"></div>
-    <!-- ======= Header/Navbar ======= -->
-    <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top header-dark" style="padding: 15px 0;">
-        @include('layouts.partials.appmenu')
-    </nav><!-- End Header/Navbar -->
+
     <main id="main">
         @yield('content')
     </main><!-- End #main -->
