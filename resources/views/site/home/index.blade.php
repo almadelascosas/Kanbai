@@ -144,16 +144,17 @@
         <div class="row mt-5">
             <div id="testimonial-carousel" class="swiper">
                 <div class="swiper-wrapper">
+                    <!-- Start Carousel item -->
                     <div class="carousel-item-a swiper-slide">
                         <div class="testimonials-box">
                             <div class="row">
                                 <div class="col-sm-12 col-md-12">
                                     <div class="testimonial-author-box">
                                         <center>
-                                            <img src="{{ asset('assets/images/avatars/1.png') }}" alt="" class="testimonial-avatar">
+                                            <img src="{{ asset('assets/images/avatars/review-daniela.png') }}" alt="" class="testimonial-avatar">
                                         </center>
                                         <p class="testimonial-author">
-                                            <span class="testimonial-name">Albertk & Erika</span>
+                                            <span class="testimonial-name">Daniela Muñoz</span>
                                             <span class="testimonial-star">
                                                 <i class="bi bi-star-fill"></i>
                                                 <i class="bi bi-star-fill"></i>
@@ -162,20 +163,83 @@
                                                 <i class="bi bi-star-fill"></i>
                                             </span>
                                             <br>
-                                            <span class="testimonial-date">1 de Septiembre 2022</span>
+                                            <span class="testimonial-date">Skandia S.A.</span>
                                         </p>
                                     </div>
                                     <div class="testimonials-content">
                                         <p class="testimonial-text">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, cupiditate ea nam praesentium
-                                            debitis hic ber quibusdam
-                                            voluptatibus officia expedita corpori.
+                                            Trabajo en el área de marketing de una compañía financiera, en donde hacemos diferentes actividades, y en donde nuestros clientes externos e internos son nuestra mayor prioridad. En Kanbai encontramos soluciones a la medida para apoyo a estas actividades, la mejor disposición, flexibilidad y cumplimiento para llevar a cabo nuestro trabajo.
                                         </p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div><!-- End carousel item -->
+                    </div>
+                    <!-- End carousel item -->
+                    <!-- Start Carousel item -->
+                    <div class="carousel-item-a swiper-slide">
+                        <div class="testimonials-box">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12">
+                                    <div class="testimonial-author-box">
+                                        <center>
+                                            <img src="{{ asset('assets/images/avatars/review-valeria.png') }}" alt="" class="testimonial-avatar">
+                                        </center>
+                                        <p class="testimonial-author">
+                                            <span class="testimonial-name">Valeria Galban</span>
+                                            <span class="testimonial-star">
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                            </span>
+                                            <br>
+                                            <span class="testimonial-date">Office Experience Manager LATAM Kin+Carta</span>
+                                        </p>
+                                    </div>
+                                    <div class="testimonials-content">
+                                        <p class="testimonial-text">
+                                            Coordino el área de experiencia de oficina de una empresa de tecnología donde el bienestar del empleado es de suma importancia, dada la competencia en el mercado tecnológico por el mejor talento . En Kanbai hemos encontrado un aliado para regalos, merchandising y apoyo a actividades. Su aporte ha sido importante para lograr nuestros objetivos y mantener a nuestros colaboradores felices.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End carousel item -->
+                    <!-- Start Carousel item -->
+                    <div class="carousel-item-a swiper-slide">
+                        <div class="testimonials-box">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12">
+                                    <div class="testimonial-author-box">
+                                        <center>
+                                            <img src="{{ asset('assets/images/avatars/review-sara.png') }}" alt="" class="testimonial-avatar">
+                                        </center>
+                                        <p class="testimonial-author">
+                                            <span class="testimonial-name">Sara Rúa</span>
+                                            <span class="testimonial-star">
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                            </span>
+                                            <br>
+                                            <span class="testimonial-date">CMO - Head of Growth</span>
+                                        </p>
+                                    </div>
+                                    <div class="testimonials-content">
+                                        <p class="testimonial-text">
+                                            Soy líder de marketing de una Startup donde nuestro principal objetivo es el crecimiento de la plataforma, realizamos diferentes actividades, eventos y activaciones, en los cuales Kanbai ha sido un gran aliado para hacer de estas actividades algo muy original y especial. Su tecnología de proyectos es muy chévere porque puedo estar tranquila sobre en qué fase van las cosas, la comunicación es muy buena, encuentro de todo, la calidad es excelente y los precios muy buenos.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End carousel item -->
                 </div>
             </div>
         </div>
