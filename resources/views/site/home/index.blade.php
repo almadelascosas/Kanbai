@@ -2,7 +2,7 @@
 @section('title', 'Inicio')
 @section('content')
 <!-- END SERVICES -->
-<section class="section-agents section-t8">
+<section class="section-agents section-t8 home">
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active desk">
@@ -144,7 +144,8 @@
         <div class="row mt-5">
             <div id="testimonial-carousel" class="swiper">
                 <div class="swiper-wrapper">
-                    <!-- Start Carousel item -->
+                    
+                    <!-- Start carousel item -->
                     <div class="carousel-item-a swiper-slide">
                         <div class="testimonials-box">
                             <div class="row">
@@ -155,7 +156,6 @@
                                         </center>
                                         <p class="testimonial-author">
                                             <span class="testimonial-name">Daniela Muñoz</span>
-                                            
                                             <span class="testimonial-star">
                                                 <i class="bi bi-star-fill"></i>
                                                 <i class="bi bi-star-fill"></i>
@@ -177,7 +177,8 @@
                         </div>
                     </div>
                     <!-- End carousel item -->
-                    <!-- Start Carousel item -->
+
+                    <!-- Start carousel item -->
                     <div class="carousel-item-a swiper-slide">
                         <div class="testimonials-box">
                             <div class="row">
@@ -209,7 +210,8 @@
                         </div>
                     </div>
                     <!-- End carousel item -->
-                    <!-- Start Carousel item -->
+
+                    <!-- Start carousel item -->
                     <div class="carousel-item-a swiper-slide">
                         <div class="testimonials-box">
                             <div class="row">
