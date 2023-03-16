@@ -6,6 +6,7 @@ use App\Models\Projects;
 use Illuminate\Http\Request;
 use App\Models\Categories;
 use App\Models\ProjectTimeLine;
+use App\Models\User;
 
 
 use App\Models\Log\LogSistema;
@@ -28,10 +29,13 @@ class ProjectsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        $categories = Categories::with('subcategories')->get();
-        return view('site.customrequest.create', compact('categories'));
+        $user = User::with('roles')->with('permissions')->find(auth()->user()->id);
+        $projects = Projects::with('timeline')->where('user_request_id',auth()->user()->id)->get();
+        $project = Projects::with('timeline')->find(\Hashids::decode($id)[0]);
+//dd($project);
+        return view ('site.projects.index', compact('user','projects','project'));
     }
 
     /**
