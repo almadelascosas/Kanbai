@@ -26,15 +26,96 @@
         </div>
     </div>
 </div>
+<div>
+    <ul class="list-group-horizontal">
+    @foreach($quotation->history as $item)
+    <li class="list-group-item arrowRight">
+    @if($item->state==0)En Espera @endif
+    @if($item->state==1)Aprobado  @endif
+    @if($item->state==2)Cancelado @endif
+    </li>
+    @endforeach
+    
+    </ul>
+</div>
 <div class="content-body">
     <section id="multiple-column-form">
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title">Editar Cotizacion</h4>
+                    <div class="card-header header-solicitud">
+                        <div class="col-md-5">
+                            <h4 class="card-title title-solicitud">Número de solicitud: {{ $quotation->id }}</h4>
+                        </div>
+                        <div class="col-md-7">
+                            <!-- Button trigger modal -->
+                            @if($quotation->state!=1)
+                            <button type="button" class="btn btn-admin-succes-quotation" data-bs-toggle="modal" data-bs-target="#aprovarsolicitud">
+                                Aprobar solicitud
+                            </button>
+                            @endif
+                            @if($quotation->state!=2)
+                            <button type="button" class="btn btn-admin-danger-quotation" data-bs-toggle="modal" data-bs-target="#cancelarsolicitud">
+                                Rechazar solicitud
+                            </button>
+                            @endif
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="aprovarsolicitud" tabindex="-1" aria-labelledby="aprovarsolicitudLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="aprovarsolicitudLabel">Aprobar Solicitud</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            @include('admin.quotations.partials.aporbarsolicitud',['quotation'=>$quotation])
+                                        </div>
+                                    
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="cancelarsolicitud" tabindex="-1" aria-labelledby="cancelarsolicitudLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="cancelarsolicitudLabel">Rechazar Solicitud</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            @include('admin.quotations.partials.rechazarsolicitud',['quotation'=>$quotation])
+                                        </div>
+                                    
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
+</div>
                     <div class="card-body">
+                        <div class="row mt-4 mb-4 info-product-solicitud">
+                            <div class="col-md-2">
+                                @if(count($quotation->producto->gallery)>0)
+                                <img  class="image-solicitud" src="{{ asset('images/products/thumbnail/list/'.$quotation->producto->gallery[0]->file.'') }}">
+                                @endif
+                            </div>
+                            <div class="col-md-5">
+                                <h4 class="titleproduct-solicitud mt-2">{{$quotation->producto->name}}</h4> 
+                                <p class="price-solicitud mt-2">                                   
+                                    Rango de precio: <span>${{number_format($quotation->producto->price_min, 0, 0, '.')}} - ${{number_format($quotation->producto->price_max, 0, 0, '.')}}</span> 
+                                    </p>
+                                <p class="price-solicitud mt-2">                                   
+                                    Pedido minímo: <span>{{$quotation->producto->quantity_min }} </span>
+                                </p> 
+                            </div>
+                            <div class="col-md-5">
+                                {!!$quotation->producto->description !!}
+                            </div>
+                        
+                        </div>
                         <form class="form" role="form" id="main-form" autocomplete="off" enctype="multipart/form-data">
                             <input type="hidden" id="_url" value="{{ url('quotes',[$quotation->encode_id]) }}">
                             <input type="hidden" id="_token" value="{{ csrf_token() }}">
@@ -93,7 +174,7 @@
                                         <div class="col-md-6 col-6">
                                             <div class="mb-1">
                                                 <label class="form-label" for="producto">Producto</label>
-                                                <input type="date" class="form-control" id="producto" name="producto"  value="{{$quotation->producto->name}}" readonly>
+                                                <input type="text" class="form-control" id="producto" name="producto"  value="{{$quotation->producto->name}}" readonly>
                                                 <span class="missing_alert text-danger" id="producto_alert"></span>
                                             </div>
                                         </div> 
@@ -130,9 +211,9 @@
                              
 
 
-                                <div class="col-12">
+                                <!--<div class="col-12">
                                     <button type="submit" class="btn btn-primary me-1 waves-effect waves-float waves-light ajax" id="submit"><i id="ajax-icon" class="fa fa-save"></i> Guardar</button>
-                                </div>
+                                </div>-->
                             </div>
                         </form>
                     </div>

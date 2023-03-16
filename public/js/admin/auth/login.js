@@ -28,7 +28,8 @@ $(document).ready(function(){
               },error: function (data) {
                 var errors = data.responseJSON;
                 $.each( errors.errors, function( key, value ) {
-                  _alertGeneric('info','Informacón',value,null);
+                  _alertLogin('info','Informacón',value,'/register');
+
                 
                 });
                 //$('input').iCheck('enable');

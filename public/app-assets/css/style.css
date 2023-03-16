@@ -2529,7 +2529,7 @@ footer .credits {
 }
 
 .image-subcategory-list-product {
-    max-height: 80px;
+    width: 100%;
     display: block;
     margin: 0 auto;
 }
@@ -2768,7 +2768,15 @@ footer .credits {
     color: #fff;
 }
 
-.btn-go-quotation:hover {
+.btn-ppl-kanbai {
+    background: #7F00FF;
+    border-color: #7F00FF;
+    width: 100%;
+    border-radius: 30px;
+    color: #fff;
+}
+
+.btn-go-quotation:hover, .btn-ppl-kanbai:hover {
     background: #1ed161;
     border-color: #1ed161;
     color: #fff;
@@ -2804,6 +2812,7 @@ footer .credits {
 @media (max-width: 768px) {
     .list-products-mobile {
         display: block;
+        border-top: solid 1px #e5e5e5;
     }
 
     .list-products-desk {
@@ -2815,7 +2824,7 @@ footer .credits {
     word-wrap: break-word;
     text-align: center;
     background: #231b71;
-    border-radius: 15px;
+    border-radius: 28px;
     padding: 20px 15px;
     margin-bottom: 15px;
 }
@@ -3586,14 +3595,13 @@ button.navbar-toggler{
 .image-thumnail{
     background-size: cover;
     background-position: center center;
-    height: 121px;
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
+    aspect-ratio: 1 / 1;
+    border-radius: 15px 15px 15px 15px;
 }
 .image-thumnail-desk{
     background-size: cover;
     background-position: center center;
-    height: 250px;
+    aspect-ratio: 1 / 1;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
     border-top-right-radius: 15px;
@@ -3619,6 +3627,51 @@ button.navbar-toggler{
     margin-left: 7px;
     text-decoration: underline;
 }
+.input-login{
+    border-top-left-radius: 50px !important;
+    border-bottom-left-radius: 50px !important;
+}
+.eye-login{
+    border-top-right-radius: 50px !important;
+    border-bottom-right-radius: 50px !important;
+}
+.home{
+    padding-top: 9rem !important; 
+}
+.content-image-mobile{
+    padding-right: 0 !important;
+}
+.card-products-mobile{
+    border: none !important;
+    background-color: initial !important;
+    
+}
+.image-list-product-desk{
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 30px;
+}
+.cont-img-desk{
+    aspect-ratio: 1 / 1; 
+}
+.categories-custom-request{
+    border: 1px solid #BEBEBE;
+    border-radius: 24px;
+    opacity: 1;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+.categories-custom-request input{
+    margin-left: -12px !important;
+    margin-right: 7px !important;
+}
+.categories-custom-request label{
+    margin-right: 15px !important;
+}
+.ds-block{
+    display: block !important;
+}
 
 
 
@@ -3626,7 +3679,18 @@ button.navbar-toggler{
 
 
 
-@media (max-width: 768px) {
+@media (max-width: 768px) {  
+    
+    .btn-categories {
+        word-wrap: break-word;
+        text-align: center;
+        background: #231b71;
+        border-radius: 28px;
+        padding: 15px 15px;
+        margin-bottom: 15px;
+        /*width: 111px;*/
+        height: 111px;
+    }
     
 
     .navbar-toggler {
@@ -3643,6 +3707,12 @@ button.navbar-toggler{
         position: relative;
         padding-bottom: 0;
         top: 0;
+    }
+    .logo-quotation{
+        display: none !important;
+    }
+    .quotation{
+        padding-top: 0rem !important;  
     }
 
     .contenedor-search input {
@@ -3796,6 +3866,9 @@ button.navbar-toggler{
     .filtro-desk {
         display: none;
     }
+    .home{
+        padding-top: 7rem !important; 
+    }
 
 
 }
@@ -3828,6 +3901,28 @@ button.navbar-toggler{
     .filtro-mobile {
         display: none;
     }
+
+}
+
+.bt-kanbai-page{
+    background: #7D71FF;
+    border-radius: 20px;
+    text-align: center;
+    letter-spacing: 0.03em;
+    font-size: 14px;
+    padding: 5px 25px;   
+    font-weight: 700;
+    border: solid 2px #7D71FF;
+    color: #fff;
+
+}
+.p-info{
+    margin-bottom: 5px !important;
+}
+.bt-kanbai-page:hover{
+    background: #fff;    
+    border: solid 2px #7D71FF;
+    color: #7D71FF;
 
 }
 

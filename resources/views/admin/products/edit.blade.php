@@ -171,7 +171,7 @@
                                                     <div class="list-group">
                                                         @foreach ($item->subcategories as $x)
                                                         <label class="list-group-item item-subcategory">
-                                                            <input class="form-check-input me-1" type="checkbox" name="subcategory_id[]" value="{{ $x->id }}"  @foreach ($product->productsubcategories as $subcat) {{ $item->id  === $subcat->subcategory->id ? 'checked' : ''   }} @endforeach>
+                                                            <input class="form-check-input me-1" type="checkbox" name="subcategory_id[]" value="{{ $x->id }}"  @foreach ($product->productsubcategories as $subcat) {{ $x->id  === $subcat->subcategory->id ? 'checked' : ''   }} @endforeach>
                                                             {{ $x->name }}
                                                         </label>
                                                         @endforeach                                                         

@@ -97,6 +97,22 @@
         });
     }
 
+    function _alertLogin(type, title, text, reload = null) {
+        Swal.fire({
+            title: title,
+            text: text,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#7F00FF',
+            cancelButtonColor: '#7d71ff',
+            confirmButtonText: '¿No tienes una cuenta?',
+            cancelButtonText: 'Intentar'
+            }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = reload;
+            }
+        })
+    }
     </script>
     @stack('scripts')
 </body>

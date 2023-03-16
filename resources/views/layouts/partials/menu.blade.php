@@ -4,7 +4,7 @@
             <ul class="nav navbar-nav flex-row">
                 <li class="nav-item me-auto"><a class="navbar-brand" href="html/ltr/vertical-menu-template/index.html">
                         <span class="brand-logo">
-                            <img src="{{ asset('images/logo/logo.png') }}" />
+                            <img src="{{ asset('images/logo/logo-kanbai-color.png') }}" />
                         </span>
                     </a></li>
                 <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pe-0" data-bs-toggle="collapse"><i class="d-block d-xl-none text-primary toggle-icon font-medium-4" data-feather="x"></i><i class="d-none d-xl-block collapse-toggle-icon font-medium-4  text-primary" data-feather="disc" data-ticon="disc"></i></a></li>
@@ -86,10 +86,15 @@
                     <a class="d-flex align-items-center" href="/quotes"><i class="fa fa-usd" aria-hidden="true"></i><span class="menu-title text-truncate" data-i18n="Email">Cotizaciones</span></a>
                 </li>
                 @endcan
-                @can('Ver Clientes')
-                <!--<li class=" nav-item">
-                    <a class="d-flex align-items-center" href="/customers"><i data-feather='briefcase'></i><span class="menu-title text-truncate" data-i18n="Email">Clientes</span></a>
-                </li>-->
+                @can('Ver Solicitudes Personalizadas')
+                <li class=" nav-item">
+                    <a class="d-flex align-items-center" href="/solicituded-personalizadas"><i class="fa fa-money" aria-hidden="true"></i><span class="menu-title text-truncate" data-i18n="Solicitudes Personalizadas">Solicitudes Personalizadas</span></a>
+                </li>
+                @endcan
+                @can('Ver Proyectos')
+                <li class=" nav-item">
+                    <a class="d-flex align-items-center" href="/projects"><i class="fa fa-check-circle" aria-hidden="true"></i><span class="menu-title text-truncate" data-i18n="Proyectos">Proyectos</span></a>
+                </li>
                 @endcan
                 @can('Facturación')
                 <!--<li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather='clipboard'></i><span class="menu-title text-truncate" data-i18n="Menu Levels">Facturación</span></a>

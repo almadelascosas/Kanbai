@@ -22,10 +22,15 @@
                                 <span class="invalid-feedback" id="username_alert" role="alert" style="font-size: 100%;"></span>               
                             </div>
 
-                            <div class="mb-4">
-                                <label for="password" class="form-label">Contraseña *</label>
-                                <input type="password" id="password" name="password" class="form-control input-cotizacion" >
-                                <span class="invalid-feedback" id="password_alert" role="alert" style="font-size: 100%;"></span>                     
+                            <div class="input-group mb-4">
+                                <label for="password" class="form-label" style="display: block;width: 100%;">Contraseña *</label>
+                               
+                                <input class="form-control password input-login" id="password"  type="password" name="password" />
+                                <span class="input-group-text togglePassword eye-login" id="">
+                                    <i class="fa fa-eye" aria-hidden="true" style="cursor: pointer"></i>
+                                </span>
+                                <span class="invalid-feedback" id="password_alert" role="alert" style="font-size: 100%;"></span>
+
                             </div>
 
                             <div class="form-group row mb-0 mt-3">
@@ -43,7 +48,7 @@
 
                             <div class="form-group row mb-0 mt-2 create-account">
                                 <div class="col-md-6 offset-md-3">
-                                    <a  class="btn btn-link text-gray btn-link-register" href="/register">¿No tienes una cuenta? <strong>Ingresa</strong></a>
+                                    <a  class="btn btn-link text-gray btn-link-register" href="/register">¿No tienes una cuenta? <strong>Regístrate</strong></a>
                                 </div>
                             </div>
                             
@@ -63,5 +68,20 @@
 
 @push('scripts')
     <script src="{{ asset('js/admin/auth/login.js') }}"></script>
+    <script>
+         feather.replace({ 'aria-hidden': 'true' });
+
+$(".togglePassword").click(function (e) {
+      e.preventDefault();
+      var type = $(this).parent().parent().find(".password").attr("type");
+      if(type == "password"){
+          $("svg.feather.feather-eye").replaceWith(feather.icons["eye-off"].toSvg());
+          $(this).parent().parent().find(".password").attr("type","text");
+      }else if(type == "text"){
+          $("svg.feather.feather-eye-off").replaceWith(feather.icons["eye"].toSvg());
+          $(this).parent().parent().find(".password").attr("type","password");
+      }
+  });
+    </script>
 @endpush
 

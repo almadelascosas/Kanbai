@@ -2,7 +2,7 @@
 @section('title', 'Cotización')
 @section('content')
 <!-- ======= product Section ======= -->
-<section class="section-agents section-t3 ">
+<section class="section-agents section-t3 quotation">
     <div class="container">
         <div class="row no-gutters justify-content-center">
             <form class="form" role="form" action="javascript:void(0)" enctype="multipart/form-data" id="main-form" autocomplete="off">
@@ -25,12 +25,13 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-md-2 col-logo">
+                <div class="col-md-2 col-logo logo-quotation">
                     <a class="logo-desck" href="/">
                         <img class="logo" src="{{ asset('images/logo/logo-kanbai-color.png').'?'.rand() }}" />
                         <!--Marce<span class="color-b">Pets</span>-->
                     </a>                    
                 </div>
+                
                 <ul class="nav nav-tabs justify-content-center" id="cotizacion" role="tablist">
                     <li class="nav-item" role="presentation">
                         <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Tus Datos</button>
@@ -48,21 +49,21 @@
                                     <div class="col-md-12 col-12">
                                         <div class="mb-3 mb-3 mt-1rem">
                                             <label class="form-label" for="name">Tu nombre o nombre de la empresa</label>
-                                            <input type="text" class="form-control input-cotizacion" id="name" name="name">
+                                            <input type="text" class="form-control input-cotizacion" id="name" name="name" value="{{Auth::user()->displayname}}">
                                             <span class="missing_alert text-danger" id="name_alert"></span>
                                         </div>
                                     </div>
                                     <div class="col-md-12 col-12">
                                         <div class="mb-3 mb-3 mt-1rem">
                                             <label class="form-label" for="email">Tu correo electrónico</label>
-                                            <input type="email" class="form-control input-cotizacion" id="email" name="email">
+                                            <input type="email" class="form-control input-cotizacion" id="email" name="email" value="{{Auth::user()->email}}">
                                             <span class="missing_alert text-danger" id="email_alert"></span>
                                         </div>
                                     </div>
                                     <div class="col-md-12 col-12">
                                         <div class="mb-3 mb-3 mt-1rem">
                                             <label class="form-label " for="cellphone">Número celular</label>
-                                            <input type="text" class="form-control input-cotizacion" id="cellphone" name="cellphone">
+                                            <input type="text" class="form-control input-cotizacion" id="cellphone" name="cellphone" value="{{Auth::user()->phone}}">
                                             <span class="missing_alert text-danger" id="cellphone_alert"></span>
                                         </div>
                                     </div>

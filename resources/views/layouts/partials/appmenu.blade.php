@@ -41,8 +41,19 @@
                     
                 </div>
                 <div class="col-md-4">
+                    @if(Auth::user())
+                    <a class="register-desck" href="/mi-perfil">Mi Perfil</a>
+                    <a href="logout" onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="account-desck"  title="" data-original-title="Salir del sistema">
+                     <i class="zmdi zmdi-power"></i>
+                     Cerrar Sesión 
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
+                    @else
                     <a class="account-desck" href="/home">Ingresa</a>
                     <a class="register-desck" href="/register">Registrarse</a>
+                    @endif
                 </div>
             </div>
             <div class="row">

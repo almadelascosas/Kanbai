@@ -63,7 +63,7 @@
                             <div class="col-12 text-center">Permitenos crear una propuesta 100% adaptada a tus necesidades</div>
                             <div class="col-12 text-center">&nbsp;</div>
                             <div class="col-12 text-center">
-                                <button type="button" class="btn btn-shedule">Crear Proyecto</button>
+                                <a href="/solicitud-personalizada" class="btn btn-shedule">Crear Proyecto</a>
                             </div>
                         </div>
                     </div>
