@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
+use App\Models\Projects;
 
 use Illuminate\Http\Request;
 
@@ -16,7 +17,8 @@ class ProfileBusinessController extends Controller
     {
         
         $user = User::with('roles')->with('permissions')->find(auth()->user()->id);
-        return view ('site.business.index', compact('user'));
+        $projects = Projects::with('timeline')->where('user_request_id',auth()->user()->id)->get();
+        return view ('site.business.index', compact('user','projects'));
     }
 
     /**

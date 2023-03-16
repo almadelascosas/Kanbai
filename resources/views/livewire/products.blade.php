@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" id="list-products">
 
     <div class="col-md-12 filtro-mobile mb-5">
         <div class="row">
@@ -67,7 +67,12 @@
                 </div>
             </div>
         </div>
+
+
+        
     </div>
+
+    
 
     </div>
 
@@ -121,7 +126,7 @@
                 </select>
             </div>
 
-            <div class="form-group">
+            <div class="form-group m-b5">
                 <div class="mall-property mt-3">
                     <div class="mall-property__label" >
                         Precio                        
@@ -137,6 +142,30 @@
                      </div>
                 </div>
             </div>
+            <div class="form-group mt-5">
+                <div class="card-kanbai">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-4"></div>
+                            <div class="col-6 text-center">
+                                <div class="circle-icon text-center">
+                                    <img src="{{ asset('images/purple-calendar.png') }}" width="120">
+                                </div>
+                            </div>
+                            <div class="col-12 text-center">
+                                <h5 class="mt-2 title-proyect">¿Tienes un proyecto especifico?</h5>
+                            </div>                            
+                            <div class="col-12 text-center font-14 mt-3">Permitenos crear una propuesta 100% adaptada a tus necesidades</div>
+                            
+                            <div class="col-12 text-center mt-3">
+                                <a href="/solicitud-personalizada" class="btn btn-shedule">Crear Proyecto</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
             
 
            
@@ -153,10 +182,11 @@
                 <a href="/catalogo/producto/{{$item->id}}/{{$item->name}}">
                     <div class="card mb-3 card-related" >
                         <div class="card-body cardproducts padding-0">
-                            <div class="row">
-                                <div class="col-md-12 col-12 mb-3 padding-7" >
-                                
-                                    <div class="image-thumnail-desk" @if(count($item->gallery)>0) style="background-image: url({{ asset('images/products/thumbnail/list/'.$item->gallery[0]->file.'') }});" @endif></div>
+                            
+                                <div class="col-md-12 col-12 mb-3 padding-7 cont-img-desk" >
+                                    @if(count($item->gallery)>0)
+                                        <img  class="image-list-product-desk" src="{{ asset('images/products/thumbnail/list/'.$item->gallery[0]->file.'') }}">
+                                    @endif
                                 
                                 </div>
                                 <div class="col-md-12 mt-1 info-related">
@@ -171,7 +201,7 @@
                                     </p>
                                 </div>
                             </div>
-                        </div>
+                        
                     </div>
                 </a>
             </div>
@@ -179,10 +209,10 @@
             <!--Estructura mobile-->
             <div class="col-md-4 list-products-mobile">
                 <a href="/catalogo/producto/{{$item->id}}/{{$item->name}}">
-                    <div class="card card-products mb-3" >
+                    <div class="card card-products-mobile mb-3 mt-3" >
                         <div class="card-body cardproducts">
                             <div class="row">
-                                <div class="col-md-4 col-5" >
+                                <div class="col-md-4 col-5 content-image-mobile" >
                                 
                                 <div class="image-thumnail" @if(count($item->gallery)>0) style="background-image: url({{ asset('images/products/thumbnail/list/'.$item->gallery[0]->file.'') }});" @endif></div>
                                  
@@ -245,7 +275,14 @@
         elToggle.addEventListener("click", function() {
         elContent.classList.toggle("is-hidden");
         });
+
+        $(document).on('click', '.page-item', function (e) {
+  $("html, body").animate({ scrollTop: 0 }, "fast");
+  return false;
+});
     </script>
+
+
 @endpush
 
           

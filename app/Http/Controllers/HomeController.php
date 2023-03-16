@@ -30,6 +30,9 @@ class HomeController extends Controller
         if(auth()->user()->hasRole('Comercio')){
             return redirect()->to('/comercio');
          }
+         if(auth()->user()->hasRole('Usuario')){
+            return redirect()->to('/mi-perfil');
+         }
         //dd(LogSistema::get());
         $date_current = Carbon::now()->toDateTimeString();
 

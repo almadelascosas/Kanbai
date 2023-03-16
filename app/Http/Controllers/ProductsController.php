@@ -78,6 +78,7 @@ class ProductsController extends Controller
             $shipping_free=true;
         }
         
+        
         $product = Products::create([
                 'name'=>$request->name,
                 'price_min'=>$request->price_min,
@@ -85,7 +86,7 @@ class ProductsController extends Controller
                 'quantity_min'=>$request->quantity_min,
                 'delivery_time'=>$request->delivery_time,
                 'shipping_price'=>$request->shipping_price,
-                'description'=>$request->description,
+                'description'=>$request->description_render,
                 'shipping_free'=>$shipping_free,
                 'user_id'=>$request->user_id                          
         ]);
@@ -96,12 +97,17 @@ class ProductsController extends Controller
                 $imageName = time().'_'.$image->getClientOriginalName().'.'.$image->extension();
 
                 $destinationPath = public_path('/thumbnail');
-                $imagen->save(public_path('images/products/' . $imageName));
-                $imagen->resize(320, 320, function ($constraint) {
+                $imagen->resize(500, 500, function ($constraint) {
                     $constraint->aspectRatio();
+                    $constraint->upsize();
+                })->save(public_path('images/products/' . $imageName));
+                $imagen->resize(500, 500, function ($constraint) {
+                    $constraint->aspectRatio();
+                    $constraint->upsize();
                 })->save(public_path('images/products/thumbnail/list/' . $imageName));
-                $imagen->resize(640, 640, function ($constraint) {
+                $imagen->resize(500, 500, function ($constraint) {
                     $constraint->aspectRatio();
+                    $constraint->upsize();
                 })->save(public_path('images/products/thumbnail/' . $imageName));
                 
                 $productgallery = ProductsGallery::create([
@@ -218,12 +224,17 @@ class ProductsController extends Controller
                 $imageName = time().'_'.$image->getClientOriginalName().'.'.$image->extension();
                 $imagen = Image::make($image);
                 $destinationPath = public_path('/thumbnail');
-                $imagen->save(public_path('images/products/' . $imageName));
-                $imagen->resize(640, 640, function ($constraint) {
+                $imagen->resize(500, 500, function ($constraint) {
                     $constraint->aspectRatio();
+                    $constraint->upsize();
+                })->save(public_path('images/products/' . $imageName));
+                $imagen->resize(500, 500, function ($constraint) {
+                    $constraint->aspectRatio();
+                    $constraint->upsize();
                 })->save(public_path('images/products/thumbnail/' . $imageName));
-                $imagen->resize(320, 320, function ($constraint) {
+                $imagen->resize(500, 500, function ($constraint) {
                     $constraint->aspectRatio();
+                    $constraint->upsize();
                 })->save(public_path('images/products/thumbnail/list/' . $imageName));
 
                 $doggallery = ProductsGallery::create([

@@ -6,6 +6,8 @@ use App\Models\ProductQuotation;
 use Illuminate\Http\Request;
 use App\Models\Products;
 use App\Models\User;
+use App\Models\Projects;
+use App\Models\ProductQuotationHistory;
 use Illuminate\Support\Facades\Storage;
 
 use App\Models\Log\LogSistema;
@@ -36,11 +38,17 @@ class ProductQuotationController extends Controller
         $log->save();
         if(auth()->user()->hasrole('Comercio')){            
             $quotations = ProductQuotation::where('user_id',auth()->user()->id)->with('producto')->get();
+            $qespera = ProductQuotation::where('user_id',auth()->user()->id)->where('state',0)->with('producto')->get();
+            $qcanceladas = ProductQuotation::where('user_id',auth()->user()->id)->where('state',2)->with('producto')->get();
+            $qaprobadas = ProductQuotation::where('user_id',auth()->user()->id)->where('state',1)->with('producto')->get();
         }else{            
             $quotations = ProductQuotation::with('producto')->get();
+            $qespera = ProductQuotation::where('state', 0)->with('producto')->get();
+            $qcanceladas = ProductQuotation::where('state', 2)->with('producto')->get();
+            $qaprobadas = ProductQuotation::where('state', 1)->with('producto')->get();
         }
 
-        return view ('admin.quotations.index', compact('quotations'));
+        return view ('admin.quotations.index', compact('quotations','qespera','qcanceladas','qaprobadas'));
     }
 
     /**
@@ -118,8 +126,13 @@ class ProductQuotationController extends Controller
             'address'=>$request->address,
             'date_delivery'=>$request->date_delivery,
             'observations'=>$request->observations,
-            'user_id'=>$product->user->id,       
-        ]);   
+            'user_id'=>$product->user->id,  
+            'user_request_id'=>auth()->user()->id     
+        ]);  
+        ProductQuotationHistory::create([
+            'quotation_id'=>$cotizacion->id,
+            'state'=>0,                
+        ]); 
 
         $user = User::where('id',$producto->user_id)->first();
 
@@ -143,7 +156,7 @@ class ProductQuotationController extends Controller
              $message->from('solicitud@kanbai.co','Kanbai');
         });
 
-        return json_encode(['success' => true, 'id' => 1]);
+        return json_encode(['success' => true, 'id' => $cotizacion->id]);
         //return json_encode(['success' => true, 'id' => $cotizacion->id]);
     }
 
@@ -153,9 +166,10 @@ class ProductQuotationController extends Controller
      * @param  \App\Models\ProductQuotation  $productQuotation
      * @return \Illuminate\Http\Response
      */
-    public function show(ProductQuotation $productQuotation)
+    public function show($id)
     {
-        //
+        $quotation = ProductQuotation::with('producto','producto.gallery','history')->find(\Hashids::decode($id)[0]);
+        dd($quotation);
     }
 
     /**
@@ -166,13 +180,14 @@ class ProductQuotationController extends Controller
      */
     public function edit($id)
     {
-        $quotation = ProductQuotation::with('producto')->find(\Hashids::decode($id)[0]);
+        $quotation = ProductQuotation::with('producto','producto.gallery','history')->find(\Hashids::decode($id)[0]);
 
         $log = new LogSistema();
         $log->user_id = auth()->user()->id;
         $log->tx_descripcion = 'El usuario: '.auth()->user()->display_name.' Ha ingresado a editar los datos de la cotizacion: '.$quotation->id.' a las: '
         . date('H:m:i').' del día: '.date('d/m/Y');
         $log->save();
+       
        
         return view('admin.quotations.edit', ['quotation' => $quotation]);
     }
@@ -186,9 +201,50 @@ class ProductQuotationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $productquotation = ProductQuotation::find(\Hashids::decode($id)[0]);
-        $productquotation->state = $request->state;     
+        //dd('ddd');
+        $productquotation = ProductQuotation::with('producto')->find(\Hashids::decode($id)[0]);
+        $productquotation->state = $request->state; 
+        if($request->price_finish){
+            $productquotation->price_finish = $request->price_finish; 
+        }    
+        if($request->price_shiping){
+            $productquotation->price_shiping = $request->price_shiping; 
+        } 
+        if($request->comment){
+            $productquotation->comment = $request->comment; 
+        } 
+        if($request->deny){
+            $productquotation->deny = $request->deny; 
+        } 
         $productquotation->save();
+        
+        if($productquotation->state!=$request->state){
+            ProductQuotationHistory::create([
+                'quotation_id'=>$productquotation->id,
+                'state'=>$request->state,                
+            ]);  
+        }
+        if($request->state==1){
+            $project=Projects::where('type',1)->where('id_type',$productquotation->id)->first();
+            
+            if($project==null){
+                Projects::create([
+                    'type'=>1,
+                    'id_type'=>$productquotation->id,
+                    'name'=>$productquotation->producto->name,
+                    'ubication'=>null,
+                    'price_delivery'=>$request->price_shiping,
+                    'price'=>$request->price_finish,
+                    'quantity'=>$productquotation->quantity,
+                    'delivery_date'=>null,
+                    'state'=>1, 
+                    'user_request_id'=>$productquotation->user_request_id            
+                ]); 
+            }
+        }
+
+        
+
 
         return json_encode(['success' => true, 'campuse_id' => $productquotation->encode_id]);
     }

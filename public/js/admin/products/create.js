@@ -43,10 +43,12 @@ $(document).ready(function(){
         }
         var description=CKEDITOR.instances.description.getData();
         if (description === '') {
-            $('#main-form #description_alert').text('Ingrese una descripción').show();
-            $('#main-form #description').focus();
-            return false;
-        }
+          $('#main-form #description_alert').text('Ingrese una descripción').show();
+          $('#main-form #description').focus();
+          return false;
+      }
+      
+      console.log(description);
         if ($('#main-form #user_id').val() === '') {
           $('#main-form #user_id_alert').text('Seleccione el comercio que vende el producto').show();
           $('#main-form #user_id').focus();
@@ -56,6 +58,8 @@ $(document).ready(function(){
 
         //var data = $('#main-form').serialize();
         var formData = new FormData($("#main-form")[0]);
+
+        formData.append('description_render', description);
         //$('input').iCheck('disable');
         $('#main-form input, #main-form button').attr('disabled','true');
         $('#ajax-icon').removeClass('fa fa-save').addClass('fa fa-spin fa-refresh');

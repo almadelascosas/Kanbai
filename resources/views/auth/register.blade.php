@@ -18,14 +18,24 @@
                                 <input id="email" type="email" class="form-control input-cotizacion @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>{{ $message }}  <a  class="btn btn-link text-gray btn-link-register" href="/home">¿Ya tienes una cuenta? <strong>Ingresa</strong></a></strong>
                                     </span>
+                                    <script>
+                                        $( document ).ready(function() {
+                                            _alertLogin('info','Informacón', {{ $message }}, '/login')
+                                        });
+                                    </script>
                                 @enderror                            
                             </div>
 
-                            <div class="mb-3">
-                                <label for="password" class="form-label">{{ __('Password') }}</label>
-                                <input id="password" type="password" class="form-control input-cotizacion @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                            <div class="input-group mb-3"> 
+                                <label for="password" class="form-label" style="display: block;width: 100%;">Contraseña *</label>                              
+                                <input class="form-control password input-login @error('password') is-invalid @enderror" id="password"  type="password" name="password" />
+                                <span class="input-group-text togglePassword eye-login" id="">
+                                    <i class="fa fa-eye" aria-hidden="true" style="cursor: pointer"></i>
+                                </span>
+                               
+
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -33,9 +43,12 @@
                                     @enderror                            
                             </div>
 
-                            <div class="mb-3">
-                                <label for="password-confirm" class="form-label">{{ __('Confirm Password') }}</label>
-                                <input id="password-confirm" type="password" class="form-control input-cotizacion" name="password_confirmation" required autocomplete="new-password">                            
+                            <div class="input-group mb-3">
+                                <label for="password-confirm" class="form-label" style="display: block;width: 100%;">{{ __('Confirm Password') }}</label>
+                                <input id="password-confirm" type="password" class="form-control password-confirm input-login" name="password_confirmation" required autocomplete="new-password"> 
+                                <span class="input-group-text togglePassword-confirm eye-login" id="">
+                                    <i class="fa fa-eye" aria-hidden="true" style="cursor: pointer"></i>
+                                </span>                           
                             </div>
 
                             <div class="mb-3">
@@ -67,13 +80,6 @@
                                     </span>
                                 @enderror                            
                             </div>
-
-                          
-
-                            
-
-                            
-
                             
 
                             <div class="form-group row mb-0">
@@ -118,5 +124,33 @@
     },
     utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js" // just for formatting/placeholders etc
     });
- </script>
+
+         feather.replace({ 'aria-hidden': 'true' });
+
+$(".togglePassword").click(function (e) {
+      e.preventDefault();
+      var type = $(this).parent().parent().find(".password").attr("type");
+      if(type == "password"){
+          $("svg.feather.feather-eye").replaceWith(feather.icons["eye-off"].toSvg());
+          $(this).parent().parent().find(".password").attr("type","text");
+      }else if(type == "text"){
+          $("svg.feather.feather-eye-off").replaceWith(feather.icons["eye"].toSvg());
+          $(this).parent().parent().find(".password").attr("type","password");
+      }
+  });
+
+  $(".togglePassword-confirm").click(function (e) {
+      e.preventDefault();
+      var type = $(this).parent().parent().find(".password-confirm").attr("type");
+      if(type == "password"){
+          $("svg.feather.feather-eye").replaceWith(feather.icons["eye-off"].toSvg());
+          $(this).parent().parent().find(".password-confirm").attr("type","text");
+      }else if(type == "text"){
+          $("svg.feather.feather-eye-off").replaceWith(feather.icons["eye"].toSvg());
+          $(this).parent().parent().find(".password-confirm").attr("type","password");
+      }
+  });
+    </script>
+
+
 @endpush
