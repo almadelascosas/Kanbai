@@ -3926,3 +3926,81 @@ button.navbar-toggler{
 
 }
 
+
+.timeline {
+    padding: 0;
+    margin-bottom: 0;
+    margin-left: 1rem;
+    list-style: none;
+}
+.timeline .timeline-item {
+    position: relative;
+    padding-left: 2.5rem;
+    border-left: 1px solid #ebe9f1;
+}
+.timeline .timeline-item:not(:last-child) {
+    padding-bottom: 1.8rem;
+}
+
+.timeline-kn li.timeline-item {
+    border-left: 1px solid #1FD161 !important;
+}
+.timeline .timeline-item .timeline-point.timeline-point-indicator {
+    left: -0.412rem;
+    top: 0.07rem;
+    height: 12px;
+    width: 12px;
+    border: 0;
+    background-color: #7367f0;
+}
+.timeline .timeline-item .timeline-point.timeline-point-indicator:before {
+    content: '';
+    background: rgba(115, 103, 240, 0.12);
+    height: 20px;
+    width: 20px;
+    display: block;
+    position: absolute;
+    top: -0.285rem;
+    left: -0.285rem;
+    border-radius: 50%;
+}
+.timeline .timeline-item .timeline-event {
+    position: relative;
+    width: 100%;
+    min-height: 4rem;
+}
+.timeline .timeline-item .timeline-point {
+    position: absolute;
+    left: -0.85rem;
+    top: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1.75rem;
+    width: 1.75rem;
+    text-align: center;
+    border-radius: 50%;
+    border: 1px solid #7367f0;
+    background-color: #fff;
+}
+
+
+.timeline-kanbai-active {
+    left: -28px !important;
+    height: 49px !important;
+    width: 49px !important;
+    background-color: #1FD161 !important;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+}
+.info-project{
+padding: 0px 15px;
+
+}
+.back-tap{
+    background: #fff;
+    border-radius: 20px;
+    padding: 30px 10px;
+}

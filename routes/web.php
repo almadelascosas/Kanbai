@@ -47,6 +47,7 @@ Route::middleware(['auth',])->group(function () {
   Route::resource('cotizacion', 'ProductQuotationController');
   Route::get('projects', 'ProjectsController@indexpanel');
   Route::resource('project', 'ProjectsController');
+  Route::get('/mis-proyectos/{id}', 'ProjectsController@index');
 
   Route::resource('customers', 'CustomersController');
   Route::resource('services', 'ServicesController');
