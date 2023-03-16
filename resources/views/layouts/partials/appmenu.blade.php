@@ -78,12 +78,21 @@
                             <span class="title_menu">Menú</span>
                             
                             <li class="nav-item">
-                               <a class="nav-link {{ (request()->is('/')) ? 'active' : '' }}" href="/"><i class="bi bi-circle-fill"></i>  Inicio</a>
+                               <a class="nav-link {{ (request()->is('/')) ? 'active' : '' }}" href="/">
+                                <div class="logo-menu-mobil">
+                                    <img class="imagen-menu-producto" src="{{ asset('images/categories/1665624762.png') }}" alt="">
+                                </div>
+                                <!-- <i class="bi bi-circle-fill"></i> -->  Inicio</a>
                             </li>
                             <input type="hidden" value="{{$categories = App\Models\Categories::with('subcategories')->where('is_menu',1)->get()}}">
                             @foreach ($categories as $category)
                             <li class="nav-item">
-                                <a class="nav-link {{ (request()->is('catalogo/category->slug')) ? 'active' : '' }}" href="/catalogo/{{ $category->slug }}"><i class="bi bi-circle-fill"></i> {{ $category->name }}</a>
+                                <a class="nav-link {{ (request()->is('catalogo/category->slug')) ? 'active' : '' }}" href="/catalogo/{{ $category->slug }}">
+                                    <div class="logo-menu-mobil">
+                                        <img class="imagen-menu-producto responsive" src="{{ asset('images/categories/'.$category->file) }}" alt="{{ $category->name }}">
+                                    </div>
+                                    <!-- <i class="bi bi-circle-fill"></i> --> {{ $category->name }}
+                                </a>
                             </li>
                             @endforeach
                         </ul>

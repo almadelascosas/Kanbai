@@ -401,7 +401,7 @@ a:hover {
 }
 
 @media (max-width: 767px) {
-    /*.section-t8 { padding-top: 4rem; }*/
+    .section-t8 { padding-top: 8rem; }
 }
 
 .section-t4 {
@@ -925,6 +925,7 @@ a:hover {
 /*------/ Hamburger Navbar /------*/
 .navbar-toggler {
     position: relative;
+
 }
 
 .navbar-toggler:focus,
@@ -3426,6 +3427,7 @@ a.register-desck:hover, a.account-desck-register:hover {
 .navbar-toggler{
     z-index: 9999;
     background: transparent;
+    margin-top: 8px;
 }
 .navbar-toggler:focus{
     box-shadow: 0 0 0 0rem!important;
@@ -3457,12 +3459,28 @@ a.register-desck:hover, a.account-desck-register:hover {
     display: flex;
 }
 .mobile_menu .navbar-nav .nav-item .nav-link.active{
-    color: #231b71;
+    color: #7D71FF;
 }
+/*
 .mobile_menu .navbar-nav .nav-item .nav-link i{
     color: #231b71;
     font-size: 40px;
     padding-right: 30px;
+}
+*/
+.mobile_menu .navbar-nav .nav-item .nav-link .logo-menu-mobil{
+    background-color: #231b71;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-right: 17px;
+}
+.mobile_menu .navbar-nav .nav-item .nav-link .logo-menu-mobil img{
+    object-fit: cover;
+    width:90%;
+    height:90%;
+    margin: 0 auto;
+    overflow: hidden;
 }
 .mobile_menu .navbar-nav .nav-item .nav-link:before{
     display: none;
