@@ -48,6 +48,9 @@ Route::middleware(['auth',])->group(function () {
   Route::get('projects', 'ProjectsController@indexpanel');
   Route::resource('project', 'ProjectsController');
   Route::get('/mis-proyectos/{id}', 'ProjectsController@index');
+  Route::get('/project/chat/{id}', 'ProjectChatController@edit');
+  Route::resource('projectchat', 'ProjectChatController');
+  Route::get('/proyecto/chat/{id}', 'ProjectChatController@chatuser');
 
   Route::resource('customers', 'CustomersController');
   Route::resource('services', 'ServicesController');

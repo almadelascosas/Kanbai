@@ -31,5 +31,12 @@ class Projects extends Model
         return $this->hasMany(ProjectTimeLine::class, 'project_id')->orderBy('id','ASC');
     }
 
+    public function chat()
+    {
+        return $this->hasMany(ProjectChat::class, 'project_id')->orderBy('id','ASC');
+    }
+
+    
+
 
 }

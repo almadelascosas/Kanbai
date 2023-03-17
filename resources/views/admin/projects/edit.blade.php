@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
-@section('title', 'Solicitudes personalizadas')
-@section('page_title', 'Editar Solicitud personalizada')
+@section('title', 'Proyectos')
+@section('page_title', 'Editar Proyecto')
 @section('page_subtitle', 'Editar')
 @section('content')
 
@@ -17,7 +17,7 @@
                             <a href="/home">Inicio &nbsp; &nbsp;<i class="fa fa-chevron-right" aria-hidden="true"></i></a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="/solicituded-personalizadas">Solicitudes personalizadas &nbsp; &nbsp;<i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                            <a href="/projects">Proyectos &nbsp; &nbsp;<i class="fa fa-chevron-right" aria-hidden="true"></i></a>
                         </li>
                         <li class="breadcrumb-item active">Editar: #{{ $project->id }}</li>
                     </ol>
@@ -158,10 +158,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>                           
-                                    
-                                    <div class="row">         
-                                        <div class="col-md-6 col-6">
+                                </div> 
+                                <div class="row">         
+                                    <div class="col-md-6 col-6">
                                             <div class="mb-1">
                                                 <label class="form-label" for="state">Estado</label>
                                                 <select  id="state" name="state" class="form-control">
@@ -177,13 +176,9 @@
                                             <button style="margin-top: 25px;" type="submit" class="btn btn-primary me-1 waves-effect waves-float waves-light ajax" id="submit"><i id="ajax-icon" class="fa fa-save"></i> Guardar</button>
                                         </div>
                                     </div> 
-
-                                    
-                              
-                             
-
-
-                                
+                                    <div class="row">
+                                        <a href="/project/chat/{{ $project->encode_id }}" class="btn btn-chat">Abrir chat del proyecto</a>
+                                    </div>
                            
                         </form>
                     </div>

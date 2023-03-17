@@ -26,13 +26,15 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/themes/dark-layout.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/themes/bordered-layout.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/themes/semi-dark-layout.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/pages/app-chat.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/pages/app-chat-list.css') }}">
 
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/core/menu/menu-types/vertical-menu.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/pages/dashboard-ecommerce.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/plugins/charts/chart-apex.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/plugins/extensions/ext-component-toastr.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/pages/app-invoice.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/pages/app-invoice.css') }}">
     <!-- END: Page CSS-->
 
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/DataTables/datatables.min.css') }}">
@@ -201,9 +203,9 @@
     <!-- BEGIN Vendor JS-->
 
     <!-- BEGIN: Page Vendor JS-->
-    <script src="{{ asset('app-assets/vendors/js/extensions/toastr.min.js') }}"></script>
-    <script src="{{ asset('app-assets/vendors/js/ui/jquery.sticky.js') }}"></script>
-    <script src="{{ asset('app-assets/vendors/js/forms/repeater/jquery.repeater.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/js/extensions/toastr.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/js/ui/jquery.sticky.js') }}"></script>
+    <script src="{{ asset('assets/vendors/js/forms/repeater/jquery.repeater.min.js') }}"></script>
 
     <script src="{{ asset('app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js') }}"></script>
 
@@ -226,7 +228,8 @@
     <script src="{{ asset('app-assets/vendors/js/forms/select/select2.full.min.js') }}"></script>
 
      <!-- BEGIN: Page JS-->
-     <script src="{{ asset('app-assets/js/scripts/pages/app-invoice.js') }}"></script>
+     <script src="{{ asset('assets/js/scripts/pages/app-invoice.js') }}"></script>
+     
      <!-- END: Page JS-->
      <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js'></script>
      <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.min.js'></script>
