@@ -84,6 +84,9 @@
                                         <td>{{ $project->delivery_date }}</td>
                                     </tr>
                                 </table>
+                                <div class="row mt-3 mb-4">
+                                        <a href="/proyecto/chat/{{ $project->encode_id }}" class="btn btn-chat">Abrir chat del proyecto</a>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-5">

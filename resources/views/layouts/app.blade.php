@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Kanbai - @yield('title')</title>
-    <meta name="description" content="En marcepets.com criamos con amor los mejores cachorros de diferentes razas. 'La vida es mejor con un gordit@ de 4 patitas'">
+    <meta name="description" content="Encuentra todo lo que necesita tu empresa en Kanbai. Ahorra tiempo y dinero">
     <!-- Favicons -->
     <link href="{{ asset('assets/images/favicon.jpg') }}" rel="icon">
     <link href="{{ asset('assets/images/favicon.jpg') }}" rel="apple-touch-icon">
