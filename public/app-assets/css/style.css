@@ -846,8 +846,7 @@ a:hover {
     padding-top: 19px;
     padding-bottom: 19px;
 }
-
-/ .navbar-default.navbar-reduce .nav-link {
+.navbar-default.navbar-reduce .nav-link {
     color: #ffff;
 }
 
@@ -4272,4 +4271,8 @@ padding: 0px 15px;
   }
   .meta time{
     font-size: 12px;
+  }
+
+  .title-25{
+    font-size: 25px;
   }

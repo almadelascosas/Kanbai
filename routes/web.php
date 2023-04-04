@@ -40,11 +40,8 @@ Route::middleware(['auth',])->group(function () {
   Route::resource('quotes', 'ProductQuotationController');
   Route::resource('comercio', 'ProfileBusinessController');
   Route::resource('mi-perfil', 'ProfileBusinessController');
-  Route::get('solicituded-personalizadas', 'CustomRequestController@indexpanel');
   Route::post('/updateproyect', [ProjectsController::class, 'update'])->name('updateproyect');
-  Route::resource('solicitud-personalizada', 'CustomRequestController');
-  Route::get('/catalogo/cotizacion/porducto/{productoid}', 'ProductsController@quotation');
-  Route::resource('cotizacion', 'ProductQuotationController');
+  
   Route::get('projects', 'ProjectsController@indexpanel');
   Route::resource('project', 'ProjectsController');
   Route::get('/mis-proyectos/{id}', 'ProjectsController@index');
@@ -61,6 +58,11 @@ Route::middleware(['auth',])->group(function () {
   
 });
 
+Route::get('/catalogo/cotizacion/porducto/{productoid}', 'ProductsController@quotation');
+Route::resource('cotizacion', 'ProductQuotationController');
+Route::get('solicituded-personalizadas', 'CustomRequestController@indexpanel');
+Route::resource('solicitud-personalizada', 'CustomRequestController'); 
+
 Route::get('/', 'HomeaplicationController@index')->name('home');
 Route::get('/catalogo/{category}/{bubcategory}', 'ProductsController@productsBySubCategory');
 Route::get('/catalogo/{category}', 'ProductsController@productsByCategory');
@@ -73,6 +75,7 @@ Route::get('/buscar/{search}', 'ProductsController@serachproduct')->name('serach
 Route::get('customers/cities/{departament}', 'CustomersController@cities');
 Route::get('/registro', 'CustomersController@register')->name('registro');
 Route::post('registercustomer', 'CustomersController@registercustomer')->name('registercustomer');
+Route::post('/validaremail', 'CustomersController@validaremail')->name('validaremail');
 
 /**Borrar cache */
 Route::get('/clear-cache', function () {

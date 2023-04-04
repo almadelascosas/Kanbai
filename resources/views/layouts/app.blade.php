@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Template Main CSS File -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
     <link href="{{ asset('app-assets/css/style.css').'?'.rand() }}" rel="stylesheet">
     @livewireStyles
 </head>
@@ -156,17 +157,20 @@
     <script src="{{ asset('app-assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
     <script src="{{ asset('app-assets/vendor/php-email-form/validate.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.6.1/nouislider.min.js" integrity="sha512-1mDhG//LAjM3pLXCJyaA+4c+h5qmMoTc7IuJyuNNPaakrWT9rVTxICK4tIizf7YwJsXgDC2JP74PGCc7qxLAHw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="{{ asset('app-assets/js/alpinejs.js') }}"></script>
     <!-- Template Main JS File -->
     <script src="{{ asset('app-assets/js/main.js') }}"></script>
     <link rel="stylesheet" href="node_modules/@splidejs/splide/dist/css/splide.min.css">
     <!-- or the reference on CDN -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
-    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    
+    
+    <script src="{{ asset('app-assets/js/splide.min.js') }}"></script>
+    <script src="{{ asset('app-assets/js/swiper-bundle.min.js') }}"></script>
+    <script src="{{ asset('app-assets/js/sweetalert2@9.js') }}"></script>
+    <script src="{{ asset('app-assets/js/intlTelInput.min.js') }}"></script>
+    
     @livewireScripts
+    
     <script>
     function _alertGeneric(type, title, text, reload = null) {
         Swal.fire({
