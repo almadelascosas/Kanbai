@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Categories;
 use App\Models\CustomRequestHistory;
 use App\Models\Projects;
+use Illuminate\Support\Facades\Hash;
 
 
 use App\Models\Log\LogSistema;
@@ -78,6 +79,23 @@ class CustomRequestController extends Controller
             $request->image->move(public_path('images/custom_request'), $imageName);
          
         }
+        if(auth()->user()){
+            $user_id=auth()->user()->id;
+        }else{
+            $user=User::create([
+                'name' => $request->name_user,
+                'email' => $request->email_user,
+                'username' => $request->email_user,
+                'genero' => null,
+                'name_business' => $request->name_business,
+                'status'=>1,
+                'phone'=> $request->phone,
+                'password' => Hash::make($request->password),
+            ]);
+            $user->assignRole(2);
+            $user_id=$user->id;
+
+        }
         $customrequest = CustomRequest::create([
             'email'=>$request->email,
             'cellphone'=>$request->cellphone,
@@ -91,7 +109,7 @@ class CustomRequestController extends Controller
             'observations'=>$request->observations,
             'file'=>$imageName,
             'state'=>0,
-            'user_request_id'=>auth()->user()->id                              
+            'user_request_id'=>$user_id                              
         ]);
         
         return json_encode(['success' => true, 'id' => $customrequest->id]);

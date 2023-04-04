@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Projects;
 use App\Models\ProductQuotationHistory;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Hash;
 
 use App\Models\Log\LogSistema;
 use Mail;
@@ -115,8 +116,24 @@ class ProductQuotationController extends Controller
     {
 
         $producto=Products::where('id',$request->product_id)->first();
-
         $product=Products::with('user')->where('id',$request->product_id)->first();
+        if(auth()->user()){
+            $user_id=auth()->user()->id;
+        }else{
+            $user=User::create([
+                'name' => $request->name_user,
+                'email' => $request->email_user,
+                'username' => $request->email_user,
+                'genero' => null,
+                'name_business' => $request->name_business,
+                'status'=>1,
+                'phone'=> $request->phone,
+                'password' => Hash::make($request->password),
+            ]);
+            $user->assignRole(2);
+            $user_id=$user->id;
+
+        }
         $cotizacion = ProductQuotation::create([
             'product_id'=>$request->product_id,
             'email'=>$request->email,
@@ -127,7 +144,7 @@ class ProductQuotationController extends Controller
             'date_delivery'=>$request->date_delivery,
             'observations'=>$request->observations,
             'user_id'=>$product->user->id,  
-            'user_request_id'=>auth()->user()->id     
+            'user_request_id'=>$user_id    
         ]);  
         ProductQuotationHistory::create([
             'quotation_id'=>$cotizacion->id,

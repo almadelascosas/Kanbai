@@ -197,4 +197,17 @@ class CustomersController extends Controller
            
         }
     }
+    public function validaremail(Request $request)
+    {
+
+        try {
+            $validated = $request->validate([
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:customers','unique:users']      
+            ]);
+            return json_encode(['success' => true, 'customer_id' => 1]);
+    
+            }catch (exception $e) {
+               
+            }
+    }
 }

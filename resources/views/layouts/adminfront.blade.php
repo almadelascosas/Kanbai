@@ -44,14 +44,13 @@
 
     <script src="{{ asset('assets/plugins/DataTables/datatables.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/jquery.validate.min.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
     <script src="{{ asset('app-assets/vendors/js/forms/select/select2.full.min.js') }}"></script>
 
      <!-- BEGIN: Page JS-->
      <script src="{{ asset('app-assets/js/scripts/pages/app-invoice.js') }}"></script>
 
-     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+     <script src="{{ asset('app-assets/js/sweetalert2@9.js') }}"></script>
      <!-- END: Page JS-->
 
      <script>
