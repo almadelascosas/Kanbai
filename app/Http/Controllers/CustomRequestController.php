@@ -7,10 +7,21 @@ use Illuminate\Http\Request;
 use App\Models\Categories;
 use App\Models\CustomRequestHistory;
 use App\Models\Projects;
+use App\Models\CustomRequestGallery;
 use Illuminate\Support\Facades\Hash;
 
 
 use App\Models\Log\LogSistema;
+
+use Illuminate\Support\Str;
+
+use Image;
+
+use Mail;
+
+use Barryvdh\DomPDF\Facade as PDF;
+set_time_limit(300);
+
 
 class CustomRequestController extends Controller
 {
@@ -153,25 +164,39 @@ class CustomRequestController extends Controller
      */
     public function update(Request $request)
     {
+       
         $CustomRequest = CustomRequest::find($request->customrequest_id);
         $CustomRequest->state = $request->state; 
         $CustomRequest->price_finish = $request->price_finish;  
         $CustomRequest->shipping_from = $request->shipping_from;  
         $CustomRequest->product = $request->product;      
         $CustomRequest->date_delivery_ok = $request->date_delivery_ok;  
-        $CustomRequest->price_shiping = $request->price_shiping;  
-       
-        if ($request->file('image')) {
-            $imageName = time().'.'.$request->image->extension();
-            $request->image->move(public_path('images/custom_request/images'), $imageName);
+        $CustomRequest->price_shiping = $request->price_shiping; 
+        $CustomRequest->iva = $request->iva;  
 
-            /**$image_path = public_path().'/images/categories/'.$category->file;
-            if (@getimagesize($image_path)) {
-                unlink($image_path);
-            }*/
-            $CustomRequest->image = $imageName;
 
+        if($request->file('image')){    
+            
+            foreach($request->file('image') as $image){
+                $nametem=Str::random(7);
+                $imagen = Image::make($image);
+                $imageName = time().'_'.$nametem.'.'.$image->extension();
+
+                $destinationPath = public_path('/thumbnail');
+                $imagen->resize(500, 500, function ($constraint) {
+                    $constraint->aspectRatio();
+                    $constraint->upsize();
+                })->save(public_path('images/custom_request/images/' . $imageName));               
+               
+                $productgallery = CustomRequestGallery::create([
+                    'file'=>$imageName,
+                    'custom_id'=>$CustomRequest->id                                 
+                ]);       
+
+            }
         }
+       
+       
 
        
         $CustomRequest->save();
@@ -182,19 +207,46 @@ class CustomRequestController extends Controller
                 'state'=>$request->state,                
             ]);  
         }
+
         if($request->state==1){
+            $logo='https://kanbai.co/images/logo/logo-kanbai-color.png';            
+            $name_pdf = time().'_solicitud_'. $CustomRequest->id.'.pdf';
+            $quotation = CustomRequest::with('gallery','history','user')->find($CustomRequest->id);
+       
+        $pdf = PDF::loadView('admin.customrequest.pdf',compact('logo','quotation'))
+        ->setPaper('A4', 'portrait')->save(public_path('cotizaciones/'.$name_pdf));
+        $quotation->filepdf=$name_pdf;
+        $quotation->save();
+        
+        $quotationsend = CustomRequest::with('gallery','history','user')->find($CustomRequest->id);
+        if($quotationsend->user!=null){
+            $name=$quotation->user->name.' '.$quotation->user->lastname;
+            $data = array('name'=>$name);
+            $pdfsend = PDF::loadView('admin.customrequest.pdf',compact('logo','quotation'))->setPaper('A4', 'portrait');
+            Mail::send('admin.quotations.templateemail', $data, function($message) use ($quotationsend,$pdfsend){
+                $message->to($quotationsend->email, $quotationsend->name);
+                $message->subject('Solicitud Kanbai No. '.$quotationsend->id);
+                $message->attachData($pdfsend->output(), "cotizacion.pdf");
+                $message->from('solicitud@kanbai.co','Kanbai');
+           });
+        }
+        
+
+        }
+        if($request->state==3){
             $project=Projects::where('type',2)->where('id_type',$CustomRequest->id)->first();
             
             if($project==null){
                 Projects::create([
                     'type'=>2,
                     'id_type'=>$CustomRequest->id,
-                    'name'=>$request->product,
-                    'ubication'=>$request->shipping_from,
-                    'price_delivery'=>$request->price_shiping,
-                    'price'=>$request->price_finish,
+                    'name'=>$CustomRequest->product,
+                    'ubication'=>$CustomRequest->shipping_from,
+                    'price_delivery'=>$CustomRequest->price_shiping,
+                    'price'=>$CustomRequest->price_finish,
                     'quantity'=>$CustomRequest->quantity,
-                    'delivery_date'=>$request->date_delivery_ok,
+                    'delivery_date'=>$CustomRequest->date_delivery_ok,
+                    'iva'=>$CustomRequest->iva,
                     'state'=>1, 
                     'user_request_id'=>$CustomRequest->user_request_id            
                 ]); 

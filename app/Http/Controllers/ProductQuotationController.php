@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\Log\LogSistema;
 use Mail;
 
+use Barryvdh\DomPDF\Facade as PDF;
+set_time_limit(300);
+
 class ProductQuotationController extends Controller
 {
 
@@ -197,16 +200,19 @@ class ProductQuotationController extends Controller
      */
     public function edit($id)
     {
-        $quotation = ProductQuotation::with('producto','producto.gallery','history')->find(\Hashids::decode($id)[0]);
+        $quotation = ProductQuotation::with('producto','producto.gallery','history','user')->find(\Hashids::decode($id)[0]);
 
         $log = new LogSistema();
         $log->user_id = auth()->user()->id;
         $log->tx_descripcion = 'El usuario: '.auth()->user()->display_name.' Ha ingresado a editar los datos de la cotizacion: '.$quotation->id.' a las: '
         . date('H:m:i').' del día: '.date('d/m/Y');
         $log->save();
-       
-       
-        return view('admin.quotations.edit', ['quotation' => $quotation]);
+
+        
+        //$logo='https://kanbai.co/images/logo/logo-kanbai-color.png'; 
+        $logo=null;
+        
+        return view('admin.quotations.edit', ['quotation' => $quotation,'logo'=>$logo]);
     }
 
     /**
@@ -219,7 +225,7 @@ class ProductQuotationController extends Controller
     public function update(Request $request, $id)
     {
         //dd('ddd');
-        $productquotation = ProductQuotation::with('producto')->find(\Hashids::decode($id)[0]);
+        $productquotation = ProductQuotation::with('producto','producto.gallery','history','user')->find(\Hashids::decode($id)[0]);
         $productquotation->state = $request->state; 
         if($request->price_finish){
             $productquotation->price_finish = $request->price_finish; 
@@ -227,13 +233,45 @@ class ProductQuotationController extends Controller
         if($request->price_shiping){
             $productquotation->price_shiping = $request->price_shiping; 
         } 
+        if($request->iva){
+            $productquotation->iva = $request->iva; 
+        } 
+        
         if($request->comment){
             $productquotation->comment = $request->comment; 
         } 
         if($request->deny){
             $productquotation->deny = $request->deny; 
         } 
+        
         $productquotation->save();
+
+        if($request->state==1){
+            $logo='https://kanbai.co/images/logo/logo-kanbai-color.png';            
+            $name_pdf = time().'_'. $productquotation->id.'.pdf';
+            $quotation = ProductQuotation::with('producto','producto.gallery','history','user')->find(\Hashids::decode($id)[0]);
+       
+        $pdf = PDF::loadView('admin.quotations.pdf',compact('logo','quotation'))
+        ->setPaper('A4', 'portrait')->save(public_path('cotizaciones/'.$name_pdf));
+        $quotation->file=$name_pdf;
+        $quotation->save();
+        
+        $quotationsend = ProductQuotation::with('producto','producto.gallery','history','user')->find(\Hashids::decode($id)[0]);
+        if($quotationsend->user!=null){
+            $name=$quotation->user->name.' '.$quotation->user->lastname;
+            $data = array('name'=>$name);
+            $pdfsend = PDF::loadView('admin.quotations.pdf',compact('logo','quotation'))->setPaper('A4', 'portrait');
+            Mail::send('admin.quotations.templateemail', $data, function($message) use ($quotationsend,$pdfsend){
+                $message->to($quotationsend->email, $quotationsend->name);
+                $message->subject('Solicitud Kanbai No. '.$quotationsend->id);
+                $message->attachData($pdfsend->output(), "cotizacion.pdf");
+                $message->from('solicitud@kanbai.co','Kanbai');
+           });
+        }
+        
+
+        }
+
         
         if($productquotation->state!=$request->state){
             ProductQuotationHistory::create([
@@ -241,7 +279,7 @@ class ProductQuotationController extends Controller
                 'state'=>$request->state,                
             ]);  
         }
-        if($request->state==1){
+        if($request->state==3){
             $project=Projects::where('type',1)->where('id_type',$productquotation->id)->first();
             
             if($project==null){
@@ -250,10 +288,11 @@ class ProductQuotationController extends Controller
                     'id_type'=>$productquotation->id,
                     'name'=>$productquotation->producto->name,
                     'ubication'=>null,
-                    'price_delivery'=>$request->price_shiping,
-                    'price'=>$request->price_finish,
+                    'price_delivery'=>$productquotation->price_shiping,
+                    'price'=>$productquotation->price_finish,
                     'quantity'=>$productquotation->quantity,
                     'delivery_date'=>null,
+                    'iva'=>$productquotation->quantity,
                     'state'=>1, 
                     'user_request_id'=>$productquotation->user_request_id            
                 ]); 

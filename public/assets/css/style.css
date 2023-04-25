@@ -7126,4 +7126,12 @@ button, input, optgroup, select, textarea {
 .meta time{
   font-size: 12px;
 }
+.heder-quatitons{
+  width: 100%;
+  background: #EDEDED 0% 0% no-repeat padding-box;
+  border-radius: 20px 20px 0px 0px;
+  opacity: 1;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
   

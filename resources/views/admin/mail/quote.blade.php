@@ -22,10 +22,10 @@
   <div class="container box" style="width: 970px;">
     
    <p>Estimado(a) {{ $data['name'] }},
-       Recuerda que tu próxima cita en Eliana lagos es el {{ $data['date'] }} a las {{ $data['time'] }}.
+       Recuerda que tu próxima cita en Imagenes Orales es el {{ $data['date'] }} a las {{ $data['time'] }}.
     </p>
     <h4>Información de contacto:</h4>
-    <p>Eliana lagos<br>
+    <p>Imagenes Orales<br>
     Teléfono: {{ $data['phone'] }}<br>
     Email: {{ $data['email'] }}</p>
 

@@ -7,8 +7,8 @@
     <title>Kanbai - @yield('title')</title>
     <meta name="description" content="Encuentra todo lo que necesita tu empresa en Kanbai. Ahorra tiempo y dinero">
     <!-- Favicons -->
-    <link href="{{ asset('assets/images/favicon.jpg') }}" rel="icon">
-    <link href="{{ asset('assets/images/favicon.jpg') }}" rel="apple-touch-icon">
+    <link href="{{ asset('images/kanbai-favicon.svg') }}" rel="icon">
+    <link href="{{ asset('images/kanbai-favicon.svg') }}" rel="apple-touch-icon">
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet'>
     <!-- Vendor CSS Files -->

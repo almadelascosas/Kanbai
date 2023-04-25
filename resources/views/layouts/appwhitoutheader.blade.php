@@ -7,8 +7,9 @@
     <title>Kanbai - @yield('title')</title>
     <meta name="description" content="En marcepets.com criamos con amor los mejores cachorros de diferentes razas. 'La vida es mejor con un gordit@ de 4 patitas'">
     <!-- Favicons -->
-    <link href="{{ asset('assets/images/favicon.jpg') }}" rel="icon">
-    <link href="{{ asset('assets/images/favicon.jpg') }}" rel="apple-touch-icon">
+     <!-- Favicons -->
+     <link href="{{ asset('images/kanbai-favicon.svg') }}" rel="icon">
+    <link href="{{ asset('images/kanbai-favicon.svg') }}" rel="apple-touch-icon">
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet'>
     <!-- Vendor CSS Files -->

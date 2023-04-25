@@ -81,7 +81,8 @@
                                             <td>{{ $item->id }}</td>
                                             <td>@if($item->state==0) <span class="badge  text-white bg-warning">En Espera</span> @endif
                                             @if($item->state==1) <span class="badge  text-white bg-success">Aprobado</span> @endif
-                                            @if($item->state==2) <span class="badge  text-white bg-danger">Cancelado</span> @endif</td>
+                                            @if($item->state==2) <span class="badge  text-white bg-danger">Cancelado</span> @endif
+                                            @if($item->state==3) <span class="badge  text-white bg-info">Ganada</span> @endif</td>
                                             <td>@if($item->producto!=null){{ $item->producto->name }}@endif</td>
                                             <td>{{ $item->email }}</td>
                                             <td>{{ $item->name }}</td>
@@ -140,7 +141,8 @@
                                             <td>{{ $item->id }}</td>
                                             <td>@if($item->state==0) <span class="badge  text-white bg-warning">En Espera</span> @endif
                                             @if($item->state==1) <span class="badge  text-white bg-success">Gestionado</span> @endif
-                                            @if($item->state==2) <span class="badge  text-white bg-danger">Cancelado</span> @endif</td>
+                                            @if($item->state==2) <span class="badge  text-white bg-danger">Cancelado</span> @endif
+                                            @if($item->state==3) <span class="badge  text-white bg-info">Ganada</span> @endif</td>
                                             <td>@if($item->producto!=null){{ $item->producto->name }}@endif</td>
                                             <td>{{ $item->email }}</td>
                                             <td>{{ $item->name }}</td>
@@ -200,7 +202,8 @@
                                             <td>{{ $item->id }}</td>
                                             <td>@if($item->state==0) <span class="badge  text-white bg-warning">En Espera</span> @endif
                                             @if($item->state==1) <span class="badge  text-white bg-success">Gestionado</span> @endif
-                                            @if($item->state==2) <span class="badge  text-white bg-danger">Canceladas</span> @endif</td>
+                                            @if($item->state==2) <span class="badge  text-white bg-danger">Canceladas</span> @endif
+                                            @if($item->state==3) <span class="badge  text-white bg-info">Ganada</span> @endif</td>
                                             <td>@if($item->producto!=null){{ $item->producto->name }}@endif</td>
                                             <td>{{ $item->email }}</td>
                                             <td>{{ $item->name }}</td>
@@ -256,11 +259,13 @@
                                                 </form>-->
                                             </td>
 
-                                            <td>{{ $item->id }}</td>
+                                            <td>E{{ $item->id }}</td>
                                             <td>@if($item->state==0) <span class="badge  text-white bg-warning">En Espera</span> @endif
                                             @if($item->state==1) <span class="badge  text-white bg-success">Aprobada</span> @endif
                                             @if($item->state==2) <span class="badge  text-white bg-danger">Canceladas</span> @endif</td>
-                                            <td>@if($item->producto!=null){{ $item->producto->name }}@endif</td>
+                                            <td>@if($item->producto!=null){{ $item->producto->name }}@endif
+                                            @if($item->state==3) <span class="badge  text-white bg-info">Ganada</span> @endif
+                                            </td>
                                             <td>{{ $item->email }}</td>
                                             <td>{{ $item->name }}</td>
                                             <td>{{ $item->cellphone }}</td>

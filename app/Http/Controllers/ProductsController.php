@@ -13,6 +13,8 @@ use App\Models\SubCategories;
 use App\Models\User;
 use App\Models\ProductsQuestions;
 
+use Illuminate\Support\Str;
+
 use Image;
 
 class ProductsController extends Controller
@@ -93,8 +95,9 @@ class ProductsController extends Controller
         if($request->file('image')){    
             
             foreach($request->file('image') as $image){
+                $nametem=Str::random(7);
                 $imagen = Image::make($image);
-                $imageName = time().'_'.$image->getClientOriginalName().'.'.$image->extension();
+                $imageName = time().'_'.$nametem.'.'.$image->extension();
 
                 $destinationPath = public_path('/thumbnail');
                 $imagen->resize(500, 500, function ($constraint) {
@@ -221,7 +224,8 @@ class ProductsController extends Controller
 
         if($request->file('image')){       
             foreach($request->file('image') as $image){
-                $imageName = time().'_'.$image->getClientOriginalName().'.'.$image->extension();
+                $nametem=Str::random(7);
+                $imageName = time().'_'.$nametem.'.'.$image->extension();
                 $imagen = Image::make($image);
                 $destinationPath = public_path('/thumbnail');
                 $imagen->resize(500, 500, function ($constraint) {

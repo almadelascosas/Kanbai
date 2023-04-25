@@ -86,4 +86,15 @@ class ProfileBusinessController extends Controller
     {
         //
     }
+
+    public function myinformation(){
+        $user = User::with('roles')->with('permissions')->find(auth()->user()->id);
+        $projects = Projects::with('timeline')->where('user_request_id',auth()->user()->id)->get();
+        return view ('site.business.myinformation', compact('user','projects'));
+    }
+    public function myprojects(){
+        $user = User::with('roles')->with('permissions')->find(auth()->user()->id);
+        $projects = Projects::with('timeline')->where('user_request_id',auth()->user()->id)->get();
+        return view ('site.business.myprojects', compact('user','projects'));
+    }
 }
