@@ -30,11 +30,12 @@
                                                 </div>
                                             </form>-->
                                         </td>
-                                        <td>{{ $item->id }}</td> 
+                                        <td>P{{ $item->id }}</td> 
                                         <td>@if($item->state==0) <span class="badge  text-white bg-warning">En Espera</span> @endif
-                                        @if($item->state==1) <span class="badge  text-white bg-warning">En Ejecución</span> @endif
+                                        @if($item->state==1) <span class="badge  text-white bg-success">En Ejecución</span> @endif
                                         @if($item->state==9) <span class="badge  text-white bg-success">Finalizado</span> @endif
-                                        @if($item->state==2) <span class="badge  text-white bg-danger">Cancelado</span> @endif</td>
+                                        @if($item->state==2) <span class="badge  text-white bg-danger">Cancelado</span> @endif
+                                        @if($item->state==3) <span class="badge  text-white bg-info">Ganada</span> @endif</td>
 
                                                                                
                                         <td>{{ $item->category->name }}</td>

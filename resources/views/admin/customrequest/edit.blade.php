@@ -44,12 +44,22 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header header-solicitud">
+                    <div class="row heder-quatitons" >
                         <div class="col-md-5">
-                            <h4 class="card-title title-solicitud">Número de solicitud: {{ $customrequest->id }}</h4>
+                            <h4 class="card-title title-solicitud">Número de solicitud: P{{ $customrequest->id }}</h4>
                         </div>
                         <div class="col-md-7">
                             <!-- Button trigger modal -->
-                            @if($customrequest->state!=1)
+                            @if($customrequest->state==1)
+                            <a href="{{ asset('cotizaciones/'.$customrequest->filepdf.'') }}" class="btn btn-success" target="_blank"><i class="fa fa-download" aria-hidden="true"></i></a>
+                            <form method="POST" action="" style="display: inline-block;">
+                                    <input type="hidden" id="state" name="state" value="3">
+                                    <input type="hidden" id="customrequest_id" name="customrequest_id" value="{{$customrequest->id}}">
+                                    
+                                    <button type="submit" data-token="{{ csrf_token() }}" data-attr="{{ url('solicitud-personalizada',[$customrequest->encode_id]) }}" class="btn btn-admin-succes-quotation ganada" value="Delete user">Ganada</button>                               
+                            </form>
+                            @endif
+                            @if($customrequest->state!=1 && $customrequest->state!=3)
                             <button type="button" class="btn btn-admin-succes-quotation" data-bs-toggle="modal" data-bs-target="#aprovarsolicitud">
                                 Aprobar solicitud
                             </button>
@@ -93,6 +103,7 @@
                             </div>
 
                         </div>
+</div>
                     </div>
 </div>
                     <div class="card-body">
@@ -107,7 +118,7 @@
                             <div class="col-md-5">
                                 <h4 class="titleproduct-solicitud mt-2">Categoria: {{$customrequest->category->name}}</h4> 
                                 <p class="price-solicitud mt-2">                                   
-                                    Precio por unidad: <span>${{number_format($customrequest->budget_unit, 0, 0, '.')}} </span> 
+                                    Precio por unidad: <span>$@if($customrequest->price_finish!=null) {{number_format($customrequest->price_finish, 0, 0, '.')}} @else {{number_format($customrequest->budget_unit, 0, 0, '.')}} @endif</span> 
                                     </p>
                                 <p class="price-solicitud mt-2">                                   
                                     Cantidad: <span>{{$customrequest->quantity }} </span>
@@ -231,5 +242,54 @@
 @push('scripts')
 
 <script src="{{ asset('js/admin/quotations/edit.js') }}"></script>
+
+<script>
+    $('.ganada').click(function(e){
+
+        e.preventDefault();
+        var _target=e.target;
+        let href = $(this).attr('data-attr');// Don't post the form, unless confirmed
+        let token = $(this).attr('data-token');
+        var data=$(e.target).closest('form').serialize();
+        Swal.fire({
+        title: 'Seguro que desea marcar como ganada la cotización perzonalizada?',
+        text: "",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Aceptar',
+        cancelButtonText: 'Cancelar',
+        }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+              url: href,
+              headers: {'X-CSRF-TOKEN': token},
+              type: 'PUT',
+              cache: false,
+    	      data: data,
+              success: function (response) {
+                var json = $.parseJSON(response);
+                console.log(json);
+                Swal.fire(
+                    'Muy bien!',
+                    'Cotización ganada',
+                    'success'
+                    ).then((result) => {
+                        location.reload();
+                    });
+
+              },error: function (data) {
+                var errors = data.responseJSON;
+                console.log(errors);
+
+              }
+           });
+
+        }
+        })
+
+    });
+</script>
 
 @endpush

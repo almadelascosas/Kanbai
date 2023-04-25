@@ -10,7 +10,7 @@
     <div class="content-header-left col-md-9 col-12 mb-2">
         <div class="row breadcrumbs-top">
             <div class="col-12">
-                <h2 class="content-header-title float-start mb-0">Editar: #{{ $quotation->id }}</h2>
+                <h2 class="content-header-title float-start mb-0">Editar: #E{{ $quotation->id }}</h2>
                 <div class="breadcrumb-wrapper">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
@@ -40,16 +40,25 @@
 </div>
 <div class="content-body">
     <section id="multiple-column-form">
+
         <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header header-solicitud">
+                        <div class="row heder-quatitons" >
                         <div class="col-md-5">
                             <h4 class="card-title title-solicitud">Número de solicitud: {{ $quotation->id }}</h4>
                         </div>
                         <div class="col-md-7">
                             <!-- Button trigger modal -->
-                            @if($quotation->state!=1)
+                            @if($quotation->state==1)
+                            <a href="{{ asset('cotizaciones/'.$quotation->file.'') }}" class="btn btn-success" target="_blank"><i class="fa fa-download" aria-hidden="true"></i></a>
+                            <form method="POST" action="" style="display: inline-block;">
+                                    <input type="hidden" id="state" name="state" value="3">
+                                    <button type="submit" data-token="{{ csrf_token() }}" data-attr="{{ url('quotes',[$quotation->encode_id]) }}" class="btn btn-admin-succes-quotation ganada" value="Delete user">Ganada</button>                               
+                            </form>
+                            @endif
+                            @if($quotation->state!=1 && $quotation->state!=3)
                             <button type="button" class="btn btn-admin-succes-quotation" data-bs-toggle="modal" data-bs-target="#aprovarsolicitud">
                                 Aprobar solicitud
                             </button>
@@ -91,6 +100,7 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
                         </div>
                     </div>
@@ -227,5 +237,53 @@
 @push('scripts')
 
 <script src="{{ asset('js/admin/quotations/edit.js') }}"></script>
+<script>
+    $('.ganada').click(function(e){
+
+        e.preventDefault();
+        var _target=e.target;
+        let href = $(this).attr('data-attr');// Don't post the form, unless confirmed
+        let token = $(this).attr('data-token');
+        var data=$(e.target).closest('form').serialize();
+        Swal.fire({
+        title: 'Seguro que desea marcar como ganada la cotización?',
+        text: "",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Aceptar',
+        cancelButtonText: 'Cancelar',
+        }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+              url: href,
+              headers: {'X-CSRF-TOKEN': token},
+              type: 'PUT',
+              cache: false,
+    	      data: data,
+              success: function (response) {
+                var json = $.parseJSON(response);
+                console.log(json);
+                Swal.fire(
+                    'Muy bien!',
+                    'Cotización ganada',
+                    'success'
+                    ).then((result) => {
+                        location.reload();
+                    });
+
+              },error: function (data) {
+                var errors = data.responseJSON;
+                console.log(errors);
+
+              }
+           });
+
+        }
+        })
+
+    });
+</script>
 
 @endpush

@@ -6,8 +6,9 @@
     <title>Panel Alma de las cosas - @yield('title')</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <meta name="robots" content="noindex, nofollow">
-    <link href="{{ asset('assets/images/favicon.jpg') }}" rel="icon">
-    <link href="{{ asset('assets/images/favicon.jpg') }}" rel="apple-touch-icon">
+    <!-- Favicons -->
+    <link href="{{ asset('images/kanbai-favicon.svg') }}" rel="icon">
+    <link href="{{ asset('images/kanbai-favicon.svg') }}" rel="apple-touch-icon">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/system.css') }}">
     @stack('styles')

@@ -13,7 +13,7 @@ class ProductQuotation extends Model
     protected $dates = ['deleted_at'];
 
     protected $fillable = [
-        'product_id','email','name','user_id','cellphone','quantity','address','date_delivery','observations','state','price_finish','price_shiping','comment','deny','user_request_id'
+        'product_id','email','name','user_id','cellphone','quantity','address','date_delivery','observations','state','price_finish','price_shiping','comment','deny','user_request_id','file','iva'
     ];
 
     
@@ -32,6 +32,11 @@ class ProductQuotation extends Model
     public function history()
     {
         return $this->hasMany(ProductQuotationHistory::class, 'quotation_id')->orderBy('id','ASC');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 
    

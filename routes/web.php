@@ -40,6 +40,8 @@ Route::middleware(['auth',])->group(function () {
   Route::resource('quotes', 'ProductQuotationController');
   Route::resource('comercio', 'ProfileBusinessController');
   Route::resource('mi-perfil', 'ProfileBusinessController');
+  Route::get('mi-informacion', 'ProfileBusinessController@myinformation')->name('myinformation');
+  Route::get('/mis-proyectos', 'ProfileBusinessController@myprojects');
   Route::post('/updateproyect', [ProjectsController::class, 'update'])->name('updateproyect');
   
   Route::get('projects', 'ProjectsController@indexpanel');
@@ -55,6 +57,7 @@ Route::middleware(['auth',])->group(function () {
 
   Route::resource('typequote', 'TypeQuoteController');
   Route::resource('quotation', 'QuotationController');
+  Route::post('/aprobarsolicitud', [CustomRequestController::class, 'update'])->name('aprobarsolicitud');
   
 });
 

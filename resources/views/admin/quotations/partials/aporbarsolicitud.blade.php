@@ -12,6 +12,19 @@
       </div> 
       <div class="col-md-12 col-12">
         <div class="mb-1">
+          <label class="form-label" for="iva">Iva</label>
+          <select  class="form-control" id="iva" name="iva"   >
+            <option value="0" {{ ($quotation->iva==0) ? "selected" : "" }} >Ninguno - (0%)</option>
+            <option value="0.5" {{ ($quotation->iva==0.5) ? "selected" : "" }} >IVA - (5%)</option>
+            <option value="0.19" {{ ($quotation->iva==0.19) ? "selected" : "" }} >IVA - (19%)</option>
+            <option value="0.8" {{ ($quotation->iva==0.8) ? "selected" : "" }} >IVA - (8%)</option>
+           
+          </select>
+          <span class="missing_alert text-danger" id="iva_alert"></span>
+        </div>
+      </div> 
+      <div class="col-md-12 col-12">
+        <div class="mb-1">
           <label class="form-label" for="price_shiping">Valor envio para la cantidad solicitada</label>
           <input type="text" class="form-control" id="price_shiping" name="price_shiping"  value="{{$quotation->price_shiping}}" >
           <span class="missing_alert text-danger" id="price_shiping_alert"></span>
@@ -65,6 +78,7 @@ confirmButtonText: 'Aceptar',
 cancelButtonText: 'Cancelar',
 }).then((result) => {
 if (result.isConfirmed) {
+  $('#ajax-icon').removeClass('fa fa-save').addClass('fa fa-spin fa-refresh');
     $.ajax({
       url: href,
       headers: {'X-CSRF-TOKEN': token},

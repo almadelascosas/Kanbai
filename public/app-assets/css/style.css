@@ -3877,6 +3877,10 @@ button.navbar-toggler{
         display: none;
     }
 
+    .profile-mobile{
+        display: none;
+    }
+
     .testimonials {
         display: none;
     }
@@ -4275,4 +4279,39 @@ padding: 0px 15px;
 
   .title-25{
     font-size: 25px;
+  }
+
+  .content-menu-profile{
+    background: #fff;
+    border-radius: 30px;
+    padding-top: 25px;
+  }
+
+  .menu-profile-mobile{
+    padding: 0px;
+    width: 100%;
+  }
+  .menu-profile-mobile li{
+    list-style: none;
+    padding: 7px 15px;
+    margin-bottom: 7px;
+  }
+
+  .menu-profile-mobile li i.menu-p-mobil{
+    background: #E4E4E4;
+    padding: 7px;
+    border-radius: 7px;
+    font-size: 25px;
+    margin-right: 15px;
+  }
+  .previos-profile{
+    color: #7F00FF;
+    font-size: 20px;
+    display: block;
+    margin-bottom: 15px;
+    cursor: pointer;
+  }
+  .cont-info-project-mobile{
+    background: #fff;
+    border-radius: 25px;
   }
